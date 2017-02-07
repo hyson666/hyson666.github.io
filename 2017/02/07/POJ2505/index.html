@@ -15,16 +15,18 @@
 
 
 
-<meta name="description" content="你好，这是Hyson的个人博客，这是他的第一篇Blog，以后他会在这里更新他的生活点滴和成长，希望你能够喜欢。">
+<meta name="description" content="题意：Stan和Ollie在玩一个乘法游戏，每一局他们都指定一个n，Stan每次都从p=1开始，乘上一个2-9的数字后轮到Ollie对Stan得到的结果做相同的操作，直到p&amp;gt;=n的时候该轮的玩家取得胜利。这题虽然比较水，但是如果对博弈论中N-p、P-p状态的性质不了解的话可能不能很快地归纳出必胜的结论。首先我们可以很简单地得到当2≤n≤9的时候，Stan是必胜的，因为他可以操作一次得到这里的任意数">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello, my friend">
-<meta property="og:url" content="http://yoursite.com/2017/01/24/Hello/index.html">
+<meta property="og:title" content="POJ2505 (简单博弈，二分，打表）">
+<meta property="og:url" content="http://yoursite.com/2017/02/07/POJ2505/index.html">
 <meta property="og:site_name" content="欢迎光临Hyson的主页">
-<meta property="og:description" content="你好，这是Hyson的个人博客，这是他的第一篇Blog，以后他会在这里更新他的生活点滴和成长，希望你能够喜欢。">
-<meta property="og:updated_time" content="2017-01-26T09:41:52.000Z">
+<meta property="og:description" content="题意：Stan和Ollie在玩一个乘法游戏，每一局他们都指定一个n，Stan每次都从p=1开始，乘上一个2-9的数字后轮到Ollie对Stan得到的结果做相同的操作，直到p&amp;gt;=n的时候该轮的玩家取得胜利。这题虽然比较水，但是如果对博弈论中N-p、P-p状态的性质不了解的话可能不能很快地归纳出必胜的结论。首先我们可以很简单地得到当2≤n≤9的时候，Stan是必胜的，因为他可以操作一次得到这里的任意数">
+<meta property="og:image" content="https://hyson666.github.io/picture/POJ2505.png">
+<meta property="og:updated_time" content="2017-02-07T09:12:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hello, my friend">
-<meta name="twitter:description" content="你好，这是Hyson的个人博客，这是他的第一篇Blog，以后他会在这里更新他的生活点滴和成长，希望你能够喜欢。">
+<meta name="twitter:title" content="POJ2505 (简单博弈，二分，打表）">
+<meta name="twitter:description" content="题意：Stan和Ollie在玩一个乘法游戏，每一局他们都指定一个n，Stan每次都从p=1开始，乘上一个2-9的数字后轮到Ollie对Stan得到的结果做相同的操作，直到p&amp;gt;=n的时候该轮的玩家取得胜利。这题虽然比较水，但是如果对博弈论中N-p、P-p状态的性质不了解的话可能不能很快地归纳出必胜的结论。首先我们可以很简单地得到当2≤n≤9的时候，Stan是必胜的，因为他可以操作一次得到这里的任意数">
+<meta name="twitter:image" content="https://hyson666.github.io/picture/POJ2505.png">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -56,7 +58,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>Hello, my friend | 欢迎光临Hyson的主页</title>
+<title>POJ2505 (简单博弈，二分，打表） | 欢迎光临Hyson的主页</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -281,11 +283,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Hello" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-POJ2505" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/01/24/Hello/" class="article-date">
-      <time datetime="2017-01-23T16:32:23.000Z" itemprop="datePublished">2017-01-24</time>
+      <a href="/2017/02/07/POJ2505/" class="article-date">
+      <time datetime="2017-02-07T09:10:03.000Z" itemprop="datePublished">2017-02-07</time>
 </a>
 
 
@@ -300,7 +302,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hello, my friend
+      POJ2505 (简单博弈，二分，打表）
     </h1>
   
 
@@ -309,11 +311,15 @@
       <div class="article-info article-info-post">
         
     <div class="article-category tagcloud">
-    <a class="article-category-link" href="/categories/随笔/">随笔</a>
+    <a class="article-category-link" href="/categories/算法/">算法</a>
     </div>
 
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博弈论/">博弈论</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -321,7 +327,8 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>你好，这是Hyson的个人博客，这是他的第一篇Blog，以后他会在这里更新他的生活点滴和成长，希望你能够喜欢。</p>
+        <p>题意：Stan和Ollie在玩一个乘法游戏，每一局他们都指定一个n，Stan每次都从p=1开始，乘上一个2-9的数字后轮到Ollie对Stan得到的结果做相同的操作，直到p>=n的时候该轮的玩家取得胜利。<br>这题虽然比较水，但是如果对博弈论中N-p、P-p状态的性质不了解的话可能不能很快地归纳出必胜的结论。<br>首先我们可以很简单地得到当2≤n≤9的时候，Stan是必胜的，因为他可以操作一次得到这里的任意数。而当10≤n≤18的时候，Ollie是必胜的，因为他可以从Stan的任意一种操作中再操作一次得到这个区间中的任何数字。<br>接下来我们分析n=19，如果双方足够聪明，那么Stan第一局必出一个2，然后Ollie无论做出什么操作，都不可能得到19，而下一轮Stan可以轻松地乘上一个数字超过19，这里便可以确定19是Stan的下一个必胜区间的下限。这里要强调的是，_对于一个必胜决策，一旦某一方处于必败态，那么无论他做出什么操作，之后都不可能取得胜利_，基于这一点对于我们推出之后的获胜区间很关键。为了使Ollie做出什么操作都不可能胜利，我们可以推倒出下一个Stan的必胜区间上限应该为9*2*9,因为为了得到162，知道Ollie会尽可能阻止他，Stan唯一的方案就是第一回合出9，否则第二回合Ollie只要出2，那么Stan便无论做什么也得不到162了，这个决策就不属于一个必胜的决策。_必胜区间的上线必须基于最坏的情况考虑，然后基于最坏的情况作出下一回合的最有决策。_<br>基于上述的思路，我们就可以继续推倒出Stan的必胜区间为[9^n+2^(n-1)+1,9^n+2^n],而Ollie的必胜区间则为[9^n+2^n+1,9^(n+1)+2^n]。<br>根据区间打表之后再进行二分搜索所在区间究竟是谁必胜，我们就可以得到问题的解了。<br>给出代码如下：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span>  </span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;  </div><div class="line"><span class="keyword">int</span> i;  </div><div class="line"><span class="keyword">struct</span> node  </div><div class="line">&#123;  </div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> lower;  </div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> upper;  </div><div class="line">    <span class="keyword">int</span> swin;  </div><div class="line">&#125;table[<span class="number">16</span>]();  </div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">inittable</span><span class="params">()</span>  </span></div><div class="line">&#123;  </div><div class="line">    table[<span class="number">1</span>]().lower=<span class="number">2</span>;  </div><div class="line">    table[<span class="number">1</span>]().upper=<span class="number">9</span>;  </div><div class="line">    table[<span class="number">1</span>]().swin=<span class="number">1</span>;  </div><div class="line">    table[<span class="number">2</span>]().lower=<span class="number">10</span>;  </div><div class="line">    table[<span class="number">2</span>]().upper=<span class="number">18</span>;  </div><div class="line">    table[<span class="number">2</span>]().swin=<span class="number">0</span>;  </div><div class="line">    <span class="keyword">for</span>(i=<span class="number">3</span>;;++i)&#123;  </div><div class="line">        table[i]().lower=table[i<span class="number">-1</span>]().upper+<span class="number">1</span>;  </div><div class="line">        <span class="keyword">if</span>(i%<span class="number">2</span>) &#123;  </div><div class="line">            table[i]().swin = <span class="number">1</span>;  </div><div class="line">            table[i]().upper = table[i<span class="number">-1</span>]().upper * <span class="number">9</span>;  </div><div class="line">        &#125;  </div><div class="line">        <span class="keyword">else</span> &#123;  </div><div class="line">            table[i]().swin = <span class="number">0</span>;  </div><div class="line">            table[i]().upper = table[i<span class="number">-1</span>]().upper * <span class="number">2</span>;  </div><div class="line">        &#125;  </div><div class="line">        <span class="keyword">if</span>(table[i]().upper\&gt;=<span class="number">4294967295</span>)  </div><div class="line">            <span class="keyword">break</span>;  </div><div class="line">    &#125;  </div><div class="line">&#125;;  </div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">binsearch</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> n)</span>  </span></div><div class="line">&#123;  </div><div class="line">    <span class="keyword">int</span> l=<span class="number">1</span>;  </div><div class="line">    <span class="keyword">int</span> r=i;  </div><div class="line">    <span class="keyword">while</span>(l\&lt;=r)&#123;  </div><div class="line">        <span class="keyword">int</span> mid=(l+r)/<span class="number">2</span>;  </div><div class="line">        <span class="keyword">if</span>(table[mid]().lower\&lt;=n &amp;&amp; n\&lt;=table[mid]().upper)  </div><div class="line">            <span class="keyword">return</span> table[mid]().swin;  </div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(n\&lt;table[mid]().lower) r=mid<span class="number">-1</span>;  </div><div class="line">        <span class="keyword">else</span> l=mid+<span class="number">1</span>;  </div><div class="line">    &#125;  </div><div class="line">    <span class="keyword">return</span> <span class="number">-1</span>;  </div><div class="line">&#125;  </div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;  </div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> n;  </div><div class="line">    inittable();  </div><div class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>\&gt;\&gt;n) &#123;  </div><div class="line">        <span class="keyword">if</span>(binsearch(n))  </div><div class="line">            <span class="built_in">cout</span>\&lt;\&lt;<span class="string">"Stan wins."</span>\&lt;\&lt;<span class="built_in">endl</span>;  </div><div class="line">        <span class="keyword">else</span>  </div><div class="line">            <span class="built_in">cout</span>\&lt;\&lt;<span class="string">"Ollie wins."</span>\&lt;\&lt;<span class="built_in">endl</span>;  </div><div class="line">    &#125;  </div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>运行结果为：<br><img src="https://hyson666.github.io/picture/POJ2505.png" alt=""></p>
 
       
     </div>
@@ -330,13 +337,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/01/24/Hello/">Hello, my friend</a></p>
+        <p><span>本文标题:</span><a href="/2017/02/07/POJ2505/">POJ2505 (简单博弈，二分，打表）</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Hyson不嗨森</a></p>
-        <p><span>发布时间:</span>2017-01-24, 00:32:23</p>
-        <p><span>最后更新:</span>2017-01-26, 17:41:52</p>
+        <p><span>发布时间:</span>2017-02-07, 17:10:03</p>
+        <p><span>最后更新:</span>2017-02-07, 17:12:33</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/01/24/Hello/" title="Hello, my friend">http://yoursite.com/2017/01/24/Hello/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/01/24/Hello/　　作者: Hyson不嗨森" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/02/07/POJ2505/" title="POJ2505 (简单博弈，二分，打表）">http://yoursite.com/2017/02/07/POJ2505/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/02/07/POJ2505/　　作者: Hyson不嗨森" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -348,12 +355,12 @@
 
     <nav id="article-nav">
         
-            <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/01/26/线段树单点更新/">
-                    线段树单点更新
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/02/05/Nim游戏/">
+                    博弈论基础学习（一）Nim游戏
                 </a>
             </div>
-        
         
     </nav>
 
@@ -399,7 +406,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"Hello, my friend　| 欢迎光临Hyson的主页　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"POJ2505 (简单博弈，二分，打表）　| 欢迎光临Hyson的主页　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -415,7 +422,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2017/01/24/Hello/" data-title="Hello, my friend" data-url="http://yoursite.com/2017/01/24/Hello/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/02/07/POJ2505/" data-title="POJ2505 (简单博弈，二分，打表）" data-url="http://yoursite.com/2017/02/07/POJ2505/"></div>
     <script>
         var duoshuoQuery = {short_name:"hyson"};
         var loadComment = function(){
@@ -438,15 +445,15 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/01/26/线段树单点更新/" title="上一篇: 线段树单点更新">
-                <i class="fa fa-angle-left"></i>
-            </a>
+            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
         
 
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/" title="回到主页"><i class="fa fa-home"></i></a>
+            <a href="/2017/02/05/Nim游戏/" title="下一篇: 博弈论基础学习（一）Nim游戏">
+                <i class="fa fa-angle-right"></i>
+            </a>
         
     </div>
 
