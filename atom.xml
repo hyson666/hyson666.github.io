@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hyson在这里</title>
+  <title>HysonQAQ</title>
   <subtitle>很卑微，不努力。</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-04-20T05:22:21.000Z</updated>
+  <updated>2017-04-20T06:13:42.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/04/20/POJ3114/"/>
     <id>http://yoursite.com/2017/04/20/POJ3114/</id>
     <published>2017-04-20T05:10:24.000Z</published>
-    <updated>2017-04-20T05:22:21.000Z</updated>
+    <updated>2017-04-20T06:13:42.000Z</updated>
     
     <content type="html"><![CDATA[<font size="4">题目连接</font>
 
@@ -63,10 +63,8 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="图论 Tarjan" scheme="http://yoursite.com/categories/%E5%9B%BE%E8%AE%BA-Tarjan/"/>
     
-    
-      <category term="图论,Tarjan" scheme="http://yoursite.com/tags/%E5%9B%BE%E8%AE%BA-Tarjan/"/>
     
   </entry>
   
@@ -75,7 +73,7 @@
     <link href="http://yoursite.com/2017/04/20/POJ3592/"/>
     <id>http://yoursite.com/2017/04/20/POJ3592/</id>
     <published>2017-04-20T04:39:47.000Z</published>
-    <updated>2017-04-20T05:22:15.000Z</updated>
+    <updated>2017-04-20T06:14:00.000Z</updated>
     
     <content type="html"><![CDATA[<font size="4">题目连接</font>
 
@@ -118,10 +116,8 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="图论 Tarjan" scheme="http://yoursite.com/categories/%E5%9B%BE%E8%AE%BA-Tarjan/"/>
     
-    
-      <category term="图论,Tarjan" scheme="http://yoursite.com/tags/%E5%9B%BE%E8%AE%BA-Tarjan/"/>
     
   </entry>
   
@@ -130,7 +126,7 @@
     <link href="http://yoursite.com/2017/04/20/POJ2186/"/>
     <id>http://yoursite.com/2017/04/20/POJ2186/</id>
     <published>2017-04-20T04:09:45.000Z</published>
-    <updated>2017-04-20T05:22:07.000Z</updated>
+    <updated>2017-04-20T06:13:15.000Z</updated>
     
     <content type="html"><![CDATA[<font size="4">题目连接</font>
 
@@ -171,45 +167,17 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="图论 Tarjan" scheme="http://yoursite.com/categories/%E5%9B%BE%E8%AE%BA-Tarjan/"/>
     
-    
-      <category term="图论,Tarjan" scheme="http://yoursite.com/tags/%E5%9B%BE%E8%AE%BA-Tarjan/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>POJ1426-Find The Multiple(打表BFS暴搜）</title>
-    <link href="http://yoursite.com/2017/02/16/poj1426/"/>
-    <id>http://yoursite.com/2017/02/16/poj1426/</id>
-    <published>2017-02-16T07:24:33.000Z</published>
-    <updated>2017-02-16T07:28:15.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>题意是给定了一个数字，可以乘上任何数字，求任意一个相乘后只含有0和1的正整数。数据的大小特别巨大，用BFS暴搜肯定很慢，但是我们可以转个弯来解决这个问题，依旧是利用BFS暴搜，但是只要把1-200的答案打印成表就可以了，这样就可以0ms解决问题。</p>
-<p>打表代码如下：</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">long</span> <span class="keyword">long</span> table[<span class="number">210</span>]=&#123;<span class="number">0</span>,<span class="number">1</span>,<span class="number">10</span>,<span class="number">111</span>,<span class="number">100</span>,<span class="number">10</span>,<span class="number">1110</span>,<span class="number">1001</span>,<span class="number">1000</span>,<span class="number">111111111</span>,<span class="number">10</span>,<span class="number">11</span>,<span class="number">11100</span>,<span class="number">1001</span>,<span class="number">10010</span>,<span class="number">1110</span>,<span class="number">10000</span>,<span class="number">11101</span>,<span class="number">1111111110</span>,<span class="number">11001</span>,<span class="number">100</span>,<span class="number">10101</span>,<span class="number">110</span>,<span class="number">110101</span>,<span class="number">111000</span>,<span class="number">100</span>,<span class="number">10010</span>,<span class="number">1101111111</span>,<span class="number">100100</span>,<span class="number">1101101</span>,<span class="number">1110</span>,<span class="number">111011</span>,<span class="number">100000</span>,<span class="number">111111</span>,<span class="number">111010</span>,<span class="number">10010</span>,<span class="number">11111111100</span>,<span class="number">111</span>,<span class="number">110010</span>,<span class="number">10101</span>,<span class="number">1000</span>,<span class="number">11111</span>,<span class="number">101010</span>,<span class="number">1101101</span>,<span class="number">1100</span>,<span class="number">1111111110</span>,<span class="number">1101010</span>,<span class="number">10011</span>,<span class="number">1110000</span>,<span class="number">1100001</span>,<span class="number">100</span>,<span class="number">100011</span>,<span class="number">100100</span>,<span class="number">100011</span>,<span class="number">11011111110</span>,<span class="number">110</span>,<span class="number">1001000</span>,<span class="number">11001</span>,<span class="number">11011010</span>,<span class="number">11011111</span>,<span class="number">11100</span>,<span class="number">100101</span>,<span class="number">1110110</span>,<span class="number">1111011111</span>,<span class="number">1000000</span>,<span class="number">10010</span>,<span class="number">1111110</span>,<span class="number">1101011</span>,<span class="number">1110100</span>,<span class="number">10000101</span>,<span class="number">10010</span>,<span class="number">10011</span>,<span class="number">111111111000</span>,<span class="number">10001</span>,<span class="number">1110</span>,<span class="number">11100</span>,<span class="number">1100100</span>,<span class="number">1001</span>,<span class="number">101010</span>,<span class="number">10010011</span>,<span class="number">10000</span>,<span class="number">1111111101</span>,<span class="number">111110</span>,<span class="number">101011</span>,<span class="number">1010100</span>,<span class="number">111010</span>,<span class="number">11011010</span>,<span class="number">11010111</span>,<span class="number">11000</span>,<span class="number">11010101</span>,<span class="number">1111111110</span>,<span class="number">1001</span>,<span class="number">11010100</span>,<span class="number">10000011</span>,<span class="number">100110</span>,<span class="number">110010</span>,<span class="number">11100000</span>,<span class="number">11100001</span>,<span class="number">11000010</span>,<span class="number">111111111111111111</span>,<span class="number">100</span>,<span class="number">101</span>,<span class="number">1000110</span>,<span class="number">11100001</span>,<span class="number">1001000</span>,<span class="number">101010</span>,<span class="number">1000110</span>,<span class="number">100010011</span>,<span class="number">110111111100</span>,<span class="number">1001010111</span>,<span class="number">110</span>,<span class="number">111</span>,<span class="number">10010000</span>,<span class="number">1011011</span>,<span class="number">110010</span>,<span class="number">1101010</span>,<span class="number">110110100</span>,<span class="number">10101111111</span>,<span class="number">110111110</span>,<span class="number">100111011</span>,<span class="number">111000</span>,<span class="number">11011</span>,<span class="number">1001010</span>,<span class="number">10001100111</span>,<span class="number">11101100</span>,<span class="number">1000</span>,<span class="number">11110111110</span>,<span class="number">11010011</span>,<span class="number">10000000</span>,<span class="number">100100001</span>,<span class="number">10010</span>,<span class="number">101001</span>,<span class="number">11111100</span>,<span class="number">11101111</span>,<span class="number">11010110</span>,<span class="number">11011111110</span>,<span class="number">11101000</span>,<span class="number">10001</span>,<span class="number">100001010</span>,<span class="number">110110101</span>,<span class="number">100100</span>,<span class="number">10011</span>,<span class="number">100110</span>,<span class="number">1001</span>,<span class="number">1111111110000</span>,<span class="number">11011010</span>,<span class="number">100010</span>,<span class="number">1100001</span>,<span class="number">11100</span>,<span class="number">110111</span>,<span class="number">11100</span>,<span class="number">1110001</span>,<span class="number">11001000</span>,<span class="number">10111110111</span>,<span class="number">10010</span>,<span class="number">1110110</span>,<span class="number">1010100</span>,<span class="number">10101101011</span>,<span class="number">100100110</span>,<span class="number">100011</span>,<span class="number">100000</span>,<span class="number">11101111</span>,<span class="number">11111111010</span>,<span class="number">1010111</span>,<span class="number">1111100</span>,<span class="number">1111110</span>,<span class="number">1010110</span>,<span class="number">11111011</span>,<span class="number">10101000</span>,<span class="number">10111101</span>,<span class="number">111010</span>,<span class="number">1111011111</span>,<span class="number">110110100</span>,<span class="number">1011001101</span>,<span class="number">110101110</span>,<span class="number">100100</span>,<span class="number">110000</span>,<span class="number">100101111</span>,<span class="number">110101010</span>,<span class="number">11010111</span>,<span class="number">11111111100</span>,<span class="number">1001111</span>,<span class="number">10010</span>,<span class="number">100101</span>,<span class="number">110101000</span>,<span class="number">1110</span>,<span class="number">100000110</span>,<span class="number">1001011</span>,<span class="number">1001100</span>,<span class="number">1010111010111</span>,<span class="number">110010</span>,<span class="number">11101111</span>,<span class="number">111000000</span>,<span class="number">11001</span>,<span class="number">111000010</span>,<span class="number">101010</span>,<span class="number">110000100</span>,<span class="number">1101000101</span>,<span class="number">1111111111111111110</span>,<span class="number">111000011</span>,<span class="number">1000</span>&#125;;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init_table</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    <span class="built_in">queue</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt; que;</div><div class="line">    que.push(<span class="number">1</span>);</div><div class="line">    <span class="keyword">long</span> <span class="keyword">long</span> sum;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">1000000</span>;++i)&#123;</div><div class="line">        sum=que.front();</div><div class="line">        que.pop();</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=<span class="number">200</span>;++j)&#123;</div><div class="line">            <span class="keyword">if</span>(sum%j==<span class="number">0</span> &amp;&amp; table[j]==<span class="number">0</span>)</div><div class="line">                table[j]=sum;</div><div class="line">        &#125;</div><div class="line">        que.push(sum*<span class="number">10</span>);</div><div class="line">        que.push(sum*<span class="number">10</span>+<span class="number">1</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">/*</span></div><div class="line">    init_table();</div><div class="line">    for(int i=1;i&lt;=200;++i)&#123;</div><div class="line">        printf("%lld,",table[i]);</div><div class="line">    &#125;</div><div class="line">    */</div><div class="line">    <span class="keyword">int</span> n;</div><div class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n) &amp;&amp; n)&#123;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;table[n]&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;题意是给定了一个数字，可以乘上任何数字，求任意一个相乘后只含有0和1的正整数。数据的大小特别巨大，用BFS暴搜肯定很慢，但是我们可以转个弯来解决这个问题，依旧是利用BFS暴搜，但是只要把1-200的答案打印成表就可以了，这样就可以0ms解决问题。&lt;/p&gt;
-&lt;p&gt;打表代码如下
-    
-    </summary>
-    
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
-    
-    
-      <category term="搜索" scheme="http://yoursite.com/tags/%E6%90%9C%E7%B4%A2/"/>
     
   </entry>
   
   <entry>
     <title>POJ3279（位运算，枚举）</title>
-    <link href="http://yoursite.com/2017/02/15/poj3279/"/>
-    <id>http://yoursite.com/2017/02/15/poj3279/</id>
+    <link href="http://yoursite.com/2017/02/15/POJ3279/"/>
+    <id>http://yoursite.com/2017/02/15/POJ3279/</id>
     <published>2017-02-15T06:29:46.000Z</published>
-    <updated>2017-02-16T07:28:34.000Z</updated>
+    <updated>2017-04-20T06:13:52.000Z</updated>
     
     <content type="html"><![CDATA[<p>本题可以归类为一个开关灯的问题，给定一张地图，选择一个点可以关掉这一点的灯，同时被关闭的还有上下左右四个位置的登，现在要求的是最小操作次数的时候具体是操作了哪几个点的位置。</p>
 <p>一开始的时候联想到了之前那道Flip game，无脑用DFS进行了枚举每一个位置的情况，果断TLE，想想不对啊，之前是4*4的规格，枚举一点问题没有，这里最大可以达到16*16,好吧，只能采用另一种办法了。</p>
@@ -226,10 +194,8 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="搜索 DFS" scheme="http://yoursite.com/categories/%E6%90%9C%E7%B4%A2-DFS/"/>
     
-    
-      <category term="搜索" scheme="http://yoursite.com/tags/%E6%90%9C%E7%B4%A2/"/>
     
   </entry>
   
@@ -238,7 +204,7 @@
     <link href="http://yoursite.com/2017/02/11/StaircaseNim/"/>
     <id>http://yoursite.com/2017/02/11/StaircaseNim/</id>
     <published>2017-02-11T05:55:11.000Z</published>
-    <updated>2017-02-11T06:04:30.000Z</updated>
+    <updated>2017-04-20T06:14:11.000Z</updated>
     
     <content type="html"><![CDATA[<p>众所周知，Nim博弈存在着多种变形，但是万变不离其宗，这里分析的是变形之一的阶梯博弈，研究怎么用Nim博弈的思想去解决这一类问题。</p>
 <h2 id="什么是阶梯博弈？"><a href="#什么是阶梯博弈？" class="headerlink" title="什么是阶梯博弈？"></a>什么是阶梯博弈？</h2><p>阶梯博弈（Staircase Nim）描述的是类似如下的一种问题：<br>一个阶梯有n阶，每一阶上面都可以存放个数不限的硬币。现在我们用n元组(x1,x2,…,xn) 来代表第 i (1 ≤ i ≤ n)个硬币存放在第xi个阶梯上面。阶梯博弈中的一次移动可以把任意正整数个的硬币从某一阶移动到下面的一阶，也即是从第 j 阶移动到第j - 1阶。当硬币到达地面（第0阶）时，这个硬币就不可再移动了。双方轮流落子，直到有一方不能再落子。<br><strong>下面直接给出一个结论：</strong><br><strong>N元组(x1,x2,…,xn) 代表一个P-position 当且仅当它奇数步数位置上面的Nim数之和（异或）等于0。</strong></p>
@@ -259,10 +225,8 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="数学 博弈论" scheme="http://yoursite.com/categories/%E6%95%B0%E5%AD%A6-%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
     
-    
-      <category term="博弈论" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
     
   </entry>
   
@@ -271,7 +235,7 @@
     <link href="http://yoursite.com/2017/02/07/POJ2505/"/>
     <id>http://yoursite.com/2017/02/07/POJ2505/</id>
     <published>2017-02-07T09:10:03.000Z</published>
-    <updated>2017-02-07T09:28:42.000Z</updated>
+    <updated>2017-04-20T06:13:30.000Z</updated>
     
     <content type="html"><![CDATA[<p>题意：Stan和Ollie在玩一个乘法游戏，每一局他们都指定一个n，Stan每次都从p=1开始，乘上一个2-9的数字后轮到Ollie对Stan得到的结果做相同的操作，直到p>=n的时候该轮的玩家取得胜利。</p>
 <p>这题虽然比较水，但是如果对博弈论中N-p、P-p状态的性质不了解的话可能不能很快地归纳出必胜的结论。<br>首先我们可以很简单地得到当2≤n≤9的时候，Stan是必胜的，因为他可以操作一次得到这里的任意数。而当10≤n≤18的时候，Ollie是必胜的，因为他可以从Stan的任意一种操作中再操作一次得到这个区间中的任何数字。<br>接下来我们分析n=19，如果双方足够聪明，那么Stan第一局必出一个2，然后Ollie无论做出什么操作，都不可能得到19，而下一轮Stan可以轻松地乘上一个数字超过19，这里便可以确定19是Stan的下一个必胜区间的下限。这里要强调的是，<strong>对于一个必胜决策，一旦某一方处于必败态，那么无论他做出什么操作，之后都不可能取得胜利</strong>，基于这一点对于我们推出之后的获胜区间很关键。为了使Ollie做出什么操作都不可能胜利，我们可以推倒出下一个Stan的必胜区间上限应该为9*2*9,因为为了得到162，知道Ollie会尽可能阻止他，Stan唯一的方案就是第一回合出9，否则第二回合Ollie只要出2，那么Stan便无论做什么也得不到162了，这个决策就不属于一个必胜的决策。<strong>必胜区间的上线必须基于最坏的情况考虑，然后基于最坏的情况作出下一回合的最有决策。</strong><br>基于上述的思路，我们就可以继续推倒出Stan的必胜区间为[9^n+2^(n-1)+1,9^n+2^n],而Ollie的必胜区间则为[9^n+2^n+1,9^(n+1)+2^n]。<br>根据区间打表之后再进行二分搜索所在区间究竟是谁必胜，我们就可以得到问题的解了。</p>
@@ -287,19 +251,17 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="数学 博弈论" scheme="http://yoursite.com/categories/%E6%95%B0%E5%AD%A6-%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
     
-    
-      <category term="博弈论" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
     
   </entry>
   
   <entry>
     <title>博弈论基础学习（一）Nim游戏</title>
-    <link href="http://yoursite.com/2017/02/05/Nim%E5%8D%9A%E5%BC%88/"/>
-    <id>http://yoursite.com/2017/02/05/Nim博弈/</id>
+    <link href="http://yoursite.com/2017/02/05/Nim/"/>
+    <id>http://yoursite.com/2017/02/05/Nim/</id>
     <published>2017-02-05T09:03:07.000Z</published>
-    <updated>2017-02-07T09:10:34.000Z</updated>
+    <updated>2017-04-20T06:11:57.000Z</updated>
     
     <content type="html"><![CDATA[<p>昨天翻看了一些国内博主写的关于Nim游戏的解析，依旧不是特别理解Nim游戏的内涵，今天翻阅论文的时候发现了一篇哈佛教授很久之前写的论文，如醍醐灌顶，由于文章比较长，就不做翻译，文章的原文地址如下：<br><a href="http://www.jstor.org/stable/pdf/1967631.pdf" target="_blank" rel="external">http://www.jstor.org/stable/pdf/1967631.pdf</a><br>感兴趣的可以看原文，如果没有时间的也可以直接看我的文章，本文将提炼该论文的观点，结合之前所看的文章给出Nim游戏的必胜思路，然后附上两道Nim游戏的例题。</p>
 <h2 id="Nim游戏理论部分"><a href="#Nim游戏理论部分" class="headerlink" title="Nim游戏理论部分"></a>Nim游戏理论部分</h2><p>首先我们定义一下Nim游戏是什么：</p>
@@ -318,19 +280,17 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="数学 博弈论" scheme="http://yoursite.com/categories/%E6%95%B0%E5%AD%A6-%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
     
-    
-      <category term="博弈论" scheme="http://yoursite.com/tags/%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
     
   </entry>
   
   <entry>
     <title>线段树单点更新</title>
-    <link href="http://yoursite.com/2017/01/26/%E7%BA%BF%E6%AE%B5%E6%A0%91%E5%8D%95%E7%82%B9%E6%9B%B4%E6%96%B0/"/>
-    <id>http://yoursite.com/2017/01/26/线段树单点更新/</id>
+    <link href="http://yoursite.com/2017/01/26/segtree/"/>
+    <id>http://yoursite.com/2017/01/26/segtree/</id>
     <published>2017-01-26T09:32:07.000Z</published>
-    <updated>2017-01-27T03:51:49.000Z</updated>
+    <updated>2017-04-20T06:10:04.000Z</updated>
     
     <content type="html"><![CDATA[<blockquote>
 <p>  这几天刷了几道关于线段树单点更新的题目，发现单点更新并不像想象中那么简单，有些题目也设计到了数论的知识，本篇文章首先给出模板，然后每道题给出详细的题解（包括一些补充的知识），附有适量的标注。</p>
@@ -373,10 +333,8 @@
     
     </summary>
     
-      <category term="算法" scheme="http://yoursite.com/categories/%E7%AE%97%E6%B3%95/"/>
+      <category term="数据结构 线段树" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
     
-    
-      <category term="线段树" scheme="http://yoursite.com/tags/%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
     
   </entry>
   
