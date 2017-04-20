@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/01/26/segtree/</loc>
+    <lastmod>2017-04-20T10:59:43.000Z</lastmod>
+    <data>
+        <display>
+        <title>线段树单点更新</title>
+        <pubTime>2017-01-26T09:32:07.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="数据结构 线段树" url="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%AE%B5%E6%A0%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/02/11/StaircaseNim/</loc>
+    <lastmod>2017-04-20T10:57:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>Nim博弈变式（一）阶梯博弈</title>
+        <pubTime>2017-02-11T05:55:11.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="数学 博弈论" url="http://yoursite.com/categories/%E6%95%B0%E5%AD%A6-%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/04/20/POJ3592/</loc>
+    <lastmod>2017-04-20T10:57:06.000Z</lastmod>
+    <data>
+        <display>
+        <title>POJ3592 Instantaneous Transference - Tarjan缩点+DP</title>
+        <pubTime>2017-04-20T04:39:47.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="图论 Tarjan" url="http://yoursite.com/categories/%E5%9B%BE%E8%AE%BA-Tarjan/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/02/15/POJ3279/</loc>
+    <lastmod>2017-04-20T10:56:56.000Z</lastmod>
+    <data>
+        <display>
+        <title>POJ3279（位运算，枚举）</title>
+        <pubTime>2017-02-15T06:29:46.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="搜索 DFS" url="http://yoursite.com/categories/%E6%90%9C%E7%B4%A2-DFS/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/02/07/POJ2505/</loc>
+    <lastmod>2017-04-20T10:56:42.000Z</lastmod>
+    <data>
+        <display>
+        <title>POJ2505 (简单博弈，二分，打表）</title>
+        <pubTime>2017-02-07T09:10:03.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="数学 博弈论" url="http://yoursite.com/categories/%E6%95%B0%E5%AD%A6-%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/04/20/POJ2186/</loc>
+    <lastmod>2017-04-20T10:56:37.000Z</lastmod>
+    <data>
+        <display>
+        <title>POJ2186 Popular Cow - Tarjan染色缩点</title>
+        <pubTime>2017-04-20T04:09:45.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="图论 Tarjan" url="http://yoursite.com/categories/%E5%9B%BE%E8%AE%BA-Tarjan/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/02/05/Nim/</loc>
+    <lastmod>2017-04-20T10:56:22.000Z</lastmod>
+    <data>
+        <display>
+        <title>博弈论基础学习（一）Nim游戏</title>
+        <pubTime>2017-02-05T09:03:07.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="数学 博弈论" url="http://yoursite.com/categories/%E6%95%B0%E5%AD%A6-%E5%8D%9A%E5%BC%88%E8%AE%BA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/04/20/POJ3114/</loc>
+    <lastmod>2017-04-20T10:34:51.000Z</lastmod>
+    <data>
+        <display>
+        <title>POJ3114 Countries in War - Tarjan缩点+堆优化Dijkstra</title>
+        <pubTime>2017-04-20T05:10:24.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="图论 Tarjan" url="http://yoursite.com/categories/%E5%9B%BE%E8%AE%BA-Tarjan/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+    
+    
+  <url>
+    <loc>http://yoursite.com/2017/01/24/Hello/</loc>
+    <lastmod>2017-01-26T09:41:52.000Z</lastmod>
+    <data>
+        <display>
+        <title>Hello, my friend</title>
+        <pubTime>2017-01-23T16:32:23.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="随笔" url="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+</urlset>
