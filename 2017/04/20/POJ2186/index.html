@@ -15,18 +15,31 @@
 
 
 
-<meta name="description" content="昨天翻看了一些国内博主写的关于Nim游戏的解析，依旧不是特别理解Nim游戏的内涵，今天翻阅论文的时候发现了一篇哈佛教授很久之前写的论文，如醍醐灌顶，由于文章比较长，就不做翻译，文章的原文地址如下：http://www.jstor.org/stable/pdf/1967631.pdf感兴趣的可以看原文，如果没有时间的也可以直接看我的文章，本文将提炼该论文的观点，结合之前所看的文章给出Nim游戏的必胜">
+<meta name="description" content="题目连接
+
+http://poj.org/problem?id=2186
+Description
+
+Every cow’s dream is to become the most popular cow in the herd. In a herd of N (1 &amp;lt;= N &amp;lt;= 10,000) cows, you are given up to M (1 &amp;lt;= M &amp;lt;=">
 <meta property="og:type" content="article">
-<meta property="og:title" content="博弈论基础学习（一）Nim游戏">
-<meta property="og:url" content="http://yoursite.com/2017/02/05/Nim博弈/index.html">
+<meta property="og:title" content="POJ2186 Popular Cow - Tarjan染色缩点">
+<meta property="og:url" content="http://yoursite.com/2017/04/20/POJ2186/index.html">
 <meta property="og:site_name" content="Hyson在这里">
-<meta property="og:description" content="昨天翻看了一些国内博主写的关于Nim游戏的解析，依旧不是特别理解Nim游戏的内涵，今天翻阅论文的时候发现了一篇哈佛教授很久之前写的论文，如醍醐灌顶，由于文章比较长，就不做翻译，文章的原文地址如下：http://www.jstor.org/stable/pdf/1967631.pdf感兴趣的可以看原文，如果没有时间的也可以直接看我的文章，本文将提炼该论文的观点，结合之前所看的文章给出Nim游戏的必胜">
-<meta property="og:image" content="https://hyson666.github.io/picture/game1.png">
-<meta property="og:updated_time" content="2017-02-07T09:10:34.000Z">
+<meta property="og:description" content="题目连接
+
+http://poj.org/problem?id=2186
+Description
+
+Every cow’s dream is to become the most popular cow in the herd. In a herd of N (1 &amp;lt;= N &amp;lt;= 10,000) cows, you are given up to M (1 &amp;lt;= M &amp;lt;=">
+<meta property="og:updated_time" content="2017-04-20T05:22:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="博弈论基础学习（一）Nim游戏">
-<meta name="twitter:description" content="昨天翻看了一些国内博主写的关于Nim游戏的解析，依旧不是特别理解Nim游戏的内涵，今天翻阅论文的时候发现了一篇哈佛教授很久之前写的论文，如醍醐灌顶，由于文章比较长，就不做翻译，文章的原文地址如下：http://www.jstor.org/stable/pdf/1967631.pdf感兴趣的可以看原文，如果没有时间的也可以直接看我的文章，本文将提炼该论文的观点，结合之前所看的文章给出Nim游戏的必胜">
-<meta name="twitter:image" content="https://hyson666.github.io/picture/game1.png">
+<meta name="twitter:title" content="POJ2186 Popular Cow - Tarjan染色缩点">
+<meta name="twitter:description" content="题目连接
+
+http://poj.org/problem?id=2186
+Description
+
+Every cow’s dream is to become the most popular cow in the herd. In a herd of N (1 &amp;lt;= N &amp;lt;= 10,000) cows, you are given up to M (1 &amp;lt;= M &amp;lt;=">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -58,7 +71,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>博弈论基础学习（一）Nim游戏 | Hyson在这里</title>
+<title>POJ2186 Popular Cow - Tarjan染色缩点 | Hyson在这里</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -287,11 +300,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-Nim博弈" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-POJ2186" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/02/05/Nim博弈/" class="article-date">
-      <time datetime="2017-02-05T09:03:07.000Z" itemprop="datePublished">2017-02-05</time>
+      <a href="/2017/04/20/POJ2186/" class="article-date">
+      <time datetime="2017-04-20T04:09:45.000Z" itemprop="datePublished">2017-04-20</time>
 </a>
 
 
@@ -306,7 +319,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      博弈论基础学习（一）Nim游戏
+      POJ2186 Popular Cow - Tarjan染色缩点
     </h1>
   
 
@@ -321,7 +334,7 @@
 
         
     <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/博弈论/">博弈论</a></li></ul>
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/图论-Tarjan/">图论,Tarjan</a></li></ul>
     </div>
 
         <div class="clearfix"></div>
@@ -331,15 +344,35 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        <p>昨天翻看了一些国内博主写的关于Nim游戏的解析，依旧不是特别理解Nim游戏的内涵，今天翻阅论文的时候发现了一篇哈佛教授很久之前写的论文，如醍醐灌顶，由于文章比较长，就不做翻译，文章的原文地址如下：<br><a href="http://www.jstor.org/stable/pdf/1967631.pdf" target="_blank" rel="external">http://www.jstor.org/stable/pdf/1967631.pdf</a><br>感兴趣的可以看原文，如果没有时间的也可以直接看我的文章，本文将提炼该论文的观点，结合之前所看的文章给出Nim游戏的必胜思路，然后附上两道Nim游戏的例题。</p>
-<h2 id="Nim游戏理论部分"><a href="#Nim游戏理论部分" class="headerlink" title="Nim游戏理论部分"></a>Nim游戏理论部分</h2><p>首先我们定义一下Nim游戏是什么：</p>
-<blockquote>
-<p>  有若干堆石子，每堆石子的数量都是有限的，合法的移动是“选择一堆石子并拿走若干颗（不能不拿）”，如果轮到某个人时所有的石子堆都已经被拿空了，则判负（因为他此刻没有任何合法的移动）。</p>
-</blockquote>
-<p>下面定义安全组合与不安全组合：<br><strong>安全组合</strong>：先手进行完后留给后手，后手的人无论如何做出改变，都将改变这个状态到一个不安全的状态，而回到先手的人总能将这个情况再次变成一个安全的状态，如此下去，先手的人是必胜的。满足这个性质的组合我们叫做安全组合。<br><strong>不安全组合</strong>：由这个状态无论如何改变都无法变为一个安全的组合，即如果某一次改变之后该玩家得到的是一个不安全组合，那么如果双方是足够聪明的，之后的每次改变，该玩家都不可能再得到一个安全的组合，即他是必败的。满足这个性质的组合我们叫做不安全组合。<br>下面我们引入一条关于Nim游戏的已知结论，并给出P-position和N-position的定义：<br>给出若干组二进制数，其二进制位对齐排列，把各列相加，如果各列得到的数字都能被2整除，那么它就是一个安全的组合。以这个情况开局，或者在之后的某一手中，当前是一个安全组合，先手的人无论作出什么改变，都将使这个组合变为一个不安全的组合，而后手的人又总能由不安全的组合拼凑出一个安全的组合，我们称此时先手必败（后手必胜），这个局面称之为<strong>P-position</strong>，反之，若面临的是一个不安全组合，则其总有办法变为一个安全的组合，到下一个人进行时无论怎么改变都将成为一个不安全组合，此时后手必败（先手必胜），这个局面称之为<strong>N-position</strong>。<br>用数学公式表达的话，可以知道，假设每一堆所含石子的个数为a1,a2,a3…an，若当前情况满足：<br>a1^a2^…^an!=0,则属于N-position，此时先手必胜，反之为P-position，后手必胜。<br>给出一组安全组合为a1,a2,a3=9，5，12，其二进制位对齐后如下：<br><img src="https://hyson666.github.io/picture/game1.png" alt=""><br>其第一列相加为2，第二列相加为2，第三列为0，第四列相加为2，则又上面的定义可以知道，它是一个安全组合，此时先手必败。若二人足够聪明，我们可以知道总有一堆先减少为0，则只要处于必胜状态的人保证剩下两堆是相等的，他就是必胜的。（可以从XOR=0来解释两堆的情况）<br>此时显然有：<br>a1^a2^a3 = 0成立。<br>此时归纳Nim游戏的必胜原理：如果二者足够聪明，那么第一个修改当前组合得到安全组合的人最终必将保持每一次修改得到的都是安全组合，而另一个人永远得不到安全组合，则这个人就处在一个必胜态（N-position），另一个人处在一个必败态（P-position）。如果已经明白了这点，那我们判断出一个游戏属于Nim游戏时，便可以定义安全组合与不安全组合，然后推出当前情况究竟是N-position还是P-position。</p>
-<h2 id="Nim游戏例题"><a href="#Nim游戏例题" class="headerlink" title="Nim游戏例题"></a>Nim游戏例题</h2><h3 id="POJ2234-Matches-Game-（最基本的Nim游戏模板）"><a href="#POJ2234-Matches-Game-（最基本的Nim游戏模板）" class="headerlink" title="POJ2234 Matches Game （最基本的Nim游戏模板）"></a>POJ2234 Matches Game （最基本的Nim游戏模板）</h3><p>此题目为Nim游戏的原型，即我们可以每次从某一堆中取走任意多的石子（取走个数小于当前堆个数），最终取完的人取得胜利。<br>下面给出代码如下：<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span>  </span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;  </div><div class="line"><span class="keyword">int</span> a[<span class="number">30</span>];  </div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span>  </span></div><div class="line">&#123;  </div><div class="line">    <span class="keyword">int</span> n;  </div><div class="line">    <span class="keyword">while</span>(<span class="built_in">cin</span>&gt;&gt;n) &#123;  </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)  </div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;a[i]());  </div><div class="line">        <span class="keyword">int</span> res = <span class="number">0</span>;  </div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)  </div><div class="line">            res ^= a[i]();  </div><div class="line">        <span class="keyword">if</span> (res) <span class="built_in">cout</span> &lt;&lt; <span class="string">"Yes"</span> &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">        <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">"No"</span> &lt;&lt; <span class="built_in">endl</span>;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="POJ2975-Nim"><a href="#POJ2975-Nim" class="headerlink" title="POJ2975 Nim"></a>POJ2975 Nim</h3><p>本题也是基本的Nim游戏，从某一堆中取走m个石子，要我们计算出先手必胜的有几种取法。<br>我们已经知道得到安全组合的条件为改变后满足a1^a2^a3 = 0，题目若给出的初始状态为不安全组合，那我们必可以修改某一堆使之满足这个条件，否则输出为0。<br>所以我们现在可以知道我们取得必胜的条件为(ak-m)^(XOR^ak)=0<br>XOR^ak=0代表从XOR中剔除ak这一项，而又它们的异或等于0我们可以将这个式子转化为ak-m = XOR^ak，即m = ak - XOR^ak<br>而已经知道1\&lt;=m\&lt;=ak,所以只有当ak > XOR^ak的时候才为一个可行解。公式已经得到了，我们便可以轻松地根据式子写出代码。<br>下面给出代码如下:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span>  </span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;  </div><div class="line"><span class="keyword">int</span> a[<span class="number">1010</span>];  </div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;  </div><div class="line">    <span class="keyword">int</span> n;  </div><div class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n))&#123;</div><div class="line">        <span class="keyword">if</span>(n==<span class="number">0</span>)</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        <span class="keyword">int</span> res=<span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)&#123;</div><div class="line">            <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;ai);</div><div class="line">            res^=ai;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)&#123;</div><div class="line">            <span class="keyword">if</span>(ai&gt;(res^ai))</div><div class="line">                ans++;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>Nim游戏虽然道理简单，但却是博弈论的一个绝佳的入门点，如果我们仅仅记住结论，那么只要题目发生了变化，我们就会觉得无从下手，只有对Nim游戏有真正深入的了解，我们接下来的学习才能得心应手，这也是我翻阅论文后写下这篇Blog 的目的，之后还会继续更新几篇关于ACM中博弈论应用的文章，水平有限，希望各位看客能够多多指正。</p>
+        <font size="4">题目连接</font>
+
+<p><a href="http://poj.org/problem?id=2186" target="_blank" rel="external">http://poj.org/problem?id=2186</a></p>
+<font size="4">Description</font>
+
+<p>Every cow’s dream is to become the most popular cow in the herd. In a herd of N (1 &lt;= N &lt;= 10,000) cows, you are given up to M (1 &lt;= M &lt;= 50,000) ordered pairs of the form (A, B) that tell you that cow A thinks that cow B is popular. Since popularity is transitive, if A thinks B is popular and B thinks C is popular, then A will also think that C is<br>popular, even if this is not explicitly specified by an ordered pair in the input. Your task is to compute the number of cows that are considered popular by every other cow. </p>
+<font size="4">Input</font>
+
+<ul>
+<li><p>Line 1: Two space-separated integers, N and M </p>
+</li>
+<li><p>Lines 2..1+M: Two space-separated numbers A and B, meaning that A thinks B is popular.<br>Output</p>
+</li>
+<li><p>Line 1: A single integer that is the number of cows who are considered popular by every other cow.<br>Sample Input</p>
+</li>
+</ul>
+<p>3 3<br>1 2<br>2 1<br>2 3</p>
+<font size="4">Sample Output</font>
+
+<p>1</p>
+<font size="4">Hint</font>
+
+<p>Cow 3 is the only cow of high popularity. </p>
+<p><strong>题意</strong></p>
+<p>草原上有一群牛，相互之前都存在着崇拜单向的崇拜关系，这种崇拜存在着传递性即A崇拜B且B崇拜C的时候A也崇拜C，现在要你求出那些牛是被所有的牛崇拜的。</p>
+<p><strong>题解</strong></p>
+<p>由题意可以知道当成为环的时候环内所有牛都是相互崇拜的，那么被所有牛崇拜的牛必定在一个最大的联通分量里面，并且出度为0。因为缩点后，如果出度为0的点的数目大于1的时候必定存在出度等于0的任意二者不能被对方所崇拜，与题意“被所有其他牛崇拜”不符合。同时，由于缩点后形成具有简单有向无环图，所以可以知道这个出度为0的唯一点必定可以由其他所有点得到，满足题意所述的“被所有其他牛崇拜”。所以只要输出这个出度为0的连通分量中牛的数目就可以了。</p>
+<p><strong>代码：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e4</span>+<span class="number">10</span>;</div><div class="line"></div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; E[maxn],e[maxn];</div><div class="line"><span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; S;</div><div class="line"><span class="keyword">int</span> n,m,tag=<span class="number">1</span>;  <span class="comment">//tag用来记录当前编号到哪里。</span></div><div class="line"><span class="keyword">int</span> vis[maxn],dfn[maxn],low[maxn],tot,flag[maxn],out[maxn]; <span class="comment">//flag[i]=点编号，用于缩图,w[maxn]用于记录缩图后的点权。</span></div><div class="line"><span class="keyword">int</span> found[maxn]; <span class="comment">//用来在寻找答案时标记已经寻找过的flag</span></div><div class="line"></div><div class="line"><span class="comment">//利用tarjan进行染色处理。</span></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">tarjan</span><span class="params">(<span class="keyword">int</span> x)</span></span>&#123;</div><div class="line">	dfn[x]=low[x]=++tot;</div><div class="line">	vis[x]=<span class="number">1</span>;</div><div class="line">	S.push(x);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;E[x].size();++i)&#123;</div><div class="line">		<span class="keyword">int</span> v=E[x][i];</div><div class="line">		<span class="keyword">if</span>(!dfn[v])&#123;</div><div class="line">			tarjan(v);	</div><div class="line">		    low[x]=min(low[v],low[x]);</div><div class="line">		&#125;</div><div class="line">		<span class="comment">//访问过了不在栈中的要继续维护,即是返回边。</span></div><div class="line">		<span class="keyword">else</span> <span class="keyword">if</span>(vis[v])</div><div class="line">		  low[x]=min(low[v],dfn[x]);</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//弹到最后自己出来就已经确定好了一个连通分量。</span></div><div class="line">	<span class="keyword">if</span>(low[x]==dfn[x])&#123;</div><div class="line">		<span class="keyword">int</span> cnt=<span class="number">0</span>;</div><div class="line">		<span class="keyword">while</span>(<span class="number">1</span>)&#123;</div><div class="line">			<span class="keyword">int</span> now = S.top();</div><div class="line">			++cnt;</div><div class="line">			vis[now]=<span class="number">0</span>;</div><div class="line">			S.pop();</div><div class="line">			flag[now]=tag;</div><div class="line">			<span class="keyword">if</span>(now==x) <span class="keyword">break</span>;</div><div class="line">		&#125;</div><div class="line">		++tag;	<span class="comment">//继续下一个点编号。</span></div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</div><div class="line">	<span class="keyword">int</span> a,b;</div><div class="line">	<span class="comment">//建立两个单向图比较快，一个记录它崇拜谁，一个是谁崇拜它(处理后找最大点)。</span></div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;m;++i)&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;a,&amp;b);</div><div class="line">		E[a].push_back(b);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!dfn[i])</div><div class="line">		  tarjan(i);</div><div class="line">	&#125;</div><div class="line">	<span class="comment">//Tarjan染色后进行统计操作。</span></div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">0</span>;j&lt;E[i].size();++j)&#123;</div><div class="line">			<span class="keyword">int</span> v=E[i][j];</div><div class="line">			<span class="keyword">if</span>(flag[i]!=flag[v])</div><div class="line">				++out[flag[i]];</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> mark,num=<span class="number">0</span>,ans=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;tag;++i)</div><div class="line">	  <span class="keyword">if</span>(out[i]==<span class="number">0</span>)</div><div class="line">		++num,mark=i;</div><div class="line">    <span class="comment">//如果只有一个联通分量出度为0，这里面的所有牛肯定都被其他所有牛崇拜。</span></div><div class="line">	<span class="keyword">if</span>(num==<span class="number">1</span>)&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)</div><div class="line">			<span class="keyword">if</span>(flag[i]==num)</div><div class="line">			  ++ans;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">else</span> ans=<span class="number">0</span>;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -348,13 +381,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/02/05/Nim博弈/">博弈论基础学习（一）Nim游戏</a></p>
+        <p><span>本文标题:</span><a href="/2017/04/20/POJ2186/">POJ2186 Popular Cow - Tarjan染色缩点</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">Hyson</a></p>
-        <p><span>发布时间:</span>2017-02-05, 17:03:07</p>
-        <p><span>最后更新:</span>2017-02-07, 17:10:34</p>
+        <p><span>发布时间:</span>2017-04-20, 12:09:45</p>
+        <p><span>最后更新:</span>2017-04-20, 13:22:07</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/02/05/Nim博弈/" title="博弈论基础学习（一）Nim游戏">http://yoursite.com/2017/02/05/Nim博弈/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/02/05/Nim博弈/　　作者: Hyson" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/04/20/POJ2186/" title="POJ2186 Popular Cow - Tarjan染色缩点">http://yoursite.com/2017/04/20/POJ2186/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/04/20/POJ2186/　　作者: Hyson" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -367,15 +400,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/02/07/POJ2505/">
-                    POJ2505 (简单博弈，二分，打表）
+                <a href="/2017/04/20/POJ3592/">
+                    POJ3592 Instantaneous Transference - Tarjan缩点+DP
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/01/26/线段树单点更新/">
-                    线段树单点更新
+                <a href="/2017/02/16/poj1426/">
+                    POJ1426-Find The Multiple(打表BFS暴搜）
                 </a>
             </div>
         
@@ -387,7 +420,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Nim游戏理论部分"><span class="toc-number">1.</span> <span class="toc-text">Nim游戏理论部分</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Nim游戏例题"><span class="toc-number">2.</span> <span class="toc-text">Nim游戏例题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#POJ2234-Matches-Game-（最基本的Nim游戏模板）"><span class="toc-number">2.1.</span> <span class="toc-text">POJ2234 Matches Game （最基本的Nim游戏模板）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#POJ2975-Nim"><span class="toc-number">2.2.</span> <span class="toc-text">POJ2975 Nim</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">3.</span> <span class="toc-text">总结</span></a></li></ol>
+            
         
     </div>
     <style>
@@ -423,7 +456,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"博弈论基础学习（一）Nim游戏　| Hyson在这里　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"POJ2186 Popular Cow - Tarjan染色缩点　| Hyson在这里　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -439,7 +472,7 @@
     
       <div class="duoshuo" id="comments">
     <div id="comment-box" ></div>
-    <div class="ds-thread" id="ds-thread" data-thread-key="2017/02/05/Nim博弈/" data-title="博弈论基础学习（一）Nim游戏" data-url="http://yoursite.com/2017/02/05/Nim博弈/"></div>
+    <div class="ds-thread" id="ds-thread" data-thread-key="2017/04/20/POJ2186/" data-title="POJ2186 Popular Cow - Tarjan染色缩点" data-url="http://yoursite.com/2017/04/20/POJ2186/"></div>
     <script>
         var duoshuoQuery = {short_name:"hyson"};
         var loadComment = function(){
@@ -462,7 +495,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/02/07/POJ2505/" title="上一篇: POJ2505 (简单博弈，二分，打表）">
+            <a href="/2017/04/20/POJ3592/" title="上一篇: POJ3592 Instantaneous Transference - Tarjan缩点+DP">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -470,7 +503,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/01/26/线段树单点更新/" title="下一篇: 线段树单点更新">
+            <a href="/2017/02/16/poj1426/" title="下一篇: POJ1426-Find The Multiple(打表BFS暴搜）">
                 <i class="fa fa-angle-right"></i>
             </a>
         
