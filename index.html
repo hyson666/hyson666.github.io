@@ -363,35 +363,14 @@
 
       
         
-          <font size=4>题目连接</font>
+          
+          题目连接
 
-<p><a href="http://poj.org/problem?id=3119">http://poj.org/problem?id=3119</a></p>
-<font size=4>Description</font>
+http://poj.org/problem?id=3119
+Description
 
-<p>In the year 2050, after different attempts of the UN to maintain peace in the world, the third world war broke out. The importance of industrial, commercial and military secrets obliges all the countries to use extremely sophisticated espionage services, so that each city in the world has at least one spy of each country. These spies need to communicate with other spies, informers as well as their headquarters during their actions. Unluckily there doesn’t exist a secure way for a spy to communicate during the war period, therefore the messages are always sent in code so that only the addressee is able to read the message and understand its meaning.</p>
-<p>The spies use the only service that functions during the war period, the post. Each city has a postal agency where the letters are sent. The letters can be sent directly to their destination or to other postal agencies, until the letter arrives at the postal agency of the destination city, if possible.</p>
-<p>The postal agency in city A can send a printed letter to the postal agency in city B if there is an agreement on sending letters, which determines the time, in hours, that a letter takes to reach city B from city A (and not necessarily the opposite). If there is no agreement between the agencies A and B, the agency A can try to send the letter to any agency so that the letter can reach its destination as early as possible</p>
-<p>Some agencies are connected with electronic communication media, such as satellites and optical fibers. Before the war, these connections could reach all the agencies, making that a letter could be sent instantly. But during the period of hostilities every country starts to control electronic communication and an agency can only send a letter to another agency by electronic media (or instantly) if they are in the same country. Two agencies, A and B, are in the same country if a printed letter sent from any one of the agencies can be delivered to the other one.</p>
-<p>The espionage service of your country has managed to obtain the content of all the agreements on sending messages existing in the world and desires to find out the minimum time to send a letter between different pairs of cities. Are you capable of helping them?</p>
-<font size=4>Input</font>
-
-<p>The input contains several test cases. The first line of each test case contains two integer separated by a space, N (1 ≤ N ≤ 500) and E (0 ≤ E ≤ N2), indicating the numbers of cities (numbered from 1 to N) and of agreements on sending messages, respectively. Following them, then, E lines, each containing three integers separated by spaces, X, Y and H (1 ≤ X, Y ≤ N, 1 ≤ H ≤ 1000), indicating that there exist an agreement to send a printed letter from city X to city Y, and that such a letter will be delivered in H hours.</p>
-<p>After that, there will be a line with an integer K (0 ≤ K ≤ 100), the number of queries. Finally, there will be K lines, each representing a query and containing two integers separated by a space, O and D (1 ≤ O, D ≤ N). You must determine the minimum time to send a letter from city O to city D.</p>
-<p>The end of the input is indicated by N = 0.</p>
-<font size=4>Output</font>
-
-<p>For each test case your program should produce K lines of output. The I-th line should contain an integer M, the minimum time, in hours, to send a letter in the I-th query. If there aren’t communication media between the cities of the query, you should print “Nao e possivel entregar a carta” (“It’s impossible to deliver the letter”).</p>
-<p>Print a blank line after each test case.</p>
-<font size=4>Sample Input</font>
-
-<p>4 5<br>1 2 5<br>2 1 10<br>3 4 8<br>4 3 7<br>2 3 6<br>5<br>1 2<br>1 3<br>1 4<br>4 3<br>4 1<br>3 3<br>1 2 10<br>2 3 1<br>3 2 1<br>3<br>1 3<br>3 1<br>3 2<br>0 0</p>
-<font size=4>Sample Output</font>
-
-<p>0<br>6<br>6<br>0<br>Nao e possivel entregar a carta</p>
-<p>10<br>Nao e possivel entregar a carta<br>0</p>
-<p><strong>题意</strong><br>第三次世界大战爆发，现在每个城市的间谍都通过邮局进行通信交流，A、B两个点发送邮件能立刻完成当且仅当其在同一个城市中，即两个点在同一个城市当中。询问任意两点间发送邮件所需要的最短时间。</p>
-<p><strong>题解</strong></p>
-<p>缩点成为DAG图之后跑Dijkstra即可，白书上的模板用了很多次但是有几次包括这次WA掉了果断换模板AC之。原本以为跑Floyd能过，但要查询的重复点似乎不多，Floyd反而爆掉了，这一点比较坑。</p>
+In the year 2050, after different attempts of the UN to maintain peace in the world, the third world war broke out. The importance
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/04/20/POJ3114/#more" rel="contents">
@@ -538,35 +517,14 @@
 
       
         
-          <font size=4>题目连接</font>
+          
+          题目连接
 
-<p><a href="http://poj.org/problem?id=3592">http://poj.org/problem?id=3592</a></p>
-<font size=4>Description</font>
+http://poj.org/problem?id=3592
+Description
 
-<p>It was long ago when we played the game Red Alert. There is a magic function for the game objects which is called instantaneous transfer. When an object uses this magic function, it will be transferred to the specified point immediately, regardless of how far it is.</p>
-<p>Now there is a mining area, and you are driving an ore-miner truck. Your mission is to take the maximum ores in the field.</p>
-<p>The ore area is a rectangle region which is composed by n × m small squares, some of the squares have numbers of ores, while some do not. The ores can’t be regenerated after taken.</p>
-<p>The starting position of the ore-miner truck is the northwest corner of the field. It must move to the eastern or southern adjacent square, while it can not move to the northern or western adjacent square. And some squares have magic power that can instantaneously transfer the truck to a certain square specified. However, as the captain of the ore-miner truck, you can decide whether to use this magic power or to stay still. One magic power square will never lose its magic power; you can use the magic power whenever you get there.</p>
-<font size=4>Input</font>
-
-<p>The first line of the input is an integer T which indicates the number of test cases.</p>
-<p>For each of the test case, the first will be two integers N, M (2 ≤ N, M ≤ 40).</p>
-<p>The next N lines will describe the map of the mine field. Each of the N lines will be a string that contains M characters. Each character will be an integer X (0 ≤ X ≤ 9) or a ‘<em>‘ or a ‘#’. The integer X indicates that square has X units of ores, which your truck could get them all. The ‘</em>‘ indicates this square has a magic power which can transfer truck within an instant. The ‘#’ indicates this square is full of rock and the truck can’t move on this square. You can assume that the starting position of the truck will never be a ‘#’ square.</p>
-<p>As the map indicates, there are K ‘*‘ on the map. Then there follows K lines after the map. The next K lines describe the specified target coordinates for the squares with ‘*‘, in the order from north to south then west to east. (the original point is the northwest corner, the coordinate is formatted as north-south, west-east, all from 0 to N - 1,M - 1).</p>
-<font size=4>Output</font>
-
-<p>For each test case output the maximum units of ores you can take. 　</p>
-<p>Sample Input</p>
-<p>1<br>2 2<br>11<br>1*<br>0 0<br>Sample Output</p>
-<p>3</p>
-<p><strong>题意</strong></p>
-<p>采矿车只能向右或者向下移动，在传送点的时候可以进行瞬间移动到地图上的某一点，传送点可以用无数次，并且采矿车不能进入到山区，问你最大采矿量是多少。</p>
-<p><strong>题解</strong></p>
-<p>开始的时候以为矿车不会被传送到山区，连边的时候就没有多想什么，给山区也连了出边WA了一发，果然还是太年轻。</p>
-<p>建边有两种可行的方式：</p>
-<p>1.对点跑DFS跑到的点全部与DFS起点连单向边（只能右、下移动），连过边的做标记，最后给传送点连边即可。</p>
-<p>2.N^连边，枚举每个点可走的点直接连边即可。</p>
-<p>首先将地图染色，标记不同的连通分量，每个分量的矿产总量作为缩点后SCC图的权，而且由于传送无限次，必定可以都采完。那么现在只有对SCC图跑一次最大权路就可以了。题目没有规定终点，而且SCC图是简单无环图（DAG），所以我们只要重新建图后跑一边记忆化搜索记录根（起点所在的连通分量）到叶子结点路劲的权值和，DP出最大值就可以了。</p>
+It was long ago when we played the game Red Alert. There is a magic function for the game objects which is called instantaneous tr
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/04/20/POJ3592/#more" rel="contents">
@@ -713,33 +671,14 @@
 
       
         
-          <font size=4>题目连接</font>
+          
+          题目连接
 
-<p><a href="http://poj.org/problem?id=2186">http://poj.org/problem?id=2186</a></p>
-<font size=4>Description</font>
+http://poj.org/problem?id=2186
+Description
 
-<p>Every cow’s dream is to become the most popular cow in the herd. In a herd of N (1 &lt;= N &lt;= 10,000) cows, you are given up to M (1 &lt;= M &lt;= 50,000) ordered pairs of the form (A, B) that tell you that cow A thinks that cow B is popular. Since popularity is transitive, if A thinks B is popular and B thinks C is popular, then A will also think that C is<br>popular, even if this is not explicitly specified by an ordered pair in the input. Your task is to compute the number of cows that are considered popular by every other cow. </p>
-<font size=4>Input</font>
-
-<ul>
-<li><p>Line 1: Two space-separated integers, N and M </p>
-</li>
-<li><p>Lines 2..1+M: Two space-separated numbers A and B, meaning that A thinks B is popular.<br>Output</p>
-</li>
-<li><p>Line 1: A single integer that is the number of cows who are considered popular by every other cow.<br>Sample Input</p>
-</li>
-</ul>
-<p>3 3<br>1 2<br>2 1<br>2 3</p>
-<font size=4>Sample Output</font>
-
-<p>1</p>
-<font size=4>Hint</font>
-
-<p>Cow 3 is the only cow of high popularity. </p>
-<p><strong>题意</strong></p>
-<p>草原上有一群牛，相互之前都存在着崇拜单向的崇拜关系，这种崇拜存在着传递性即A崇拜B且B崇拜C的时候A也崇拜C，现在要你求出那些牛是被所有的牛崇拜的。</p>
-<p><strong>题解</strong></p>
-<p>由题意可以知道当成为环的时候环内所有牛都是相互崇拜的，那么被所有牛崇拜的牛必定在一个最大的联通分量里面，并且出度为0。因为缩点后，如果出度为0的点的数目大于1的时候必定存在出度等于0的任意二者不能被对方所崇拜，与题意“被所有其他牛崇拜”不符合。同时，由于缩点后形成具有简单有向无环图，所以可以知道这个出度为0的唯一点必定可以由其他所有点得到，满足题意所述的“被所有其他牛崇拜”。所以只要输出这个出度为0的连通分量中牛的数目就可以了。</p>
+Every cow’s dream is to become the most popular cow in the herd. In a herd of N (1 &lt;= N &lt;= 10,000) cows, you are given up to
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/04/20/POJ2186/#more" rel="contents">
@@ -886,10 +825,10 @@
 
       
         
-          <p>本题可以归类为一个开关灯的问题，给定一张地图，选择一个点可以关掉这一点的灯，同时被关闭的还有上下左右四个位置的登，现在要求的是最小操作次数的时候具体是操作了哪几个点的位置。</p>
-<p>一开始的时候联想到了之前那道Flip game，无脑用DFS进行了枚举每一个位置的情况，果断TLE，想想不对啊，之前是4*4的规格，枚举一点问题没有，这里最大可以达到16*16,好吧，只能采用另一种办法了。</p>
-<p>现在知道如果第一行的开灯的位置是确定的，那么之后必须只能由第下一行的该个位置关掉这个灯，所以现在我们只需要对第一行的情况进行枚举就可以了,题意要求字典序的最小，那么根据枚举的性质，只要我们第一行从右到左开始枚举第一个能够把所有灯都关掉的情况必定就是要求的最优解。</p>
-<p>第一行的情况可以由一个二进制数字来表示，这样就压缩了状态，当第一行操作过后下面几行根据第一行的情况来进行操作再判断最后一行的情况即可。复杂度可以变为O（2^n*(m*n)),对于题目的m，n≤16的情况，算是可以接受的。</p>
+          
+          本题可以归类为一个开关灯的问题，给定一张地图，选择一个点可以关掉这一点的灯，同时被关闭的还有上下左右四个位置的登，现在要求的是最小操作次数的时候具体是操作了哪几个点的位置。
+一开始的时候联想到了之前那道Flip game，无脑用DFS进行了枚举每一个位置的情况，果断TLE，想想不对啊，之前是4*4的规格，枚举一点问题没有，这里最大可以达到16*16,好吧，只
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/02/15/POJ3279/#more" rel="contents">
@@ -1036,10 +975,10 @@
 
       
         
-          <p>众所周知，Nim博弈存在着多种变形，但是万变不离其宗，这里分析的是变形之一的阶梯博弈，研究怎么用Nim博弈的思想去解决这一类问题。</p>
-<h2 id="什么是阶梯博弈？"><a href="#什么是阶梯博弈？" class="headerlink" title="什么是阶梯博弈？"></a>什么是阶梯博弈？</h2><p>阶梯博弈（Staircase Nim）描述的是类似如下的一种问题：<br>一个阶梯有n阶，每一阶上面都可以存放个数不限的硬币。现在我们用n元组(x1,x2,…,xn) 来代表第 i (1 ≤ i ≤ n)个硬币存放在第xi个阶梯上面。阶梯博弈中的一次移动可以把任意正整数个的硬币从某一阶移动到下面的一阶，也即是从第 j 阶移动到第j - 1阶。当硬币到达地面（第0阶）时，这个硬币就不可再移动了。双方轮流落子，直到有一方不能再落子。<br><strong>下面直接给出一个结论：</strong><br><strong>N元组(x1,x2,…,xn) 代表一个P-position 当且仅当它奇数步数位置上面的Nim数之和（异或）等于0。</strong></p>
-<h2 id="为什么能够把阶梯博弈转化为Nim博弈处理？"><a href="#为什么能够把阶梯博弈转化为Nim博弈处理？" class="headerlink" title="为什么能够把阶梯博弈转化为Nim博弈处理？"></a>为什么能够把阶梯博弈转化为Nim博弈处理？</h2><p>我们试着回想之前介绍的Nim博弈的内容，双方轮流进行，每次进行处于P-position的一方进行任意减石子的操作都将把这个情况转化为一个N-position。<br>我们再看看阶梯博弈，能不能存在一种策略，使它与Nim博弈成为同一类型的博弈呢？答案是肯定的。<br>假定我们此时把奇数堆看做Nim游戏的石堆，此时你是N-position，根据Nim博弈的必胜策略，你可以通过一次操作使奇数堆的硬币数目变为一个安全的组合，此时你处于必胜态。那么接下来我们就知道怎么应对对方的决策了：<br>（1）如果对方选择在奇数堆中移动n个硬币到一个偶数堆，那么就相当于Nim博弈中把n个石子从某个堆中移走，那么此时你就可以继续根据Nim博弈的必胜决策使奇数堆中的硬币维持在一个必胜态。<br>（2）如果对方选择从偶数堆中移动了n个硬币到一个奇数堆，那么我们此时可以把这n个硬币再次移动到一个偶数堆，相当于次数奇数堆的硬币数目没有发生任何改变，只是把硬币从上一个偶数堆移动到了下一个偶数堆，你依然处在一个必胜态。<br>游戏进行到后面，只剩下奇数堆的石子，就是一个纯粹的Nim博弈了，我们只要根据必胜决策进行，最后肯定是把最后一堆移动到终点（Terminal-position）的，所以整个游戏其实就是一个抽象的Nim博弈。</p>
-<h2 id="几道阶梯博弈习题"><a href="#几道阶梯博弈习题" class="headerlink" title="几道阶梯博弈习题"></a>几道阶梯博弈习题</h2><h3 id="POJ1704-Georgia-and-Bob"><a href="#POJ1704-Georgia-and-Bob" class="headerlink" title="POJ1704 Georgia and Bob"></a>POJ1704 Georgia and Bob</h3><p>这是一道典型的阶梯博弈，题意是Georgia和Bob轮流进行博弈，初始状态下给定的n个位置上面都含有一个石子，我们可以对任意一个石子移动k个位置，但是这个石子不能超过前面的石子，不能在进行任何移动的人输掉比赛。<br>显然我们可以根据前面介绍过的思想把这个游戏化为纯粹的Nim博弈。<br>我们可以把石子两两绑定，那么每一对就可以看成一个Nim石堆，注意，如果此时的石子数目是奇数的话，第一个石子就需要和边界进行绑定。<br>这样处理之后，只要我们把初始状态进行Nim数的求和就可以判断它处于什么状态进而知道谁是必胜的了。<br>这里还有一个问题要注意，为什么两两绑定而不考虑石子之间的间隙呢？这是因为如果对手移动了前一个石子到前面，那么我们总是可以移动与之匹配的另一个石子到前面，这样做就相当于Nim堆的数目是不变的，我们总是可以维持自己的必胜态。</p>
+          
+          众所周知，Nim博弈存在着多种变形，但是万变不离其宗，这里分析的是变形之一的阶梯博弈，研究怎么用Nim博弈的思想去解决这一类问题。
+什么是阶梯博弈？阶梯博弈（Staircase Nim）描述的是类似如下的一种问题：一个阶梯有n阶，每一阶上面都可以存放个数不限的硬币。现在我们用n元组(x1,x2,…,xn) 来代表第 i (1 ≤ i ≤ n)个硬币存放在第x
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/02/11/StaircaseNim/#more" rel="contents">
@@ -1186,9 +1125,10 @@
 
       
         
-          <p>题意：Stan和Ollie在玩一个乘法游戏，每一局他们都指定一个n，Stan每次都从p=1开始，乘上一个2-9的数字后轮到Ollie对Stan得到的结果做相同的操作，直到p>=n的时候该轮的玩家取得胜利。</p>
-<p>这题虽然比较水，但是如果对博弈论中N-p、P-p状态的性质不了解的话可能不能很快地归纳出必胜的结论。<br>首先我们可以很简单地得到当2≤n≤9的时候，Stan是必胜的，因为他可以操作一次得到这里的任意数。而当10≤n≤18的时候，Ollie是必胜的，因为他可以从Stan的任意一种操作中再操作一次得到这个区间中的任何数字。<br>接下来我们分析n=19，如果双方足够聪明，那么Stan第一局必出一个2，然后Ollie无论做出什么操作，都不可能得到19，而下一轮Stan可以轻松地乘上一个数字超过19，这里便可以确定19是Stan的下一个必胜区间的下限。这里要强调的是，<strong>对于一个必胜决策，一旦某一方处于必败态，那么无论他做出什么操作，之后都不可能取得胜利</strong>，基于这一点对于我们推出之后的获胜区间很关键。为了使Ollie做出什么操作都不可能胜利，我们可以推倒出下一个Stan的必胜区间上限应该为9*2*9,因为为了得到162，知道Ollie会尽可能阻止他，Stan唯一的方案就是第一回合出9，否则第二回合Ollie只要出2，那么Stan便无论做什么也得不到162了，这个决策就不属于一个必胜的决策。<strong>必胜区间的上线必须基于最坏的情况考虑，然后基于最坏的情况作出下一回合的最有决策。</strong><br>基于上述的思路，我们就可以继续推倒出Stan的必胜区间为[9^n+2^(n-1)+1,9^n+2^n],而Ollie的必胜区间则为[9^n+2^n+1,9^(n+1)+2^n]。<br>根据区间打表之后再进行二分搜索所在区间究竟是谁必胜，我们就可以得到问题的解了。</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a>
+          
+          题意：Stan和Ollie在玩一个乘法游戏，每一局他们都指定一个n，Stan每次都从p=1开始，乘上一个2-9的数字后轮到Ollie对Stan得到的结果做相同的操作，直到p>=n的时候该轮的玩家取得胜利。
+这题虽然比较水，但是如果对博弈论中N-p、P-p状态的性质不了解的话可能不能很快地归纳出必胜的结论。首先我们可以很简单地得到当2≤n≤9的时候，Stan是
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/02/07/POJ2505/#more" rel="contents">
@@ -1335,7 +1275,9 @@
 
       
         
-          <p>昨天翻看了一些国内博主写的关于Nim游戏的解析，依旧不是特别理解Nim游戏的内涵，今天翻阅论文的时候发现了一篇哈佛教授很久之前写的论文，如醍醐灌顶，由于文章比较长，就不做翻译，文章的原文地址如下：<br><a href="http://www.jstor.org/stable/pdf/1967631.pdf">http://www.jstor.org/stable/pdf/1967631.pdf</a><br>感兴趣的可以看原文，如果没有时间的也可以直接看我的文章，本文将提炼该论文的观点，结合之前所看的文章给出Nim游戏的必胜思路，然后附上两道Nim游戏的例题。</p>
+          
+          昨天翻看了一些国内博主写的关于Nim游戏的解析，依旧不是特别理解Nim游戏的内涵，今天翻阅论文的时候发现了一篇哈佛教授很久之前写的论文，如醍醐灌顶，由于文章比较长，就不做翻译，文章的原文地址如下：http://www.jstor.org/stable/pdf/1967631.pdf感兴趣的可以看原文，如果没有时间的也可以直接看我的文章，本文将提炼该论文的观点
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/02/05/Nim/#more" rel="contents">
@@ -1632,9 +1574,16 @@
       
         
           
-            <p>你好，这是Hyson的个人博客，这是他的第一篇Blog，以后他会在这里更新他的生活点滴和成长，希望你能够喜欢。</p>
+          你好，这是Hyson的个人博客，这是他的第一篇Blog，以后他会在这里更新他的生活点滴和成长，希望你能够喜欢。
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/01/24/Hello/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
