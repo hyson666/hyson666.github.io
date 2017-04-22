@@ -4,8 +4,68 @@
 
     
   <url>
+	  <loc>http://www.hysonn.com/2017/04/22/CF410C/</loc>
+    <lastmod>2017-04-22T11:52:50.000Z</lastmod>
+    <data>
+        <display>
+        <title>Codeforces Round 410 (Div. 2) Mike and gcd problem - 数论 GCD</title>
+        <pubTime>2017-04-22T11:42:31.000Z</pubTime>
+        
+        <tag>GCD</tag>
+         
+         
+           
+             
+              <breadCrumb title="数学" url="http://yoursite.com/categories/%E6%95%B0%E5%AD%A6/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+	  <loc>http://www.hysonn.com/2017/04/22/POJ3348/</loc>
+    <lastmod>2017-04-22T10:50:35.000Z</lastmod>
+    <data>
+        <display>
+        <title>POJ3348 Cows - 求凸包面积</title>
+        <pubTime>2017-04-22T10:44:57.000Z</pubTime>
+        
+        <tag>凸包</tag>
+         
+         
+           
+             
+              <breadCrumb title="计算几何 凸包" url="http://yoursite.com/categories/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E5%87%B8%E5%8C%85/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+	  <loc>http://www.hysonn.com/2017/04/22/HDU1348/</loc>
+    <lastmod>2017-04-22T10:44:13.000Z</lastmod>
+    <data>
+        <display>
+        <title>HDU1348 Wall - Granham算法模板题</title>
+        <pubTime>2017-04-22T10:33:24.000Z</pubTime>
+        
+        <tag>凸包</tag>
+         
+         
+           
+             
+              <breadCrumb title="计算几何 凸包" url="http://yoursite.com/categories/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95-%E5%87%B8%E5%8C%85/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
 	  <loc>http://www.hysonn.com/2017/04/22/CF410A/</loc>
-    <lastmod>2017-04-22T09:11:33.000Z</lastmod>
+    <lastmod>2017-04-22T09:15:15.000Z</lastmod>
     <data>
         <display>
         <title>Codeforces Round 410 (Div. 2) A - Mike and palindrome 水题</title>
