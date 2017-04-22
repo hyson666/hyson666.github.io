@@ -4,14 +4,14 @@
 
     
   <url>
-	  <loc>http://www.hysonn.com/2017/04/22/HDU3639/</loc>
-    <lastmod>2017-04-22T03:13:21.000Z</lastmod>
+	  <loc>http://www.hysonn.com/2017/04/22/HDU3072/</loc>
+    <lastmod>2017-04-22T04:03:27.000Z</lastmod>
     <data>
         <display>
-        <title>HDU3639 Hawk-and-Chicken - Tarjan缩点+DFS求树权和</title>
-        <pubTime>2017-04-22T02:47:16.000Z</pubTime>
+        <title>HDU3072 Intelligence System - Tarjan缩点+贪心</title>
+        <pubTime>2017-04-22T03:02:45.000Z</pubTime>
         
-        <tag>DFS</tag>
+        <tag>贪心</tag>
          
          
            
@@ -24,14 +24,14 @@
 
     
   <url>
-	  <loc>http://www.hysonn.com/2017/04/22/HDU3072/</loc>
-    <lastmod>2017-04-22T03:12:23.000Z</lastmod>
+	  <loc>http://www.hysonn.com/2017/04/22/HDU3639/</loc>
+    <lastmod>2017-04-22T04:02:26.000Z</lastmod>
     <data>
         <display>
-        <title>HDU3072 Intelligence System - Tarjan缩点+贪心</title>
-        <pubTime>2017-04-22T03:02:45.000Z</pubTime>
+        <title>HDU3639 Hawk-and-Chicken - Tarjan缩点+DFS求树权和</title>
+        <pubTime>2017-04-22T02:47:16.000Z</pubTime>
         
-        <tag>贪心</tag>
+        <tag>DFS</tag>
          
          
            
