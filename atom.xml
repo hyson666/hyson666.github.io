@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-04-22T11:52:50.000Z</updated>
+  <updated>2017-04-23T07:52:23.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,13 +16,14 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Codeforces Round 410 (Div. 2) Mike and gcd problem - 数论 GCD</title>
+    <title>Codeforces Round 410 (Div. 2) C -Mike and gcd problem 数论 GCD</title>
     <link href="http://yoursite.com/2017/04/22/CF410C/"/>
     <id>http://yoursite.com/2017/04/22/CF410C/</id>
     <published>2017-04-22T11:42:31.000Z</published>
-    <updated>2017-04-22T11:52:50.000Z</updated>
+    <updated>2017-04-23T07:52:23.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Mike has a sequence A = [a1, a2, …, an] of length n. He considers the sequence B = [b1, b2, …, bn] beautiful if the gcd of all its elements is bigger than 1, i.e. .</p>
+    <content type="html"><![CDATA[<h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="http://codeforces.com/problemset/problem/798/C" target="_blank" rel="external">http://codeforces.com/problemset/problem/798/C</a></p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Mike has a sequence A = [a1, a2, …, an] of length n. He considers the sequence B = [b1, b2, …, bn] beautiful if the gcd of all its elements is bigger than 1, i.e. .</p>
 <p>Mike wants to change his sequence in order to make it beautiful. In one move he can choose an index i (1 ≤ i &lt; n), delete numbers ai, ai + 1 and put numbers ai - ai + 1, ai + ai + 1 in their place instead, in this order. He wants perform as few operations as possible. Find the minimal number of operations to make sequence A beautiful if it’s possible, or tell him that it is impossible to do so.</p>
 <p> is the biggest non-negative number d such that d divides bi for every i (1 ≤ i ≤ n).</p>
 <h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>The first line contains a single integer n (2 ≤ n ≤ 100 000) — length of sequence A.</p>
@@ -33,11 +34,12 @@
 <h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>YES<br>1</p>
 <h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>给出一串数，如果能够通过N次操作使他们的gcd&gt;1,那么输出YES，并给出最少操作次数，否则输出NO。</p>
 <h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>可以通过推理证明得一次操作将会导致前后两个数字的gcd增长一倍，那么容易知道现在要求的就是把所有数字的gcd变成2，而互质的时候是1，最快变成2的办法就是找出所有连起来的奇数，对起一个数字进行操作，使他们两个都变成偶数，最后找出落单的奇数，容易知道可以通过对其操作两次让它变为偶数。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2>]]></content>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span>+<span class="number">10</span>;</div><div class="line"><span class="keyword">int</span> a[maxn];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(x%y!=<span class="number">0</span>) <span class="keyword">return</span> gcd(y,x%y);</div><div class="line">	<span class="keyword">else</span> <span class="keyword">return</span> y;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> n;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">	<span class="keyword">int</span> g=<span class="number">0</span>,temp;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;temp);</div><div class="line">		g=gcd(g,temp);</div><div class="line">		a[i]=temp&amp;<span class="number">1</span>?<span class="number">1</span>:<span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(g&gt;<span class="number">1</span>)&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"YES\n0\n"</span>);</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(a[i]&amp;&amp;a[i+<span class="number">1</span>])&#123;</div><div class="line">			a[i]=!a[i],a[i+<span class="number">1</span>]=!a[i+<span class="number">1</span>];</div><div class="line">			ans++;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)</div><div class="line">		<span class="keyword">if</span>(a[i]) ans+=<span class="number">2</span>;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"YES\n%d\n"</span>,ans);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;题目连接&quot;&gt;&lt;a href=&quot;#题目连接&quot; class=&quot;headerlink&quot; title=&quot;题目连接&quot;&gt;&lt;/a&gt;题目连接&lt;/h2&gt;&lt;h2 id=&quot;Description&quot;&gt;&lt;a href=&quot;#Description&quot; class=&quot;headerlink&quot; ti
+      &lt;h2 id=&quot;题目连接&quot;&gt;&lt;a href=&quot;#题目连接&quot; class=&quot;headerlink&quot; title=&quot;题目连接&quot;&gt;&lt;/a&gt;题目连接&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://codeforces.com/problemset/problem/798/C&quot; targe
     
     </summary>
     
