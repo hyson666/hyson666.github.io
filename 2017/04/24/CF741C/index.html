@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="凸包," />
+  <meta name="keywords" content="建图," />
 
 
 
@@ -92,19 +92,22 @@
 
 
 
-<meta name="description" content="题目连接http://poj.org/problem?id=3348
-DescriptionYour friend to the south is interested in building fences and turning plowshares into swords. In order to help with his overseas adventure, they are force">
+<meta name="description" content="题目连接http://codeforces.com/contest/741/problem/C
+DescriptionNote that girls in Arpa’s land are really attractive.
+Arpa loves overnight parties. In the middle of one of these parties Mehrdad suddenly ap">
 <meta property="og:type" content="article">
-<meta property="og:title" content="POJ3348 Cows - 求凸包面积">
-<meta property="og:url" content="http://yoursite.com/2017/04/22/POJ3348/index.html">
+<meta property="og:title" content="Codeforces 741 C - Arpa’s overnight party and Mehrdad’s silent entering - DFS染色">
+<meta property="og:url" content="http://yoursite.com/2017/04/24/CF741C/index.html">
 <meta property="og:site_name" content="HysonQAQ">
-<meta property="og:description" content="题目连接http://poj.org/problem?id=3348
-DescriptionYour friend to the south is interested in building fences and turning plowshares into swords. In order to help with his overseas adventure, they are force">
-<meta property="og:updated_time" content="2017-04-22T10:50:35.000Z">
+<meta property="og:description" content="题目连接http://codeforces.com/contest/741/problem/C
+DescriptionNote that girls in Arpa’s land are really attractive.
+Arpa loves overnight parties. In the middle of one of these parties Mehrdad suddenly ap">
+<meta property="og:updated_time" content="2017-04-24T03:03:44.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="POJ3348 Cows - 求凸包面积">
-<meta name="twitter:description" content="题目连接http://poj.org/problem?id=3348
-DescriptionYour friend to the south is interested in building fences and turning plowshares into swords. In order to help with his overseas adventure, they are force">
+<meta name="twitter:title" content="Codeforces 741 C - Arpa’s overnight party and Mehrdad’s silent entering - DFS染色">
+<meta name="twitter:description" content="题目连接http://codeforces.com/contest/741/problem/C
+DescriptionNote that girls in Arpa’s land are really attractive.
+Arpa loves overnight parties. In the middle of one of these parties Mehrdad suddenly ap">
 
 
 
@@ -132,13 +135,13 @@ DescriptionYour friend to the south is interested in building fences and turning
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/22/POJ3348/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/24/CF741C/"/>
 
 
 
 
 
-  <title> POJ3348 Cows - 求凸包面积 | HysonQAQ </title>
+  <title> Codeforces 741 C - Arpa’s overnight party and Mehrdad’s silent entering - DFS染色 | HysonQAQ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -267,7 +270,7 @@ DescriptionYour friend to the south is interested in building fences and turning
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/22/POJ3348/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/24/CF741C/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hyson">
@@ -288,7 +291,7 @@ DescriptionYour friend to the south is interested in building fences and turning
             
             
               
-                POJ3348 Cows - 求凸包面积
+                Codeforces 741 C - Arpa’s overnight party and Mehrdad’s silent entering - DFS染色
               
             
           </h1>
@@ -303,8 +306,8 @@ DescriptionYour friend to the south is interested in building fences and turning
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-22T18:44:57+08:00">
-                2017-04-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-24T10:55:38+08:00">
+                2017-04-24
               </time>
             
 
@@ -326,8 +329,8 @@ DescriptionYour friend to the south is interested in building fences and turning
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/计算几何-凸包/" itemprop="url" rel="index">
-                    <span itemprop="name">计算几何 凸包</span>
+                  <a href="/categories/搜索-DFS/" itemprop="url" rel="index">
+                    <span itemprop="name">搜索 DFS</span>
                   </a>
                 </span>
 
@@ -361,16 +364,21 @@ DescriptionYour friend to the south is interested in building fences and turning
       
 
       
-        <h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="http://poj.org/problem?id=3348" target="_blank" rel="external">http://poj.org/problem?id=3348</a></p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Your friend to the south is interested in building fences and turning plowshares into swords. In order to help with his overseas adventure, they are forced to save money on buying fence posts by using trees as fence posts wherever possible. Given the locations of some trees, you are to help farmers try to create the largest pasture that is possible. Not all the trees will need to be used.</p>
-<p>However, because you will oversee the construction of the pasture yourself, all the farmers want to know is how many cows they can put in the pasture. It is well known that a cow needs at least 50 square metres of pasture to survive.</p>
-<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>The first line of input contains a single integer, n (1 ≤ n ≤ 10000), containing the number of trees that grow on the available land. The next n lines contain the integer coordinates of each tree given as two integers x and y separated by one space (where -1000 ≤ x, y ≤ 1000). The integer coordinates correlate exactly to distance in metres (e.g., the distance between coordinate (10; 11) and (11; 11) is one metre).</p>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>You are to output a single integer value, the number of cows that can survive on the largest field you can construct using the available trees.</p>
-<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>4<br>0 0<br>0 101<br>75 0<br>75 101</p>
-<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>151</p>
-<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>你的朋友要造一个牧场，现在给出N棵树，要求你把这些树都包括在牧场里面，造一个建设长度最短的牧场。此外他还想养牛，已知道一头健康成长需要50平方米的空间，问这个牧场能养多少头牛？</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>凸包点确定之后从起始点开始对边进行两两叉乘再除以2得到每个三角形的面积，加起来就是凸包的面积，最后除50输出答案即可。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn= <span class="number">10010</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">double</span> pi = <span class="built_in">acos</span> (<span class="number">-1.0</span>);</div><div class="line"></div><div class="line"><span class="keyword">struct</span> node&#123;</div><div class="line">	<span class="keyword">double</span> x,y;</div><div class="line">&#125;p[maxn],P[maxn];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">X</span><span class="params">(node A,node B,node C)</span></span>&#123;	</div><div class="line">	<span class="keyword">return</span> (B.x-A.x)*(C.y-A.y)-(C.x-A.x)*(B.y-A.y); </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">len</span><span class="params">(node A,node B)</span></span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="built_in">sqrt</span>((A.x-B.x)*(A.x-B.x)+(A.y-B.y)*(A.y-B.y));</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(node &amp;A,node &amp;B)</span></span>&#123;</div><div class="line">	<span class="keyword">double</span> pp = X(p[<span class="number">0</span>],A,B);</div><div class="line">	<span class="keyword">if</span>(pp&gt;<span class="number">0</span>) <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">	<span class="keyword">if</span>(pp&lt;<span class="number">0</span>) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">	<span class="keyword">return</span> len(p[<span class="number">0</span>],A)&lt;len(p[<span class="number">0</span>],B);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> n;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i) <span class="built_in">scanf</span>(<span class="string">"%lf%lf"</span>,&amp;p[i].x,&amp;p[i].y);</div><div class="line">	<span class="keyword">if</span>(n&lt;=<span class="number">2</span>) <span class="built_in">printf</span>(<span class="string">"0\n"</span>);</div><div class="line">	<span class="keyword">else</span>&#123;</div><div class="line">    	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n;++i)&#123;</div><div class="line">			<span class="keyword">if</span>(p[i].x&lt;p[<span class="number">0</span>].x) swap(p[i],p[<span class="number">0</span>]);</div><div class="line">			<span class="keyword">else</span> <span class="keyword">if</span>(p[i].x==p[<span class="number">0</span>].x &amp;&amp; p[i].y&lt;p[<span class="number">0</span>].y) swap(p[i],p[<span class="number">0</span>]);</div><div class="line">		&#125;</div><div class="line">		sort(p+<span class="number">1</span>,p+n,cmp);</div><div class="line">		P[<span class="number">0</span>]=p[<span class="number">0</span>];</div><div class="line">		P[<span class="number">1</span>]=p[<span class="number">1</span>];</div><div class="line">		<span class="keyword">int</span> top=<span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;n;++i)&#123;</div><div class="line">			<span class="keyword">while</span>(top&gt;<span class="number">0</span> &amp;&amp; X(P[top<span class="number">-1</span>],P[top],p[i])&lt;=<span class="number">0</span>) top--;</div><div class="line">			top++;</div><div class="line">			P[top]=p[i];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">int</span> ans=<span class="number">0</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;top;++i)&#123;</div><div class="line">			ans+=<span class="built_in">fabs</span>(X(P[<span class="number">0</span>],P[i],P[i+<span class="number">1</span>]))/<span class="number">2.0</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans/<span class="number">50</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="http://codeforces.com/contest/741/problem/C" target="_blank" rel="external">http://codeforces.com/contest/741/problem/C</a></p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Note that girls in Arpa’s land are really attractive.</p>
+<p>Arpa loves overnight parties. In the middle of one of these parties Mehrdad suddenly appeared. He saw n pairs of friends sitting around a table. i-th pair consisted of a boy, sitting on the ai-th chair, and his girlfriend, sitting on the bi-th chair. The chairs were numbered 1 through 2n in clockwise direction. There was exactly one person sitting on each chair.</p>
+<p>There were two types of food: Kooft and Zahre-mar. Now Mehrdad wonders, was there any way to serve food for the guests such that:</p>
+<p>Each person had exactly one type of food,<br>No boy had the same type of food as his girlfriend,<br>Among any three guests sitting on consecutive chairs, there was two of them who had different type of food. Note that chairs 2n and 1 are considered consecutive.<br>Find the answer for the Mehrdad question. If it was possible, find some arrangement of food types that satisfies the conditions.</p>
+<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>The first line contains an integer n (1  ≤  n  ≤  105) — the number of pairs of guests.</p>
+<p>The i-th of the next n lines contains a pair of integers ai and bi (1  ≤ ai, bi ≤  2n) — the number of chair on which the boy in the i-th pair was sitting and the number of chair on which his girlfriend was sitting. It’s guaranteed that there was exactly one person sitting on each chair.</p>
+<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>If there is no solution, print -1.</p>
+<p>Otherwise print n lines, the i-th of them should contain two integers which represent the type of food for the i-th pair. The first integer in the line is the type of food the boy had, and the second integer is the type of food the girl had. If someone had Kooft, print 1, otherwise print 2.</p>
+<p>If there are multiple solutions, print any of them.</p>
+<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>3<br>1 4<br>2 5<br>3 6</p>
+<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>1 2<br>2 1<br>1 2</p>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>派对现在有1，2两种食物，男女朋友之间一定要吃不同的食物，而且相邻的三个人吃的食物不能一样，现在问每个人分配吃什么食物才能满足。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>为了满足这样的制约关系，我们可以建图来进行处理，男女朋友之间连线，确保他们吃的食物不一样，然后相邻的两个人（2k与2K+1）进行连线，确保每相邻三个人吃的食物都不全一样，这样建图之后跑DFS进行染色即可。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; sp[<span class="number">2</span>*<span class="number">100010</span>];</div><div class="line"><span class="keyword">int</span> a[<span class="number">2</span>*<span class="number">100010</span>],b[<span class="number">2</span>*<span class="number">100010</span>],vis[<span class="number">2</span>*<span class="number">100010</span>],ans[<span class="number">2</span>*<span class="number">100010</span>];</div><div class="line"><span class="keyword">int</span> n;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</div><div class="line">	sp[a].push_back(b);</div><div class="line">	sp[b].push_back(a);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> t,<span class="keyword">int</span> col)</span></span>&#123;</div><div class="line">	vis[t]=<span class="number">1</span>;</div><div class="line">	ans[t]=col;</div><div class="line">	col=(col==<span class="number">1</span>?<span class="number">2</span>:<span class="number">1</span>);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;sp[t].size();++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!vis[sp[t][i]]) dfs(sp[t][i],col);</div><div class="line">	&#125;</div><div class="line">&#125;	</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;a[i],&amp;b[i]);</div><div class="line">		add(a[i],b[i]);</div><div class="line">		add(b[i],a[i]);</div><div class="line">		add(<span class="number">2</span>*i,<span class="number">2</span>*i+<span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">2</span>*n;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!vis[i])</div><div class="line">		  dfs(i,<span class="number">1</span>);</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i)&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>,ans[a[i]],ans[b[i]]);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -399,7 +407,7 @@ DescriptionYour friend to the south is interested in building fences and turning
       
         <div class="post-tags">
           
-            <a href="/tags/凸包/" rel="tag"># 凸包</a>
+            <a href="/tags/建图/" rel="tag"># 建图</a>
           
         </div>
       
@@ -412,8 +420,8 @@ DescriptionYour friend to the south is interested in building fences and turning
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/22/HDU1348/" rel="next" title="HDU1348 Wall - Granham算法模板题">
-                <i class="fa fa-chevron-left"></i> HDU1348 Wall - Granham算法模板题
+              <a href="/2017/04/24/POJ1365/" rel="next" title="POJ1365 Prime Land - 质因数分解">
+                <i class="fa fa-chevron-left"></i> POJ1365 Prime Land - 质因数分解
               </a>
             
           </div>
@@ -421,10 +429,6 @@ DescriptionYour friend to the south is interested in building fences and turning
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/22/CF410C/" rel="prev" title="Codeforces Round 410 (Div. 2) C -Mike and gcd problem 数论 GCD">
-                Codeforces Round 410 (Div. 2) C -Mike and gcd problem 数论 GCD <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
