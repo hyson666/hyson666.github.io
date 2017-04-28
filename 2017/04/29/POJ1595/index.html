@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="暴力," />
+  <meta name="keywords" content="素数," />
 
 
 
@@ -92,19 +92,19 @@
 
 
 
-<meta name="description" content="题目连接http://codeforces.com/problemset/problem/798/B
-DescriptionMike has n strings s1, s2, …, sn each consisting of lowercase English letters. In one move he can choose a string si, erase the first char">
+<meta name="description" content="题目连接http://poj.org/problem?id=1595
+DescriptionA prime number is a counting number (1, 2, 3, …) that is evenly divisible only by 1 and itself. In this problem you are to write a program that will cut s">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Codeforces Round 410 (Div. 2) B - Mike and strings 水题">
-<meta property="og:url" content="http://yoursite.com/2017/04/22/CF410B/index.html">
+<meta property="og:title" content="POJ1595 Prime Cuts - 水题">
+<meta property="og:url" content="http://yoursite.com/2017/04/29/POJ1595/index.html">
 <meta property="og:site_name" content="HysonQAQ">
-<meta property="og:description" content="题目连接http://codeforces.com/problemset/problem/798/B
-DescriptionMike has n strings s1, s2, …, sn each consisting of lowercase English letters. In one move he can choose a string si, erase the first char">
-<meta property="og:updated_time" content="2017-04-22T09:11:00.000Z">
+<meta property="og:description" content="题目连接http://poj.org/problem?id=1595
+DescriptionA prime number is a counting number (1, 2, 3, …) that is evenly divisible only by 1 and itself. In this problem you are to write a program that will cut s">
+<meta property="og:updated_time" content="2017-04-28T17:39:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Codeforces Round 410 (Div. 2) B - Mike and strings 水题">
-<meta name="twitter:description" content="题目连接http://codeforces.com/problemset/problem/798/B
-DescriptionMike has n strings s1, s2, …, sn each consisting of lowercase English letters. In one move he can choose a string si, erase the first char">
+<meta name="twitter:title" content="POJ1595 Prime Cuts - 水题">
+<meta name="twitter:description" content="题目连接http://poj.org/problem?id=1595
+DescriptionA prime number is a counting number (1, 2, 3, …) that is evenly divisible only by 1 and itself. In this problem you are to write a program that will cut s">
 
 
 
@@ -132,13 +132,13 @@ DescriptionMike has n strings s1, s2, …, sn each consisting of lowercase
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/22/CF410B/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/04/29/POJ1595/"/>
 
 
 
 
 
-  <title> Codeforces Round 410 (Div. 2) B - Mike and strings 水题 | HysonQAQ </title>
+  <title> POJ1595 Prime Cuts - 水题 | HysonQAQ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -267,7 +267,7 @@ DescriptionMike has n strings s1, s2, …, sn each consisting of lowercase
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/22/CF410B/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/29/POJ1595/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hyson">
@@ -288,7 +288,7 @@ DescriptionMike has n strings s1, s2, …, sn each consisting of lowercase
             
             
               
-                Codeforces Round 410 (Div. 2) B - Mike and strings 水题
+                POJ1595 Prime Cuts - 水题
               
             
           </h1>
@@ -303,8 +303,8 @@ DescriptionMike has n strings s1, s2, …, sn each consisting of lowercase
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-22T16:58:53+08:00">
-                2017-04-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-29T01:33:24+08:00">
+                2017-04-29
               </time>
             
 
@@ -326,8 +326,8 @@ DescriptionMike has n strings s1, s2, …, sn each consisting of lowercase
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/其他-暴力/" itemprop="url" rel="index">
-                    <span itemprop="name">其他 暴力</span>
+                  <a href="/categories/其他-水题/" itemprop="url" rel="index">
+                    <span itemprop="name">其他 水题</span>
                   </a>
                 </span>
 
@@ -361,18 +361,18 @@ DescriptionMike has n strings s1, s2, …, sn each consisting of lowercase
       
 
       
-        <h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="http://codeforces.com/problemset/problem/798/B" target="_blank" rel="external">http://codeforces.com/problemset/problem/798/B</a></p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Mike has n strings s1, s2, …, sn each consisting of lowercase English letters. In one move he can choose a string si, erase the first character and append it to the end of the string. For example, if he has the string “coolmike”, in one move he can transform it into the string “oolmikec”.</p>
-<p>Now Mike asks himself: what is minimal number of moves that he needs to do in order to make all the strings equal?</p>
-<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>The first line contains integer n (1 ≤ n ≤ 50) — the number of strings.</p>
-<p>This is followed by n lines which contain a string each. The i-th line corresponding to string si. Lengths of strings are equal. Lengths of each string is positive and don’t exceed 50.</p>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>Print the minimal number of moves Mike needs in order to make all the strings equal or print  - 1 if there is no solution.</p>
-<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>4<br>xzzwo<br>zwoxz<br>zzwox<br>xzzwo</p>
-<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>5</p>
-<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>给定N个串，现在支持一种操作，把串的第一个字母放到串的最后面，问你最少经过几次操作可以使所有串都相同。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>数据输入量比较小，所以可以直接暴力枚举每个串，计算出以哪个串为标准串时，其他串变成它的总代价最小，可以在for中加入发现有串不相等（不可能变成另一个串）的时候跳出循环的条件剪掉部分操作，也可以不加，反正暴力就对了。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">60</span>;</div><div class="line"><span class="keyword">char</span> s[maxn][maxn];</div><div class="line"><span class="keyword">int</span> ans[maxn][maxn],ret[maxn];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="keyword">int</span> n;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%s"</span>, s[i]);</div><div class="line">    <span class="keyword">int</span> len = <span class="built_in">strlen</span>(s[<span class="number">0</span>]);</div><div class="line">    <span class="keyword">int</span> judge = <span class="number">1</span>;</div><div class="line">    <span class="keyword">int</span> cnt, okk;</div><div class="line">    <span class="keyword">int</span> tonext = <span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> noans = <span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n &amp;&amp; judge; ++i) &#123;</div><div class="line">        okk = <span class="number">0</span>;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n &amp;&amp; judge; ++j) &#123;</div><div class="line">            <span class="keyword">if</span> (i == j) <span class="keyword">continue</span>;</div><div class="line">            tonext = <span class="number">0</span>;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; len &amp;&amp; judge &amp;&amp; !tonext; ++k) &#123;</div><div class="line">                <span class="keyword">if</span> (s[i][<span class="number">0</span>] == s[j][k]) &#123;</div><div class="line">                    cnt = <span class="number">0</span>;</div><div class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> l = k; judge; ++l) &#123;</div><div class="line">                        <span class="keyword">if</span> (s[i][cnt] == s[j][l % len]) &#123;</div><div class="line">                            cnt++;</div><div class="line">                            <span class="keyword">if</span> (cnt == len) &#123;</div><div class="line">                                okk++;</div><div class="line">                                tonext = <span class="number">1</span>;</div><div class="line">                            &#125;</div><div class="line">                        &#125;</div><div class="line">                        <span class="keyword">else</span> <span class="keyword">break</span>;</div><div class="line">                    &#125;</div><div class="line">                    <span class="keyword">if</span> (tonext)</div><div class="line">                        ans[i][j] = k;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span> (okk != n - <span class="number">1</span>)</div><div class="line">            noans = <span class="number">1</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span> (noans)</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"-1"</span> &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</div><div class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; ++j) &#123;</div><div class="line">                ret[i] += ans[i][j];</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        sort(ret, ret + n);</div><div class="line">        <span class="built_in">cout</span> &lt;&lt; ret[<span class="number">0</span>] &lt;&lt; <span class="built_in">endl</span>;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
+        <h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="http://poj.org/problem?id=1595" target="_blank" rel="external">http://poj.org/problem?id=1595</a></p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>A prime number is a counting number (1, 2, 3, …) that is evenly divisible only by 1 and itself. In this problem you are to write a program that will cut some number of prime numbers from the list of prime numbers between (and including) 1 and N. Your program will read in a number N; determine the list of prime numbers between 1 and N; and print the C*2 prime numbers from the center of the list if there are an even number of prime numbers or (C*2)-1 prime numbers from the center of the list if there are an odd number of prime numbers in the list.</p>
+<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p> Each input set will be on a line by itself and will consist of 2 numbers. The first number (1 &lt;= N &lt;= 1000) is the maximum number in the complete list of prime numbers between 1 and N. The second number (1 &lt;= C &lt;= N) defines the C*2 prime numbers to be printed from the center of the list if the length of the list is even; or the (C*2)-1 numbers to be printed from the center of the list if the length of the list is odd.</p>
+<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>For each input set, you should print the number N beginning in column 1 followed by a space, then by the number C, then by a colon (:), and then by the center numbers from the list of prime numbers as defined above. If the size of the center list exceeds the limits of the list of prime numbers between 1 and N, the list of prime numbers between 1 and N (inclusive) should be printed. Each number from the center of the list should be preceded by exactly one blank. Each line of output should be followed by a blank line. Hence, your output should follow the exact format shown in the sample output.</p>
+<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>21 2<br>18 2<br>18 18<br>100 7</p>
+<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>21 2: 5 7 11</p>
+<p>18 2: 3 5 7 11</p>
+<p>18 18: 1 2 3 5 7 11 13 17</p>
+<p>100 7: 13 17 19 23 29 31 37 41 43 47 53 59 61 67</p>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>给出一个数，如果在它前面的素数有奇数个，则输出前面n个素数中心附近的2*c-1个数字，若为偶数个，则输出中心附近的2*c个数字。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>打表后计算前面素数的个数，分情况处理即可。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e3</span>+<span class="number">50</span>,maxp=<span class="number">1e4</span>+<span class="number">10</span>;</div><div class="line"><span class="keyword">bool</span> visit[maxp],is_prime[maxn];</div><div class="line"><span class="keyword">int</span> prime[maxn];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init_prime_factor</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> num=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;++i)&#123;</div><div class="line">        <span class="keyword">if</span>(!visit[i]) prime[++num]=i;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=num &amp;&amp; i*prime[j]&lt;=n;++j)&#123;</div><div class="line">            visit[i*prime[j]] = <span class="number">1</span>;</div><div class="line">            <span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>) <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    prime[<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line">    init_prime_factor(maxn);</div><div class="line">    <span class="keyword">int</span> n,c,center;</div><div class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;c))&#123;</div><div class="line">        <span class="keyword">int</span> first=<span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)&#123;</div><div class="line">            <span class="keyword">if</span>(prime[i]&gt;n)&#123;</div><div class="line">                <span class="keyword">if</span>(i%<span class="number">2</span>)&#123;</div><div class="line">                    center = (i<span class="number">-1</span>)/<span class="number">2</span>;</div><div class="line">                    <span class="built_in">printf</span>(<span class="string">"%d %d: "</span>,n,c);</div><div class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> j=max(center-c+<span class="number">1</span>,<span class="number">0</span>);j&lt;=min(i<span class="number">-1</span>,center+c<span class="number">-1</span>);++j)&#123;</div><div class="line">                        <span class="keyword">if</span>(!first) <span class="built_in">printf</span>(<span class="string">" "</span>);</div><div class="line">                        first=<span class="number">0</span>;</div><div class="line">                        <span class="built_in">printf</span>(<span class="string">"%d"</span>,prime[j]);</div><div class="line">                    &#125;</div><div class="line">                    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">else</span>&#123;</div><div class="line">                    center = (i<span class="number">-1</span>)/<span class="number">2</span>;</div><div class="line">                    <span class="built_in">printf</span>(<span class="string">"%d %d: "</span>,n,c);</div><div class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> j=max(center-c+<span class="number">1</span>,<span class="number">0</span>);j&lt;=min(center+c,i<span class="number">-1</span>);++j)&#123;</div><div class="line">                        <span class="keyword">if</span>(!first) <span class="built_in">printf</span>(<span class="string">" "</span>);</div><div class="line">                        first=<span class="number">0</span>;</div><div class="line">                        <span class="built_in">printf</span>(<span class="string">"%d"</span>,prime[j]);</div><div class="line">                    &#125;</div><div class="line">                    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(n==<span class="number">1</span>)&#123;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"1 1: 1\n"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -401,7 +401,7 @@ DescriptionMike has n strings s1, s2, …, sn each consisting of lowercase
       
         <div class="post-tags">
           
-            <a href="/tags/暴力/" rel="tag"># 暴力</a>
+            <a href="/tags/素数/" rel="tag"># 素数</a>
           
         </div>
       
@@ -414,8 +414,8 @@ DescriptionMike has n strings s1, s2, …, sn each consisting of lowercase
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/22/CF410A/" rel="next" title="Codeforces Round 410 (Div. 2) A - Mike and palindrome 水题">
-                <i class="fa fa-chevron-left"></i> Codeforces Round 410 (Div. 2) A - Mike and palindrome 水题
+              <a href="/2017/04/26/POJ2034/" rel="next" title="POJ2034 Anti-prime Sequences - 素数打表+DFS">
+                <i class="fa fa-chevron-left"></i> POJ2034 Anti-prime Sequences - 素数打表+DFS
               </a>
             
           </div>
@@ -424,8 +424,8 @@ DescriptionMike has n strings s1, s2, …, sn each consisting of lowercase
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/04/22/HDU1348/" rel="prev" title="HDU1348 Wall - Granham算法模板题">
-                HDU1348 Wall - Granham算法模板题 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/04/29/POJ2739/" rel="prev" title="POJ2739 Sum of Consecutive Prime Numbers - 水题">
+                POJ2739 Sum of Consecutive Prime Numbers - 水题 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
