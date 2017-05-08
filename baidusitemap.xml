@@ -4,8 +4,28 @@
 
     
   <url>
+	  <loc>http://www.hysonn.com/2017/05/08/CF412/</loc>
+    <lastmod>2017-05-08T06:01:06.000Z</lastmod>
+    <data>
+        <display>
+        <title>Codeforces Round 412 (rated, Div. 2, base on VK Cup 2017 Round 3) 题解 ABC</title>
+        <pubTime>2017-05-08T05:25:32.000Z</pubTime>
+        
+        <tag>二分</tag>
+         
+         
+           
+             
+              <breadCrumb title="OnlineJudge Codeforces" url="http://yoursite.com/categories/OnlineJudge-Codeforces/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
 	  <loc>http://www.hysonn.com/2017/05/04/POJ2566/</loc>
-    <lastmod>2017-05-03T16:59:19.000Z</lastmod>
+    <lastmod>2017-05-03T17:03:31.000Z</lastmod>
     <data>
         <display>
         <title>POJ2566 Bound Found - 尺取法</title>
