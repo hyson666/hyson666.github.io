@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="素数," />
+  <meta name="keywords" content="二分," />
 
 
 
@@ -92,19 +92,22 @@
 
 
 
-<meta name="description" content="题目连接http://poj.org/problem?id=2034
-DescriptionGiven a sequence of consecutive integers n,n+1,n+2,…,m, an anti-prime sequence is a rearrangement of these integers so that each adjacent pair of integers">
+<meta name="description" content="题目连接http://codeforces.com/contest/803/problem/D
+DescriptionThe main city magazine offers its readers an opportunity to publish their ads. The format of the ad should be like this:
+There are space-sepa">
 <meta property="og:type" content="article">
-<meta property="og:title" content="POJ2034 Anti-prime Sequences - 素数打表+DFS">
-<meta property="og:url" content="http://yoursite.com/2017/04/26/POJ2034/index.html">
+<meta property="og:title" content="Educational Codeforces Round 20 D.Magazine Ad 二分+贪心">
+<meta property="og:url" content="http://yoursite.com/2017/05/09/EDU20D/index.html">
 <meta property="og:site_name" content="HysonQAQ">
-<meta property="og:description" content="题目连接http://poj.org/problem?id=2034
-DescriptionGiven a sequence of consecutive integers n,n+1,n+2,…,m, an anti-prime sequence is a rearrangement of these integers so that each adjacent pair of integers">
-<meta property="og:updated_time" content="2017-04-26T06:36:03.000Z">
+<meta property="og:description" content="题目连接http://codeforces.com/contest/803/problem/D
+DescriptionThe main city magazine offers its readers an opportunity to publish their ads. The format of the ad should be like this:
+There are space-sepa">
+<meta property="og:updated_time" content="2017-05-08T17:14:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="POJ2034 Anti-prime Sequences - 素数打表+DFS">
-<meta name="twitter:description" content="题目连接http://poj.org/problem?id=2034
-DescriptionGiven a sequence of consecutive integers n,n+1,n+2,…,m, an anti-prime sequence is a rearrangement of these integers so that each adjacent pair of integers">
+<meta name="twitter:title" content="Educational Codeforces Round 20 D.Magazine Ad 二分+贪心">
+<meta name="twitter:description" content="题目连接http://codeforces.com/contest/803/problem/D
+DescriptionThe main city magazine offers its readers an opportunity to publish their ads. The format of the ad should be like this:
+There are space-sepa">
 
 
 
@@ -132,13 +135,13 @@ DescriptionGiven a sequence of consecutive integers n,n+1,n+2,…,m, an anti-pri
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/26/POJ2034/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/09/EDU20D/"/>
 
 
 
 
 
-  <title> POJ2034 Anti-prime Sequences - 素数打表+DFS | HysonQAQ </title>
+  <title> Educational Codeforces Round 20 D.Magazine Ad 二分+贪心 | HysonQAQ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -267,7 +270,7 @@ DescriptionGiven a sequence of consecutive integers n,n+1,n+2,…,m, an anti-pri
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/26/POJ2034/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/09/EDU20D/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hyson">
@@ -288,7 +291,7 @@ DescriptionGiven a sequence of consecutive integers n,n+1,n+2,…,m, an anti-pri
             
             
               
-                POJ2034 Anti-prime Sequences - 素数打表+DFS
+                Educational Codeforces Round 20 D.Magazine Ad 二分+贪心
               
             
           </h1>
@@ -303,8 +306,8 @@ DescriptionGiven a sequence of consecutive integers n,n+1,n+2,…,m, an anti-pri
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-26T14:27:09+08:00">
-                2017-04-26
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-09T01:01:25+08:00">
+                2017-05-09
               </time>
             
 
@@ -326,8 +329,8 @@ DescriptionGiven a sequence of consecutive integers n,n+1,n+2,…,m, an anti-pri
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/搜索-DFS/" itemprop="url" rel="index">
-                    <span itemprop="name">搜索 DFS</span>
+                  <a href="/categories/其他-二分/" itemprop="url" rel="index">
+                    <span itemprop="name">其他 二分</span>
                   </a>
                 </span>
 
@@ -361,17 +364,22 @@ DescriptionGiven a sequence of consecutive integers n,n+1,n+2,…,m, an anti-pri
       
 
       
-        <h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="http://poj.org/problem?id=2034" target="_blank" rel="external">http://poj.org/problem?id=2034</a></p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a sequence of consecutive integers n,n+1,n+2,…,m, an anti-prime sequence is a rearrangement of these integers so that each adjacent pair of integers sums to a composite (non-prime) number. For example, if n = 1 and m = 10, one such anti-prime sequence is 1,3,5,4,2,6,9,7,8,10. This is also the lexicographically first such sequence. </p>
-<p>We can extend the definition by defining a degree danti-prime sequence as one where all consecutive subsequences of length 2,3,…,d sum to a composite number. The sequence above is a degree 2 anti-prime sequence, but not a degree 3, since the subsequence 5, 4, 2 sums to 11. The lexicographically .rst degree 3 anti-prime sequence for these numbers is 1,3,5,4,6,2,10,8,7,9. </p>
-<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>Input will consist of multiple input sets. Each set will consist of three integers, n, m, and d on a single line. The values of n, m and d will satisfy 1 &lt;= n &lt; m &lt;= 1000, and 2 &lt;= d &lt;= 10. The line 0 0 0 will indicate end of input and should not be processed.</p>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>For each input set, output a single line consisting of a comma-separated list of integers forming a degree danti-prime sequence (do not insert any spaces and do not split the output over multiple lines). In the case where more than one anti-prime sequence exists, print the lexicographically first one (i.e., output the one with the lowest first value; in case of a tie, the lowest second value, etc.). In the case where no anti-prime sequence exists, output </p>
-<p>No anti-prime sequence exists. </p>
-<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>1 10 2<br>1 10 3<br>1 10 5<br>40 60 7<br>0 0 0</p>
-<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>1,3,5,4,2,6,9,7,8,10<br>1,3,5,4,6,2,10,8,7,9<br>No anti-prime sequence exists.<br>40,41,43,42,44,46,45,47,48,50,55,53,52,60,56,49,51,59,58,57,54</p>
-<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>定义一串数字的度d为任意连续2~d-1的连续数字相加都不为素食，现在给出起点n和终点m，区间内的每个整数只能使用一次，要求构造出一个度为d的数字串。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>先打素数表，然后进行DFS搜索，每次搜索只需要确定该个数及其前面d-1个数字是否符合要求即可（当前搜索的状态的前一个状态必已经符合要求），不满足的情况进行回溯即可。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1010</span>;</div><div class="line"><span class="keyword">int</span> ans[maxn],m,n,d,prime[maxn],vis[maxn],used[maxn],ok;</div><div class="line"><span class="keyword">bool</span> is_prime[maxn],exist;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init_prime_table</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> num=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!vis[i])&#123;</div><div class="line">			prime[++num]=i;</div><div class="line">			is_prime[i]=<span class="literal">true</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=num &amp;&amp; i*prime[j]&lt;=n;++j)&#123;</div><div class="line">			vis[i*prime[j]] = <span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>) <span class="keyword">break</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> total,<span class="keyword">int</span> cnt,<span class="keyword">int</span> sum)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(total==ok) &#123;exist=<span class="literal">true</span>; <span class="keyword">return</span>;&#125;</div><div class="line">	<span class="keyword">if</span>(cnt==d &amp;&amp; is_prime[sum]) <span class="keyword">return</span>;</div><div class="line">	<span class="keyword">if</span>(cnt==d &amp;&amp; !is_prime[sum]) &#123;cnt=<span class="number">0</span>,sum=<span class="number">0</span>;&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=m;i&lt;=n;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!vis[i])&#123;</div><div class="line">			dfs(total+<span class="number">1</span>,cnt+<span class="number">1</span>,sum+i);</div><div class="line">			vis[i]=<span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		vis[i]=<span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	init_prime_table(maxn);</div><div class="line">	<span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;m,&amp;n,&amp;d))&#123;</div><div class="line">		<span class="keyword">if</span>(m==<span class="number">0</span> &amp;&amp; n==<span class="number">0</span> &amp;&amp; d==<span class="number">0</span>) <span class="keyword">break</span>;</div><div class="line">		<span class="keyword">int</span> cnt=m-n+<span class="number">1</span>;</div><div class="line">		<span class="keyword">int</span> ok=cnt;</div><div class="line">		dfs(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</div><div class="line">		<span class="keyword">int</span> first=<span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cnt;++i)&#123;</div><div class="line">			<span class="keyword">if</span>(!first) <span class="built_in">printf</span>(<span class="string">" "</span>);</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"%d"</span>,ans[i]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="http://codeforces.com/contest/803/problem/D" target="_blank" rel="external">http://codeforces.com/contest/803/problem/D</a></p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>The main city magazine offers its readers an opportunity to publish their ads. The format of the ad should be like this:</p>
+<p>There are space-separated non-empty words of lowercase and uppercase Latin letters.</p>
+<p>There are hyphen characters ‘-‘ in some words, their positions set word wrapping points. Word can include more than one hyphen.</p>
+<p>It is guaranteed that there are no adjacent spaces and no adjacent hyphens. No hyphen is adjacent to space. There are no spaces and no hyphens before the first word and after the last word.</p>
+<p>When the word is wrapped, the part of the word before hyphen and the hyphen itself stay on current line and the next part of the word is put on the next line. You can also put line break between two words, in that case the space stays on current line. Check notes for better understanding.</p>
+<p>The ad can occupy no more that k lines and should have minimal width. The width of the ad is the maximal length of string (letters, spaces and hyphens are counted) in it.</p>
+<p>You should write a program that will find minimal width of the ad.</p>
+<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>The first line contains number k (1 ≤ k ≤ 105).</p>
+<p>The second line contains the text of the ad — non-empty space-separated words of lowercase and uppercase Latin letters and hyphens. Total length of the ad don’t exceed 106 characters.</p>
+<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>Output minimal width of the ad.</p>
+<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>4<br>garage for sa-le</p>
+<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>7</p>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>报纸刊登广告，已知“-”和空格都是可以换行的位置，现在要求广告整理成k行，现在问长度最大的那行的长度最小可以为多少?（包含空格和“-”）</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>最近在刷二分，所以回头把上一场codeforeces的这题给补了。根据题意要最小化最大值，显然可以对猜测的结果进行二分。先把可以拆分的每一段都转化为不同长度的木板存入数组，利用贪心思想，按顺序for一遍，能够结合成为一块板子的果断结合，不能的划分数加一，处理下一块板子使它继续结合即可。如果某一块板子长度大于当前二分mid值，返回false，最后结果如果大于k，由于已经贪心了最优策略，所以是无论怎样结合也不可能符合条件划分为k个的（反之总可以随意划分到k块），返回false，其他返回true即可。1A之。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e6</span>+<span class="number">10</span>;</div><div class="line"><span class="keyword">int</span> a[maxn];</div><div class="line"><span class="keyword">int</span> k,cnt;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> mid)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> num=<span class="number">1</span>,temp=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt;++i)&#123;</div><div class="line">        <span class="keyword">if</span>(a[i]&gt;mid) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">		<span class="keyword">if</span>(temp+a[i]&lt;=mid)&#123;</div><div class="line">			temp+=a[i];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span>&#123;</div><div class="line">			temp=a[i];</div><div class="line">			num++;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(num&lt;=k) <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d\n"</span>,&amp;k);</div><div class="line">	<span class="keyword">char</span> x;</div><div class="line">	<span class="keyword">int</span> temp=<span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> total=<span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%c"</span>,&amp;x) &amp;&amp; x!=<span class="string">'\n'</span>)&#123;</div><div class="line">		++temp;</div><div class="line">		<span class="keyword">if</span>(x==<span class="string">'-'</span> || x==<span class="string">' '</span>)&#123;</div><div class="line">			a[++cnt]=temp;</div><div class="line">			temp=<span class="number">0</span>;</div><div class="line">		&#125;</div><div class="line">        ++total;</div><div class="line">	&#125;</div><div class="line">	a[++cnt]=temp;</div><div class="line">	<span class="keyword">int</span> l=<span class="number">1</span>,r=total;</div><div class="line">	<span class="keyword">int</span> ans;</div><div class="line">	<span class="keyword">while</span>(l&lt;=r)&#123;</div><div class="line">		<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span>(check(mid))&#123;</div><div class="line">			ans=mid;</div><div class="line">			r=mid<span class="number">-1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> l=mid+<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -401,7 +409,7 @@ DescriptionGiven a sequence of consecutive integers n,n+1,n+2,…,m, an anti-pri
       
         <div class="post-tags">
           
-            <a href="/tags/素数/" rel="tag"># 素数</a>
+            <a href="/tags/二分/" rel="tag"># 二分</a>
           
         </div>
       
@@ -414,8 +422,8 @@ DescriptionGiven a sequence of consecutive integers n,n+1,n+2,…,m, an anti-pri
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/24/CF741C/" rel="next" title="Codeforces 741 C - Arpa’s overnight party and Mehrdad’s silent entering - DFS染色">
-                <i class="fa fa-chevron-left"></i> Codeforces 741 C - Arpa’s overnight party and Mehrdad’s silent entering - DFS染色
+              <a href="/2017/05/08/CF412/" rel="next" title="Codeforces Round 412 (rated, Div. 2, base on VK Cup 2017 Round 3) 题解 ABC">
+                <i class="fa fa-chevron-left"></i> Codeforces Round 412 (rated, Div. 2, base on VK Cup 2017 Round 3) 题解 ABC
               </a>
             
           </div>
@@ -423,10 +431,6 @@ DescriptionGiven a sequence of consecutive integers n,n+1,n+2,…,m, an anti-pri
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/29/POJ1595/" rel="prev" title="POJ1595 Prime Cuts - 水题">
-                POJ1595 Prime Cuts - 水题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
