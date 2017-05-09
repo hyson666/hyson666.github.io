@@ -92,22 +92,19 @@
 
 
 
-<meta name="description" content="题目连接http://codeforces.com/contest/803/problem/D
-DescriptionThe main city magazine offers its readers an opportunity to publish their ads. The format of the ad should be like this:
-There are space-sepa">
+<meta name="description" content="题目连接http://poj.org/problem?id=3104
+DescriptionIt is very hard to wash and especially to dry clothes in winter. But Jane is a very smart girl. She is not afraid of this boring process. Jane has decided">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Educational Codeforces Round 20 D.Magazine Ad 二分+贪心">
-<meta property="og:url" content="http://yoursite.com/2017/05/09/EDU20D/index.html">
+<meta property="og:title" content="POJ3104 - Drying 二分">
+<meta property="og:url" content="http://yoursite.com/2017/05/10/POJ3104/index.html">
 <meta property="og:site_name" content="HysonQAQ">
-<meta property="og:description" content="题目连接http://codeforces.com/contest/803/problem/D
-DescriptionThe main city magazine offers its readers an opportunity to publish their ads. The format of the ad should be like this:
-There are space-sepa">
-<meta property="og:updated_time" content="2017-05-08T17:14:20.000Z">
+<meta property="og:description" content="题目连接http://poj.org/problem?id=3104
+DescriptionIt is very hard to wash and especially to dry clothes in winter. But Jane is a very smart girl. She is not afraid of this boring process. Jane has decided">
+<meta property="og:updated_time" content="2017-05-09T17:25:11.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Educational Codeforces Round 20 D.Magazine Ad 二分+贪心">
-<meta name="twitter:description" content="题目连接http://codeforces.com/contest/803/problem/D
-DescriptionThe main city magazine offers its readers an opportunity to publish their ads. The format of the ad should be like this:
-There are space-sepa">
+<meta name="twitter:title" content="POJ3104 - Drying 二分">
+<meta name="twitter:description" content="题目连接http://poj.org/problem?id=3104
+DescriptionIt is very hard to wash and especially to dry clothes in winter. But Jane is a very smart girl. She is not afraid of this boring process. Jane has decided">
 
 
 
@@ -135,13 +132,13 @@ There are space-sepa">
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/09/EDU20D/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/05/10/POJ3104/"/>
 
 
 
 
 
-  <title> Educational Codeforces Round 20 D.Magazine Ad 二分+贪心 | HysonQAQ </title>
+  <title> POJ3104 - Drying 二分 | HysonQAQ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -270,7 +267,7 @@ There are space-sepa">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/09/EDU20D/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/10/POJ3104/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hyson">
@@ -291,7 +288,7 @@ There are space-sepa">
             
             
               
-                Educational Codeforces Round 20 D.Magazine Ad 二分+贪心
+                POJ3104 - Drying 二分
               
             
           </h1>
@@ -306,8 +303,8 @@ There are space-sepa">
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-09T01:01:25+08:00">
-                2017-05-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-10T01:04:11+08:00">
+                2017-05-10
               </time>
             
 
@@ -364,23 +361,21 @@ There are space-sepa">
       
 
       
-        <h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="http://codeforces.com/contest/803/problem/D" target="_blank" rel="external">http://codeforces.com/contest/803/problem/D</a></p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>The main city magazine offers its readers an opportunity to publish their ads. The format of the ad should be like this:</p>
-<p>There are space-separated non-empty words of lowercase and uppercase Latin letters.</p>
-<p>There are hyphen characters ‘-‘ in some words, their positions set word wrapping points. Word can include more than one hyphen.</p>
-<p>It is guaranteed that there are no adjacent spaces and no adjacent hyphens. No hyphen is adjacent to space. There are no spaces and no hyphens before the first word and after the last word.</p>
-<p>When the word is wrapped, the part of the word before hyphen and the hyphen itself stay on current line and the next part of the word is put on the next line. You can also put line break between two words, in that case the space stays on current line. Check notes for better understanding.</p>
-<p>The ad can occupy no more that k lines and should have minimal width. The width of the ad is the maximal length of string (letters, spaces and hyphens are counted) in it.</p>
-<p>You should write a program that will find minimal width of the ad.</p>
-<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>The first line contains number k (1 ≤ k ≤ 105).</p>
-<p>The second line contains the text of the ad — non-empty space-separated words of lowercase and uppercase Latin letters and hyphens. Total length of the ad don’t exceed 106 characters.</p>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>Output minimal width of the ad.</p>
-<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>4<br>garage for sa-le</p>
-<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>7</p>
-<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>报纸刊登广告，已知“-”和空格都是可以换行的位置，现在要求广告整理成k行，现在问长度最大的那行的长度最小可以为多少?（包含空格和“-”）</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>最近在刷二分，所以回头把上一场codeforeces的这题给补了。根据题意要最小化最大值，显然可以对猜测的结果进行二分。先把可以拆分的每一段都转化为不同长度的木板存入数组，利用贪心思想，按顺序for一遍，能够结合成为一块板子的果断结合，不能的划分数加一，处理下一块板子使它继续结合即可。如果某一块板子长度大于当前二分mid值，返回false，最后结果如果大于k，由于已经贪心了最优策略，所以是无论怎样结合也不可能符合条件划分为k个的（反之总可以随意划分到k块），返回false，其他返回true即可。1A之。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e6</span>+<span class="number">10</span>;</div><div class="line"><span class="keyword">int</span> a[maxn];</div><div class="line"><span class="keyword">int</span> k,cnt;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> mid)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> num=<span class="number">1</span>,temp=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt;++i)&#123;</div><div class="line">        <span class="keyword">if</span>(a[i]&gt;mid) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">		<span class="keyword">if</span>(temp+a[i]&lt;=mid)&#123;</div><div class="line">			temp+=a[i];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span>&#123;</div><div class="line">			temp=a[i];</div><div class="line">			num++;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(num&lt;=k) <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d\n"</span>,&amp;k);</div><div class="line">	<span class="keyword">char</span> x;</div><div class="line">	<span class="keyword">int</span> temp=<span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> total=<span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%c"</span>,&amp;x) &amp;&amp; x!=<span class="string">'\n'</span>)&#123;</div><div class="line">		++temp;</div><div class="line">		<span class="keyword">if</span>(x==<span class="string">'-'</span> || x==<span class="string">' '</span>)&#123;</div><div class="line">			a[++cnt]=temp;</div><div class="line">			temp=<span class="number">0</span>;</div><div class="line">		&#125;</div><div class="line">        ++total;</div><div class="line">	&#125;</div><div class="line">	a[++cnt]=temp;</div><div class="line">	<span class="keyword">int</span> l=<span class="number">1</span>,r=total;</div><div class="line">	<span class="keyword">int</span> ans;</div><div class="line">	<span class="keyword">while</span>(l&lt;=r)&#123;</div><div class="line">		<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span>(check(mid))&#123;</div><div class="line">			ans=mid;</div><div class="line">			r=mid<span class="number">-1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> l=mid+<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
+        <h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="http://poj.org/problem?id=3104" target="_blank" rel="external">http://poj.org/problem?id=3104</a></p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>It is very hard to wash and especially to dry clothes in winter. But Jane is a very smart girl. She is not afraid of this boring process. Jane has decided to use a radiator to make drying faster. But the radiator is small, so it can hold only one thing at a time.</p>
+<p>Jane wants to perform drying in the minimal possible time. She asked you to write a program that will calculate the minimal time for a given set of clothes.</p>
+<p>There are n clothes Jane has just washed. Each of them took ai water during washing. Every minute the amount of water contained in each thing decreases by one (of course, only if the thing is not completely dry yet). When amount of water contained becomes zero the cloth becomes dry and is ready to be packed.</p>
+<p>Every minute Jane can select one thing to dry on the radiator. The radiator is very hot, so the amount of water in this thing decreases by k this minute (but not less than zero — if the thing contains less than k water, the resulting amount of water will be zero).</p>
+<p>The task is to minimize the total time of drying by means of using the radiator effectively. The drying process ends when all the clothes are dry.</p>
+<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>The first line contains a single integer n (1 ≤ n ≤ 100 000). The second line contains ai separated by spaces (1 ≤ ai ≤ 109). The third line contains k (1 ≤ k ≤ 109).</p>
+<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>Output a single integer — the minimal possible number of minutes required to dry all clothes.</p>
+<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>sample input #1<br>3<br>2 3 9<br>5</p>
+<p>sample input #2<br>3<br>2 3 6<br>5</p>
+<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>sample output #1<br>3</p>
+<p>sample output #2<br>2</p>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>现在要晾衣服，已知风干的时候每分钟减少1单位的水，放干衣机每分钟可以减少k单位的水，但是每次只能放入一件，问最少时间为多少？</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>由贪心思想，在二分判断的时候应该先满足含水量最大的进入干衣机，把多出mid的部分烘干掉，由于每次只能放入一件，所以要向上取整，但是用ceil函数处理会超时，故用加上k-1再除k的技巧来进行向上取整。其余含水量小于mid的衣服全部风干即可，在for的过程中判断总用时是否超过mid，超过的话返回false。因为公式推得不对除了k错了一发，事实上是除k-1，因为假设用机器x分钟，应该有剩余时间风干量加上机器风干量等于放入机器前的水量成立，即<br><strong>kx+(mid-cur-x)=ai-cur =&gt; x=(a[i]-mid)/(k-1)</strong><br>所以要k–后进行判断，注意这个思想是没办法判断k=1的情况的，因为会RE（除0）所以一定要特判掉。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e5</span>+<span class="number">10</span>;</div><div class="line"><span class="keyword">int</span> a[maxn],n,k;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> a&gt;b;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(ll mid)</span></span>&#123;</div><div class="line">    ll crt=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)&#123;</div><div class="line">        <span class="keyword">if</span>(a[i]&lt;=mid) <span class="keyword">continue</span>;</div><div class="line">        crt+=(a[i]-mid+k<span class="number">-1</span>)/k;</div><div class="line">        <span class="keyword">if</span>(crt&gt;mid) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;k);</div><div class="line">    --k;</div><div class="line">    <span class="keyword">if</span>(k==<span class="number">0</span>)&#123;</div><div class="line">        <span class="keyword">int</span> MAX=<span class="number">-1</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i) MAX=max(MAX,a[i]);</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,MAX);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">else</span> &#123;</div><div class="line">        sort(a, a + n, cmp);</div><div class="line">        ll l = <span class="number">1</span>, r = <span class="number">1e10</span>;</div><div class="line">        <span class="keyword">while</span> (l &lt;= r) &#123;</div><div class="line">            ll mid = (l + r) &gt;&gt; <span class="number">1</span>;</div><div class="line">            <span class="keyword">if</span> (check(mid)) r = mid - <span class="number">1</span>;</div><div class="line">            <span class="keyword">else</span> l = mid + <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,l);</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -422,8 +417,8 @@ There are space-sepa">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/08/CF412/" rel="next" title="Codeforces Round 412 (rated, Div. 2, base on VK Cup 2017 Round 3) 题解 ABC">
-                <i class="fa fa-chevron-left"></i> Codeforces Round 412 (rated, Div. 2, base on VK Cup 2017 Round 3) 题解 ABC
+              <a href="/2017/05/09/626C/" rel="next" title="Codeforces 626 C - Block Towers 二分">
+                <i class="fa fa-chevron-left"></i> Codeforces 626 C - Block Towers 二分
               </a>
             
           </div>
@@ -432,8 +427,8 @@ There are space-sepa">
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/05/09/626C/" rel="prev" title="Codeforces 626 C - Block Towers 二分">
-                Codeforces 626 C - Block Towers 二分 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/05/10/POJ3258/" rel="prev" title="POJ3258 - River Hopscotch 二分">
+                POJ3258 - River Hopscotch 二分 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
