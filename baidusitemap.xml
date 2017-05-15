@@ -5,7 +5,7 @@
     
   <url>
 	  <loc>http://www.hysonn.com/2017/05/15/ECNU3247/</loc>
-    <lastmod>2017-05-15T02:40:11.000Z</lastmod>
+    <lastmod>2017-05-15T05:58:03.000Z</lastmod>
     <data>
         <display>
         <title>ECNU3247 铁路修复计划 - 二分+MST</title>
@@ -15,6 +15,9 @@
          
          
            
+             
+              <breadCrumb title="图论 生成树" url="http://yoursite.com/categories/%E5%9B%BE%E8%AE%BA-%E7%94%9F%E6%88%90%E6%A0%91/"/>
+          
         </display>
     </data>
     </url>
@@ -22,7 +25,7 @@
     
   <url>
 	  <loc>http://www.hysonn.com/2017/05/15/ECNU3260/</loc>
-    <lastmod>2017-05-15T02:25:44.000Z</lastmod>
+    <lastmod>2017-05-15T05:57:11.000Z</lastmod>
     <data>
         <display>
         <title>ECNU3260 袋鼠妈妈找孩子 - DFS暴搜</title>
@@ -33,7 +36,7 @@
          
            
              
-              <breadCrumb title="搜索" url="http://yoursite.com/categories/%E6%90%9C%E7%B4%A2/"/>
+              <breadCrumb title="搜索 DFS" url="http://yoursite.com/categories/%E6%90%9C%E7%B4%A2-DFS/"/>
           
         </display>
     </data>

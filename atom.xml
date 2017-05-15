@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-05-15T02:40:11.000Z</updated>
+  <updated>2017-05-15T05:58:03.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/05/15/ECNU3247/"/>
     <id>http://yoursite.com/2017/05/15/ECNU3247/</id>
     <published>2017-05-15T02:26:11.000Z</published>
-    <updated>2017-05-15T02:40:11.000Z</updated>
+    <updated>2017-05-15T05:58:03.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="http://acm.ecnu.edu.cn/blog/entry/25/" target="_blank" rel="external">http://acm.ecnu.edu.cn/blog/entry/25/</a></p>
 <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>在 A 国有很多城际铁路。这些铁路都连接两个城市（城市从 1 到 n 编号），可以双向通行，使得任意两个城市之间都由铁路网联系起来。</p>
@@ -46,6 +46,8 @@
     
     </summary>
     
+      <category term="图论 生成树" scheme="http://yoursite.com/categories/%E5%9B%BE%E8%AE%BA-%E7%94%9F%E6%88%90%E6%A0%91/"/>
+    
     
       <category term="MST" scheme="http://yoursite.com/tags/MST/"/>
     
@@ -56,7 +58,7 @@
     <link href="http://yoursite.com/2017/05/15/ECNU3260/"/>
     <id>http://yoursite.com/2017/05/15/ECNU3260/</id>
     <published>2017-05-15T02:14:52.000Z</published>
-    <updated>2017-05-15T02:25:44.000Z</updated>
+    <updated>2017-05-15T05:57:11.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="http://acm.ecnu.edu.cn/problem/3260/" target="_blank" rel="external">http://acm.ecnu.edu.cn/problem/3260/</a></p>
 <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>袋鼠妈妈找不到她的孩子了。她的孩子被怪兽抓走了。</p>
@@ -80,7 +82,7 @@
     
     </summary>
     
-      <category term="搜索" scheme="http://yoursite.com/categories/%E6%90%9C%E7%B4%A2/"/>
+      <category term="搜索 DFS" scheme="http://yoursite.com/categories/%E6%90%9C%E7%B4%A2-DFS/"/>
     
     
       <category term="DFS" scheme="http://yoursite.com/tags/DFS/"/>
