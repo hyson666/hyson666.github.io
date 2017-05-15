@@ -4,6 +4,43 @@
 
     
   <url>
+	  <loc>http://www.hysonn.com/2017/05/15/ECNU3247/</loc>
+    <lastmod>2017-05-15T02:40:11.000Z</lastmod>
+    <data>
+        <display>
+        <title>ECNU3247 铁路修复计划 - 二分+MST</title>
+        <pubTime>2017-05-15T02:26:11.000Z</pubTime>
+        
+        <tag>MST</tag>
+         
+         
+           
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+	  <loc>http://www.hysonn.com/2017/05/15/ECNU3260/</loc>
+    <lastmod>2017-05-15T02:25:44.000Z</lastmod>
+    <data>
+        <display>
+        <title>ECNU3260 袋鼠妈妈找孩子 - DFS暴搜</title>
+        <pubTime>2017-05-15T02:14:52.000Z</pubTime>
+        
+        <tag>DFS</tag>
+         
+         
+           
+             
+              <breadCrumb title="搜索" url="http://yoursite.com/categories/%E6%90%9C%E7%B4%A2/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
 	  <loc>http://www.hysonn.com/2017/05/10/POJ3258/</loc>
     <lastmod>2017-05-09T17:37:34.000Z</lastmod>
     <data>
