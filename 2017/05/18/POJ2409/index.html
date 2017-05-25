@@ -100,7 +100,7 @@ DescriptionGiven two strings a and b we define ab to be their concatenation. For
 <meta property="og:site_name" content="HysonQAQ">
 <meta property="og:description" content="题目连接http://poj.org/problem?id=2406
 DescriptionGiven two strings a and b we define ab to be their concatenation. For example, if a = “abc” and b = “def” then ab = “abcdef”. If we think of concatenation">
-<meta property="og:updated_time" content="2017-05-18T02:49:16.000Z">
+<meta property="og:updated_time" content="2017-05-18T02:56:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="POJ2409 Power Strings - KMP裸题">
 <meta name="twitter:description" content="题目连接http://poj.org/problem?id=2406
@@ -347,8 +347,8 @@ DescriptionGiven two strings a and b we define ab to be their concatenation. For
 <h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>1<br>4<br>3</p>
 <h2 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h2><p>This problem has huge input, use scanf instead of cin to avoid time limit exceed.</p>
 <h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>寻找最小循环节，并求循环次数。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>其实寒假做过这种求最小循环节的题，但是太久没有摸过KMP忘记了Next数组怎么操作，特地复习了一遍。简单的说，Next数组可以在模式串和原串失配的时候返回一个前缀和后缀相等的最大位置，而且这个过程是可以递归的。在串中某个循环节不断重复的过程中其实next数组已经记录了最大的滑动位置(如果是重复的，遍历中最大位置确定不变），所以最后要得到的结果为s[next[len]]s[next[len]+1]……s[len-1],如果其长度能够被串本身长度整除，说明它存在不是它本身的子串，否则自己就是长度最大子串，返回1。</p>
-<p>Tips:字符串ababab的Next数组值为-1,0,0,1,2,3。<br>字符串abaabcac的Next数组值为-1,0,0,1,1,2,0,1。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>其实寒假做过这种求最小循环节的题，但是太久没有摸过KMP忘记了Next数组怎么操作，特地复习了一遍。简单的说，Next数组可以在模式串和原串失配的时候返回一个前缀和后缀相等的最大位置，而且这个过程是可以递归的。在串中某个循环节不断重复的过程中其实next数组已经记录了最大的滑动位置，所以最后要得到的结果为s[next[len]]s[next[len]+1]……s[len-1]。如果其长度能够被串本身长度整除，说明它存在不是它本身的子串，否则自己就是长度最大子串，返回1。</p>
+<p>Tips:字符串ababab的Next数组值为-1,0,0,1,2,3,4。<br>字符串abaabcac的Next数组值为-1,0,0,1,1,2,0,1。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e6</span>+<span class="number">10</span>;</div><div class="line"><span class="keyword">char</span> s[maxn];</div><div class="line"><span class="keyword">int</span> Next[maxn];</div><div class="line"><span class="keyword">int</span> len;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_next</span><span class="params">(<span class="keyword">char</span> *s)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">-1</span>;</div><div class="line">    Next[<span class="number">0</span>]=<span class="number">-1</span>;</div><div class="line">    <span class="keyword">while</span>(i&lt;=len)&#123;</div><div class="line">        <span class="keyword">if</span>(j==<span class="number">-1</span> || (i&lt;len &amp;&amp; s[i]==s[j]))&#123;</div><div class="line">            Next[++i]=++j;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            j=Next[j];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    freopen(<span class="string">"in.txt"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s) &amp;&amp; <span class="built_in">strcmp</span>(s,<span class="string">"."</span>)!=<span class="number">0</span>)&#123;</div><div class="line">        len=<span class="built_in">strlen</span>(s);</div><div class="line">        get_next(s);</div><div class="line">        <span class="keyword">if</span>(len%(len-Next[len])==<span class="number">0</span>)</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,len/(len-Next[len]));</div><div class="line">        <span class="keyword">else</span>&#123;</div><div class="line">            <span class="built_in">puts</span>(<span class="string">"1"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
@@ -400,6 +400,10 @@ DescriptionGiven two strings a and b we define ab to be their concatenation. For
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/05/25/plan525/" rel="prev" title="省赛之后的训练计划">
+                省赛之后的训练计划 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -473,7 +477,7 @@ DescriptionGiven two strings a and b we define ab to be their concatenation. For
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">39</span>
+                <span class="site-state-item-count">40</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

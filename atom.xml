@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-05-18T02:49:16.000Z</updated>
+  <updated>2017-05-25T06:54:49.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,35 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>省赛之后的训练计划</title>
+    <link href="http://yoursite.com/2017/05/25/plan525/"/>
+    <id>http://yoursite.com/2017/05/25/plan525/</id>
+    <published>2017-05-25T06:43:54.000Z</published>
+    <updated>2017-05-25T06:54:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>鉴于之前所学的算法知识比较零碎，省赛后要做的就是把所学的算法再次巩固一遍，更加深入地去理解每一个算法不要依赖板子，USACO显然是一个个比较好的选择，之后会针对USACO的课程来进行科学的刷题，并且继续提高自己的手速，将会涵盖的算法内容如下：</p>
+<p>Dynamic Programming<br>Greedy<br>Complete Search<br>Flood Fill<br>Shortest Path<br>Recursive Search Techniques<br>Minimum Spanning Tree<br>Knapsack<br>Computational Geometry<br>Network Flow<br>Eulerian Path<br>Two-Dimensional Convex Hull<br>BigNums<br>Heuristic Search<br>Approximate Search<br>Ad Hoc Problems</p>
+<p>将会采用USACO+白书+SPOJ的训练模式，为之后刷紫书做铺垫。<br>此外以后的每一场CodeForces仍然会坚持打，坚持补题。<br>新旅途开始，加油！</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;鉴于之前所学的算法知识比较零碎，省赛后要做的就是把所学的算法再次巩固一遍，更加深入地去理解每一个算法不要依赖板子，USACO显然是一个个比较好的选择，之后会针对USACO的课程来进行科学的刷题，并且继续提高自己的手速，将会涵盖的算法内容如下：&lt;/p&gt;
+&lt;p&gt;Dynamic 
+    
+    </summary>
+    
+      <category term="随笔" scheme="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
+    
+    
+  </entry>
+  
+  <entry>
     <title>POJ2409 Power Strings - KMP裸题</title>
     <link href="http://yoursite.com/2017/05/18/POJ2409/"/>
     <id>http://yoursite.com/2017/05/18/POJ2409/</id>
     <published>2017-05-18T02:27:30.000Z</published>
-    <updated>2017-05-18T02:49:16.000Z</updated>
+    <updated>2017-05-18T02:56:35.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="http://poj.org/problem?id=2406" target="_blank" rel="external">http://poj.org/problem?id=2406</a></p>
 <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given two strings a and b we define a<em>b to be their concatenation. For example, if a = “abc” and b = “def” then a</em>b = “abcdef”. If we think of concatenation as multiplication, exponentiation by a non-negative integer is defined in the normal way: a^0 = “” (the empty string) and a^(n+1) = a*(a^n).</p>
@@ -30,8 +54,8 @@
 <h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>1<br>4<br>3</p>
 <h2 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h2><p>This problem has huge input, use scanf instead of cin to avoid time limit exceed.</p>
 <h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>寻找最小循环节，并求循环次数。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>其实寒假做过这种求最小循环节的题，但是太久没有摸过KMP忘记了Next数组怎么操作，特地复习了一遍。简单的说，Next数组可以在模式串和原串失配的时候返回一个前缀和后缀相等的最大位置，而且这个过程是可以递归的。在串中某个循环节不断重复的过程中其实next数组已经记录了最大的滑动位置(如果是重复的，遍历中最大位置确定不变），所以最后要得到的结果为s[next[len]]s[next[len]+1]……s[len-1],如果其长度能够被串本身长度整除，说明它存在不是它本身的子串，否则自己就是长度最大子串，返回1。</p>
-<p>Tips:字符串ababab的Next数组值为-1,0,0,1,2,3。<br>字符串abaabcac的Next数组值为-1,0,0,1,1,2,0,1。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>其实寒假做过这种求最小循环节的题，但是太久没有摸过KMP忘记了Next数组怎么操作，特地复习了一遍。简单的说，Next数组可以在模式串和原串失配的时候返回一个前缀和后缀相等的最大位置，而且这个过程是可以递归的。在串中某个循环节不断重复的过程中其实next数组已经记录了最大的滑动位置，所以最后要得到的结果为s[next[len]]s[next[len]+1]……s[len-1]。如果其长度能够被串本身长度整除，说明它存在不是它本身的子串，否则自己就是长度最大子串，返回1。</p>
+<p>Tips:字符串ababab的Next数组值为-1,0,0,1,2,3,4。<br>字符串abaabcac的Next数组值为-1,0,0,1,1,2,0,1。</p>
 <h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e6</span>+<span class="number">10</span>;</div><div class="line"><span class="keyword">char</span> s[maxn];</div><div class="line"><span class="keyword">int</span> Next[maxn];</div><div class="line"><span class="keyword">int</span> len;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_next</span><span class="params">(<span class="keyword">char</span> *s)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">-1</span>;</div><div class="line">    Next[<span class="number">0</span>]=<span class="number">-1</span>;</div><div class="line">    <span class="keyword">while</span>(i&lt;=len)&#123;</div><div class="line">        <span class="keyword">if</span>(j==<span class="number">-1</span> || (i&lt;len &amp;&amp; s[i]==s[j]))&#123;</div><div class="line">            Next[++i]=++j;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            j=Next[j];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    freopen(<span class="string">"in.txt"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s) &amp;&amp; <span class="built_in">strcmp</span>(s,<span class="string">"."</span>)!=<span class="number">0</span>)&#123;</div><div class="line">        len=<span class="built_in">strlen</span>(s);</div><div class="line">        get_next(s);</div><div class="line">        <span class="keyword">if</span>(len%(len-Next[len])==<span class="number">0</span>)</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,len/(len-Next[len]));</div><div class="line">        <span class="keyword">else</span>&#123;</div><div class="line">            <span class="built_in">puts</span>(<span class="string">"1"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
     
     <summary type="html">
@@ -642,39 +666,6 @@
     </summary>
     
       <category term="其他 水题" scheme="http://yoursite.com/categories/%E5%85%B6%E4%BB%96-%E6%B0%B4%E9%A2%98/"/>
-    
-    
-      <category term="素数" scheme="http://yoursite.com/tags/%E7%B4%A0%E6%95%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>POJ2034 Anti-prime Sequences - 素数打表+DFS</title>
-    <link href="http://yoursite.com/2017/04/26/POJ2034/"/>
-    <id>http://yoursite.com/2017/04/26/POJ2034/</id>
-    <published>2017-04-26T06:27:09.000Z</published>
-    <updated>2017-04-26T06:36:03.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="http://poj.org/problem?id=2034" target="_blank" rel="external">http://poj.org/problem?id=2034</a></p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given a sequence of consecutive integers n,n+1,n+2,…,m, an anti-prime sequence is a rearrangement of these integers so that each adjacent pair of integers sums to a composite (non-prime) number. For example, if n = 1 and m = 10, one such anti-prime sequence is 1,3,5,4,2,6,9,7,8,10. This is also the lexicographically first such sequence. </p>
-<p>We can extend the definition by defining a degree danti-prime sequence as one where all consecutive subsequences of length 2,3,…,d sum to a composite number. The sequence above is a degree 2 anti-prime sequence, but not a degree 3, since the subsequence 5, 4, 2 sums to 11. The lexicographically .rst degree 3 anti-prime sequence for these numbers is 1,3,5,4,6,2,10,8,7,9. </p>
-<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>Input will consist of multiple input sets. Each set will consist of three integers, n, m, and d on a single line. The values of n, m and d will satisfy 1 &lt;= n &lt; m &lt;= 1000, and 2 &lt;= d &lt;= 10. The line 0 0 0 will indicate end of input and should not be processed.</p>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>For each input set, output a single line consisting of a comma-separated list of integers forming a degree danti-prime sequence (do not insert any spaces and do not split the output over multiple lines). In the case where more than one anti-prime sequence exists, print the lexicographically first one (i.e., output the one with the lowest first value; in case of a tie, the lowest second value, etc.). In the case where no anti-prime sequence exists, output </p>
-<p>No anti-prime sequence exists. </p>
-<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>1 10 2<br>1 10 3<br>1 10 5<br>40 60 7<br>0 0 0</p>
-<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>1,3,5,4,2,6,9,7,8,10<br>1,3,5,4,6,2,10,8,7,9<br>No anti-prime sequence exists.<br>40,41,43,42,44,46,45,47,48,50,55,53,52,60,56,49,51,59,58,57,54</p>
-<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>定义一串数字的度d为任意连续2~d-1的连续数字相加都不为素食，现在给出起点n和终点m，区间内的每个整数只能使用一次，要求构造出一个度为d的数字串。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>先打素数表，然后进行DFS搜索，每次搜索只需要确定该个数及其前面d-1个数字是否符合要求即可（当前搜索的状态的前一个状态必已经符合要求），不满足的情况进行回溯即可。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1010</span>;</div><div class="line"><span class="keyword">int</span> ans[maxn],m,n,d,prime[maxn],vis[maxn],used[maxn],ok;</div><div class="line"><span class="keyword">bool</span> is_prime[maxn],exist;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init_prime_table</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> num=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!vis[i])&#123;</div><div class="line">			prime[++num]=i;</div><div class="line">			is_prime[i]=<span class="literal">true</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=num &amp;&amp; i*prime[j]&lt;=n;++j)&#123;</div><div class="line">			vis[i*prime[j]] = <span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>) <span class="keyword">break</span>;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> total,<span class="keyword">int</span> cnt,<span class="keyword">int</span> sum)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(total==ok) &#123;exist=<span class="literal">true</span>; <span class="keyword">return</span>;&#125;</div><div class="line">	<span class="keyword">if</span>(cnt==d &amp;&amp; is_prime[sum]) <span class="keyword">return</span>;</div><div class="line">	<span class="keyword">if</span>(cnt==d &amp;&amp; !is_prime[sum]) &#123;cnt=<span class="number">0</span>,sum=<span class="number">0</span>;&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=m;i&lt;=n;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(!vis[i])&#123;</div><div class="line">			dfs(total+<span class="number">1</span>,cnt+<span class="number">1</span>,sum+i);</div><div class="line">			vis[i]=<span class="number">1</span>;</div><div class="line">		&#125;</div><div class="line">		vis[i]=<span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	init_prime_table(maxn);</div><div class="line">	<span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;m,&amp;n,&amp;d))&#123;</div><div class="line">		<span class="keyword">if</span>(m==<span class="number">0</span> &amp;&amp; n==<span class="number">0</span> &amp;&amp; d==<span class="number">0</span>) <span class="keyword">break</span>;</div><div class="line">		<span class="keyword">int</span> cnt=m-n+<span class="number">1</span>;</div><div class="line">		<span class="keyword">int</span> ok=cnt;</div><div class="line">		dfs(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>);</div><div class="line">		<span class="keyword">int</span> first=<span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cnt;++i)&#123;</div><div class="line">			<span class="keyword">if</span>(!first) <span class="built_in">printf</span>(<span class="string">" "</span>);</div><div class="line">			<span class="built_in">printf</span>(<span class="string">"%d"</span>,ans[i]);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目连接&quot;&gt;&lt;a href=&quot;#题目连接&quot; class=&quot;headerlink&quot; title=&quot;题目连接&quot;&gt;&lt;/a&gt;题目连接&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://poj.org/problem?id=2034&quot; target=&quot;_blank&quot; rel=&quot;
-    
-    </summary>
-    
-      <category term="搜索 DFS" scheme="http://yoursite.com/categories/%E6%90%9C%E7%B4%A2-DFS/"/>
     
     
       <category term="素数" scheme="http://yoursite.com/tags/%E7%B4%A0%E6%95%B0/"/>
