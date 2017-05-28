@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-05-25T06:54:49.000Z</updated>
+  <updated>2017-05-28T04:08:47.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,63 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>USACO 1.1 Broken Necklace</title>
+    <link href="http://yoursite.com/2017/05/28/11necklace/"/>
+    <id>http://yoursite.com/2017/05/28/11necklace/</id>
+    <published>2017-05-28T03:59:42.000Z</published>
+    <updated>2017-05-28T04:08:47.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="http://train.usaco.org/usacoprob2?a=XoNUWPzYQSw&amp;S=beads" target="_blank" rel="external">http://train.usaco.org/usacoprob2?a=XoNUWPzYQSw&amp;S=beads</a></p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>You have a necklace of N red, white, or blue beads (3&lt;=N&lt;=350) some of which are red, others blue, and others white, arranged at random. Here are two examples for n=29:</p>
+<pre><code>          1 2                               1 2
+      r b b r                           b r r b
+    r         b                       b         b
+   r           r                     b           r
+  r             r                   w             r
+ b               r                 w               w
+b                 b               r                 r
+b                 b               b                 b
+b                 b               r                 b
+ r               r                 b               r
+  b             r                   r             r
+   b           r                     r           r
+     r       r                         r       b
+       r b r                             r r w
+      Figure A                         Figure B
+                  r red bead
+                  b blue bead
+                  w white bead
+</code></pre><p>The beads considered first and second in the text that follows have been marked in the picture.</p>
+<p>The configuration in Figure A may be represented as a string of b’s and r’s, where b represents a blue bead and r represents a red one, as follows: brbrrrbbbrrrrrbrrbbrbbbbrrrrb .</p>
+<p>Suppose you are to break the necklace at some point, lay it out straight, and then collect beads of the same color from one end until you reach a bead of a different color, and do the same for the other end (which might not be of the same color as the beads collected before this).</p>
+<p>Determine the point where the necklace should be broken so that the most number of beads can be collected.</p>
+<p>Example</p>
+<p>For example, for the necklace in Figure A, 8 beads can be collected, with the breaking point either between bead 9 and bead 10 or else between bead 24 and bead 25.</p>
+<p>In some necklaces, white beads had been included as shown in Figure B above. When collecting beads, a white bead that is encountered may be treated as either red or blue and then painted with the desired color. The string that represents this configuration can include any of the three symbols r, b and w.</p>
+<p>Write a program to determine the largest number of beads that can be collected from a supplied necklace.</p>
+<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>Line 1:    N, the number of beads<br>Line 2:    a string of N characters, each of which is r, b, or w</p>
+<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>A single line containing the maximum of number of beads that can be collected from the supplied necklace.</p>
+<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>29<br>wwwbbrwrbrbrrbrbrwrwwrbwrwrrb</p>
+<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>11</p>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>从某一个端点断开项链，然后从断开的两端数珠子，直到第一个与数的珠子颜色不同的珠子，停止计数。其中W颜色可以染色成R颜色或者B颜色。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>虽然说是水题，但是这题实在是不会啊，代码写得很乱很难看啊，只能过过样例啊，只好看官方题解了，在参数多于两个的时候应该调用函数封装好，比如本题的数珠子的方向dir与断点i。还有取余的模拟环操作也要注意判断是否为负，为负加一个len就可以了。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">ID: hyson601</div><div class="line">PROG: beads</div><div class="line">LANG: C++</div><div class="line">*/</div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fstream&gt;</span></span></div><div class="line"></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span>+<span class="number">10</span>;</div><div class="line"><span class="keyword">char</span> s[maxn];</div><div class="line"><span class="keyword">int</span> len;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">mod</span><span class="params">(<span class="keyword">int</span> n,<span class="keyword">int</span> m)</span></span>&#123;</div><div class="line">    <span class="keyword">while</span>(n&lt;<span class="number">0</span>) n+=m;</div><div class="line">    <span class="keyword">return</span> n%m;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">tobreak</span><span class="params">(<span class="keyword">int</span> p,<span class="keyword">int</span> dir)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> i;</div><div class="line">    <span class="keyword">int</span> n;</div><div class="line">    <span class="keyword">if</span>(dir&gt;<span class="number">0</span>) i=p;</div><div class="line">    <span class="keyword">else</span> i=mod(p<span class="number">-1</span>,len);</div><div class="line">    <span class="keyword">char</span> color=<span class="string">'w'</span>;</div><div class="line">    <span class="keyword">for</span>(n=<span class="number">0</span>;n&lt;len;i=mod(i+dir,len))&#123;</div><div class="line">        <span class="keyword">if</span>(color==<span class="string">'w'</span> &amp;&amp; s[i]!=<span class="string">'w'</span>)</div><div class="line">            color=s[i];</div><div class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(color!=s[i] &amp;&amp; s[i]!=<span class="string">'w'</span>)</div><div class="line">            <span class="keyword">break</span>;</div><div class="line">        ++n;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> n;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    freopen(<span class="string">"beads.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">    freopen(<span class="string">"beads.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;len);</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%s"</span>,s);</div><div class="line">    <span class="keyword">int</span> n,m=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;len;++i)&#123;</div><div class="line">        n=tobreak(i,<span class="number">1</span>)+tobreak(i,<span class="number">-1</span>);</div><div class="line">        <span class="keyword">if</span>(n&gt;m) m=n;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">if</span>(m&gt;len) m=len;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,m);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;题目连接&quot;&gt;&lt;a href=&quot;#题目连接&quot; class=&quot;headerlink&quot; title=&quot;题目连接&quot;&gt;&lt;/a&gt;题目连接&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://train.usaco.org/usacoprob2?a=XoNUWPzYQSw&amp;amp;S
+    
+    </summary>
+    
+      <category term="其他 水题" scheme="http://yoursite.com/categories/%E5%85%B6%E4%BB%96-%E6%B0%B4%E9%A2%98/"/>
+    
+    
+      <category term="AD HOC" scheme="http://yoursite.com/tags/AD-HOC/"/>
+    
+  </entry>
   
   <entry>
     <title>省赛之后的训练计划</title>
@@ -629,39 +686,6 @@
     <summary type="html">
     
       &lt;h2 id=&quot;题目连接&quot;&gt;&lt;a href=&quot;#题目连接&quot; class=&quot;headerlink&quot; title=&quot;题目连接&quot;&gt;&lt;/a&gt;题目连接&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://poj.org/problem?id=2739&quot; target=&quot;_blank&quot; rel=&quot;
-    
-    </summary>
-    
-      <category term="其他 水题" scheme="http://yoursite.com/categories/%E5%85%B6%E4%BB%96-%E6%B0%B4%E9%A2%98/"/>
-    
-    
-      <category term="素数" scheme="http://yoursite.com/tags/%E7%B4%A0%E6%95%B0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>POJ1595 Prime Cuts - 水题</title>
-    <link href="http://yoursite.com/2017/04/29/POJ1595/"/>
-    <id>http://yoursite.com/2017/04/29/POJ1595/</id>
-    <published>2017-04-28T17:33:24.000Z</published>
-    <updated>2017-04-28T17:39:14.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="http://poj.org/problem?id=1595" target="_blank" rel="external">http://poj.org/problem?id=1595</a></p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>A prime number is a counting number (1, 2, 3, …) that is evenly divisible only by 1 and itself. In this problem you are to write a program that will cut some number of prime numbers from the list of prime numbers between (and including) 1 and N. Your program will read in a number N; determine the list of prime numbers between 1 and N; and print the C*2 prime numbers from the center of the list if there are an even number of prime numbers or (C*2)-1 prime numbers from the center of the list if there are an odd number of prime numbers in the list.</p>
-<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p> Each input set will be on a line by itself and will consist of 2 numbers. The first number (1 &lt;= N &lt;= 1000) is the maximum number in the complete list of prime numbers between 1 and N. The second number (1 &lt;= C &lt;= N) defines the C*2 prime numbers to be printed from the center of the list if the length of the list is even; or the (C*2)-1 numbers to be printed from the center of the list if the length of the list is odd.</p>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>For each input set, you should print the number N beginning in column 1 followed by a space, then by the number C, then by a colon (:), and then by the center numbers from the list of prime numbers as defined above. If the size of the center list exceeds the limits of the list of prime numbers between 1 and N, the list of prime numbers between 1 and N (inclusive) should be printed. Each number from the center of the list should be preceded by exactly one blank. Each line of output should be followed by a blank line. Hence, your output should follow the exact format shown in the sample output.</p>
-<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>21 2<br>18 2<br>18 18<br>100 7</p>
-<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>21 2: 5 7 11</p>
-<p>18 2: 3 5 7 11</p>
-<p>18 18: 1 2 3 5 7 11 13 17</p>
-<p>100 7: 13 17 19 23 29 31 37 41 43 47 53 59 61 67</p>
-<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>给出一个数，如果在它前面的素数有奇数个，则输出前面n个素数中心附近的2*c-1个数字，若为偶数个，则输出中心附近的2*c个数字。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>打表后计算前面素数的个数，分情况处理即可。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e3</span>+<span class="number">50</span>,maxp=<span class="number">1e4</span>+<span class="number">10</span>;</div><div class="line"><span class="keyword">bool</span> visit[maxp],is_prime[maxn];</div><div class="line"><span class="keyword">int</span> prime[maxn];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">init_prime_factor</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> num=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;++i)&#123;</div><div class="line">        <span class="keyword">if</span>(!visit[i]) prime[++num]=i;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=num &amp;&amp; i*prime[j]&lt;=n;++j)&#123;</div><div class="line">            visit[i*prime[j]] = <span class="number">1</span>;</div><div class="line">            <span class="keyword">if</span>(i%prime[j]==<span class="number">0</span>) <span class="keyword">break</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    prime[<span class="number">0</span>]=<span class="number">1</span>;</div><div class="line">    init_prime_factor(maxn);</div><div class="line">    <span class="keyword">int</span> n,c,center;</div><div class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;c))&#123;</div><div class="line">        <span class="keyword">int</span> first=<span class="number">1</span>;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)&#123;</div><div class="line">            <span class="keyword">if</span>(prime[i]&gt;n)&#123;</div><div class="line">                <span class="keyword">if</span>(i%<span class="number">2</span>)&#123;</div><div class="line">                    center = (i<span class="number">-1</span>)/<span class="number">2</span>;</div><div class="line">                    <span class="built_in">printf</span>(<span class="string">"%d %d: "</span>,n,c);</div><div class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> j=max(center-c+<span class="number">1</span>,<span class="number">0</span>);j&lt;=min(i<span class="number">-1</span>,center+c<span class="number">-1</span>);++j)&#123;</div><div class="line">                        <span class="keyword">if</span>(!first) <span class="built_in">printf</span>(<span class="string">" "</span>);</div><div class="line">                        first=<span class="number">0</span>;</div><div class="line">                        <span class="built_in">printf</span>(<span class="string">"%d"</span>,prime[j]);</div><div class="line">                    &#125;</div><div class="line">                    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">                <span class="keyword">else</span>&#123;</div><div class="line">                    center = (i<span class="number">-1</span>)/<span class="number">2</span>;</div><div class="line">                    <span class="built_in">printf</span>(<span class="string">"%d %d: "</span>,n,c);</div><div class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> j=max(center-c+<span class="number">1</span>,<span class="number">0</span>);j&lt;=min(center+c,i<span class="number">-1</span>);++j)&#123;</div><div class="line">                        <span class="keyword">if</span>(!first) <span class="built_in">printf</span>(<span class="string">" "</span>);</div><div class="line">                        first=<span class="number">0</span>;</div><div class="line">                        <span class="built_in">printf</span>(<span class="string">"%d"</span>,prime[j]);</div><div class="line">                    &#125;</div><div class="line">                    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">                    <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(n==<span class="number">1</span>)&#123;</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"1 1: 1\n"</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">printf</span>(<span class="string">"\n"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目连接&quot;&gt;&lt;a href=&quot;#题目连接&quot; class=&quot;headerlink&quot; title=&quot;题目连接&quot;&gt;&lt;/a&gt;题目连接&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://poj.org/problem?id=1595&quot; target=&quot;_blank&quot; rel=&quot;
     
     </summary>
     
