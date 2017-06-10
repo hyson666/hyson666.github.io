@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="MathJax," />
 
 
 
@@ -92,16 +92,17 @@
 
 
 
-<meta name="description" content="$J(\theta_1,\theta2)=\frac{1}{2m}\sum{i=1}^{m}(\widehat{y_i}-yi)^2 = \frac{1}{2m}\sum{i=1}^{m}(h_0(x_i)-y_i)^2$">
+<meta name="description" content="最近在学习机器学习，课堂笔记中免不了有大量的数学公式，为了避免截图的麻烦，学习了用MathJax来渲染数学公式。Hexo完美地支持了MathJax的使用，但是由于渲染引擎的问题，默认情况下会出现不渲染的问题。 原因（引自推酷作者ShallowLearner）Hexo默认使用”hexo-renderer-marked”引擎渲染网页，该引擎会把一些特殊的markdown符号转换为相应的html标签">
+<meta name="keywords" content="MathJax">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test">
+<meta property="og:title" content="在Hexo中渲染MathJax数学公式">
 <meta property="og:url" content="http://yoursite.com/2017/06/10/test/index.html">
 <meta property="og:site_name" content="HysonQAQ">
-<meta property="og:description" content="$J(\theta_1,\theta2)=\frac{1}{2m}\sum{i=1}^{m}(\widehat{y_i}-yi)^2 = \frac{1}{2m}\sum{i=1}^{m}(h_0(x_i)-y_i)^2$">
-<meta property="og:updated_time" content="2017-06-10T11:50:09.000Z">
+<meta property="og:description" content="最近在学习机器学习，课堂笔记中免不了有大量的数学公式，为了避免截图的麻烦，学习了用MathJax来渲染数学公式。Hexo完美地支持了MathJax的使用，但是由于渲染引擎的问题，默认情况下会出现不渲染的问题。 原因（引自推酷作者ShallowLearner）Hexo默认使用”hexo-renderer-marked”引擎渲染网页，该引擎会把一些特殊的markdown符号转换为相应的html标签">
+<meta property="og:updated_time" content="2017-06-10T13:25:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="test">
-<meta name="twitter:description" content="$J(\theta_1,\theta2)=\frac{1}{2m}\sum{i=1}^{m}(\widehat{y_i}-yi)^2 = \frac{1}{2m}\sum{i=1}^{m}(h_0(x_i)-y_i)^2$">
+<meta name="twitter:title" content="在Hexo中渲染MathJax数学公式">
+<meta name="twitter:description" content="最近在学习机器学习，课堂笔记中免不了有大量的数学公式，为了避免截图的麻烦，学习了用MathJax来渲染数学公式。Hexo完美地支持了MathJax的使用，但是由于渲染引擎的问题，默认情况下会出现不渲染的问题。 原因（引自推酷作者ShallowLearner）Hexo默认使用”hexo-renderer-marked”引擎渲染网页，该引擎会把一些特殊的markdown符号转换为相应的html标签">
 
 
 
@@ -135,7 +136,7 @@
 
 
 
-  <title> test | HysonQAQ </title>
+  <title> 在Hexo中渲染MathJax数学公式 | HysonQAQ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -285,7 +286,7 @@
             
             
               
-                test
+                在Hexo中渲染MathJax数学公式
               
             
           </h1>
@@ -310,6 +311,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/随笔/" itemprop="url" rel="index">
+                    <span itemprop="name">随笔</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -336,7 +359,29 @@
       
 
       
-        <p>$J(\theta_1,\theta<em>2)=\frac{1}{2m}\sum</em>{i=1}^{m}(\widehat{y_i}-y<em>i)^2 = \frac{1}{2m}\sum</em>{i=1}^{m}(h_0(x_i)-y_i)^2$</p>
+        <p>  最近在学习机器学习，课堂笔记中免不了有大量的数学公式，为了避免截图的麻烦，学习了用MathJax来渲染数学公式。Hexo完美地支持了MathJax的使用，但是由于渲染引擎的问题，默认情况下会出现不渲染的问题。</p>
+<h2 id="原因（引自推酷作者ShallowLearner）"><a href="#原因（引自推酷作者ShallowLearner）" class="headerlink" title="原因（引自推酷作者ShallowLearner）"></a>原因（引自推酷作者ShallowLearner）</h2><p>Hexo默认使用”hexo-renderer-marked”引擎渲染网页，该引擎会把一些特殊的markdown符号转换为相应的html标签，比如在markdown语法中，下划线’_’代表斜体，会被渲染引擎处理为<em>标签。</em></p>
+<p>因为类Latex格式书写的数学公式下划线 ‘_’ 表示下标，有特殊的含义，如果被强制转换为&lt;\em&gt;标签，那么MathJax引擎在渲染数学公式的时候就会出错。例如，$x_i$在开始被渲染的时候，处理为\$x&lt;\em&gt;i&lt;/em&gt;$，这样MathJax引擎就认为该公式有语法错误，因为不会渲染。</p>
+<p>类似的语义冲突的符号还包括’*’, ‘{‘, ‘}’, ‘\’等。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>可以更换渲染引擎为<a href="https://github.com/sun11/hexo-renderer-kramed" target="_blank" rel="external">hexo-renderer-kramed</a>，其修复了默认引擎的一些Bug，能够更好地渲染MathJax公式而避免转义的麻烦。<br>安装过程如下：</p>
+<blockquote>
+<p>npm uninstall hexo-renderer-marked —save<br>npm install hexo-renderer-kramed —save</p>
+</blockquote>
+<h2 id="在主题中开启mathjax开关"><a href="#在主题中开启mathjax开关" class="headerlink" title="在主题中开启mathjax开关"></a>在主题中开启mathjax开关</h2><p>打开主题的 _config.yml 文件，如下片段：</p>
+<blockquote>
+<p># MathJax Support<br>mathjax:<br>  enable: flase<br>  per_page: false<br>  cdn: //cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML</p>
+</blockquote>
+<p>修改两个false值为true即可打开MathJax的支持。<br>此外为了提高访问速度，MathJax并不是全局打开的，要在需要使用MathJax的文章Front-matter打开开关才可以使用，格式如下：</p>
+<blockquote>
+<p>-—<br>title: index.html<br>date: 2017-12-28 2017-06-10 19:34:20<br>tags:<br>mathjax: true<br>-—</p>
+</blockquote>
+<h2 id="使用实例"><a href="#使用实例" class="headerlink" title="使用实例"></a>使用实例</h2><p>输入如下的LaTeX公式：</p>
+<blockquote>
+<p>$$<br>J(\theta<em>1,\theta_2)=\frac{1}{2m}\sum</em>{i=1}^{m}(\widehat{y<em>i}-y_i)^2 = \frac{1}{2m}\sum</em>{i=1}^{m}(h_0(x_i)-y_i)^2<br>$$</p>
+</blockquote>
+<p>即可渲染为：</p>
+<script type="math/tex; mode=display">
+J(\theta_1,\theta_2)=\frac{1}{2m}\sum_{i=1}^{m}(\widehat{y_i}-y_i)^2 = \frac{1}{2m}\sum_{i=1}^{m}(h_0(x_i)-y_i)^2</script><p>此外，如果你不熟悉MathJax的语法，可以借助下列网站来帮助你生成LaTeX代码：<br><a href="http://latex.codecogs.com/eqneditor/editor.php" target="_blank" rel="external">http://latex.codecogs.com/eqneditor/editor.php</a></p>
 
       
     </div>
@@ -363,6 +408,12 @@
     </div>
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MathJax/" rel="tag"># MathJax</a>
+          
+        </div>
       
 
       
@@ -430,8 +481,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/头像.gif"
@@ -468,7 +528,7 @@
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">19</span>
+                <span class="site-state-item-count">20</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -529,6 +589,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#原因（引自推酷作者ShallowLearner）"><span class="nav-number">1.</span> <span class="nav-text">原因（引自推酷作者ShallowLearner）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决方法"><span class="nav-number">2.</span> <span class="nav-text">解决方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在主题中开启mathjax开关"><span class="nav-number">3.</span> <span class="nav-text">在主题中开启mathjax开关</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用实例"><span class="nav-number">4.</span> <span class="nav-text">使用实例</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
