@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="二分," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -92,17 +92,16 @@
 
 
 
-<meta name="description" content="题目连接http://poj.org/problem?id=3258 DescriptionEvery year the cows hold an event featuring a peculiar version of hopscotch that involves carefully jumping from rock to rock in a river. The excitement t">
-<meta name="keywords" content="二分">
+<meta name="description" content="题目连接http://train.usaco.org/usacoprob2?a=ONvqe5bkAcm&amp;amp;S=milk2 DescriptionThree farmers rise at 5 am each morning and head for the barn to milk three cows. The first farmer begins milking his cow at">
 <meta property="og:type" content="article">
-<meta property="og:title" content="POJ3258 - River Hopscotch 二分">
-<meta property="og:url" content="http://yoursite.com/2017/05/10/POJ3258/index.html">
+<meta property="og:title" content="USACO 1.2 Milking Cows">
+<meta property="og:url" content="http://yoursite.com/2017/06/12/12milking/index.html">
 <meta property="og:site_name" content="HysonQAQ">
-<meta property="og:description" content="题目连接http://poj.org/problem?id=3258 DescriptionEvery year the cows hold an event featuring a peculiar version of hopscotch that involves carefully jumping from rock to rock in a river. The excitement t">
-<meta property="og:updated_time" content="2017-05-09T17:37:34.000Z">
+<meta property="og:description" content="题目连接http://train.usaco.org/usacoprob2?a=ONvqe5bkAcm&amp;amp;S=milk2 DescriptionThree farmers rise at 5 am each morning and head for the barn to milk three cows. The first farmer begins milking his cow at">
+<meta property="og:updated_time" content="2017-06-11T16:45:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="POJ3258 - River Hopscotch 二分">
-<meta name="twitter:description" content="题目连接http://poj.org/problem?id=3258 DescriptionEvery year the cows hold an event featuring a peculiar version of hopscotch that involves carefully jumping from rock to rock in a river. The excitement t">
+<meta name="twitter:title" content="USACO 1.2 Milking Cows">
+<meta name="twitter:description" content="题目连接http://train.usaco.org/usacoprob2?a=ONvqe5bkAcm&amp;amp;S=milk2 DescriptionThree farmers rise at 5 am each morning and head for the barn to milk three cows. The first farmer begins milking his cow at">
 
 
 
@@ -130,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/10/POJ3258/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/12/12milking/"/>
 
 
 
 
 
-  <title> POJ3258 - River Hopscotch 二分 | HysonQAQ </title>
+  <title> USACO 1.2 Milking Cows | HysonQAQ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -265,7 +264,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/10/POJ3258/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/12/12milking/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hyson">
@@ -286,7 +285,7 @@
             
             
               
-                POJ3258 - River Hopscotch 二分
+                USACO 1.2 Milking Cows
               
             
           </h1>
@@ -301,8 +300,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-10T01:26:15+08:00">
-                2017-05-10
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-12T00:34:37+08:00">
+                2017-06-12
               </time>
             
 
@@ -324,8 +323,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/其他-二分/" itemprop="url" rel="index">
-                    <span itemprop="name">其他 二分</span>
+                  <a href="/categories/其他-水题/" itemprop="url" rel="index">
+                    <span itemprop="name">其他 水题</span>
                   </a>
                 </span>
 
@@ -364,19 +363,17 @@
       
 
       
-        <h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="http://poj.org/problem?id=3258" target="_blank" rel="external">http://poj.org/problem?id=3258</a></p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Every year the cows hold an event featuring a peculiar version of hopscotch that involves carefully jumping from rock to rock in a river. The excitement takes place on a long, straight river with a rock at the start and another rock at the end, L units away from the start (1 ≤ L ≤ 1,000,000,000). Along the river between the starting and ending rocks, N (0 ≤ N ≤ 50,000) more rocks appear, each at an integral distance Di from the start (0 &lt; Di &lt; L).</p>
-<p>To play the game, each cow in turn starts at the starting rock and tries to reach the finish at the ending rock, jumping only from rock to rock. Of course, less agile cows never make it to the final rock, ending up instead in the river.</p>
-<p>Farmer John is proud of his cows and watches this event each year. But as time goes by, he tires of watching the timid cows of the other farmers limp across the short distances between rocks placed too closely together. He plans to remove several rocks in order to increase the shortest distance a cow will have to jump to reach the end. He knows he cannot remove the starting and ending rocks, but he calculates that he has enough resources to remove up to M rocks (0 ≤ M ≤ N).</p>
-<p>FJ wants to know exactly how much he can increase the shortest distance *before* he starts removing the rocks. Help Farmer John determine the greatest possible shortest distance a cow has to jump after removing the optimal set of M rocks.</p>
-<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>Line 1: Three space-separated integers: L, N, and M<br>Lines 2..N+1: Each line contains a single integer indicating how far some rock is away from the starting rock. No two rocks share the same position.</p>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>Line 1: A single integer that is the maximum of the shortest distance a cow has to jump after removing M rocks</p>
-<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>25 5 2<br>2<br>14<br>11<br>21<br>17</p>
-<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>4</p>
-<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>通过取走M块石头令最小距离最大化，问这个最大的最小距离为多少。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>有两种理解，第一种在ai位置上摆放n-m块石头，每一块石头都放得尽可能近，而且这个距离要大于mid，看能否把石子摆放完（即在最后一个位置前全部摆完），能摆放完就返回true，这样就转化成了白书上题目的变式。还有一种理解是假定C（x）是最大的最短距离，那么for一遍，如果有小于这个C（x）的情况，则通过增添石子来拓展距离（显然从前往后，由贪心思想可知是正确的），否则继续遍历下一个石子，统计删除石头的个数是否为小于等于m，因为这种情况总可以继续删除石子使最大距离大于C（x），为可行解，返回true。代码给出第一种理解。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">50000</span>+<span class="number">10</span>;</div><div class="line">ll a[maxn];</div><div class="line">ll d,n,m;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(ll x)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> last=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n-m;++i)&#123;</div><div class="line">        <span class="keyword">int</span> cur=last+<span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span>(cur&lt;n &amp;&amp; a[cur]-a[last]&lt;x &amp;&amp; cur-last&lt;=m)&#123;</div><div class="line">            ++cur;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(cur==n) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        last = cur;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld"</span>,&amp;d,&amp;n,&amp;m))&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;a[i]);</div><div class="line">		a[n+<span class="number">1</span>]=d;</div><div class="line">        sort(a,a+n+<span class="number">1</span>);</div><div class="line">        n+=<span class="number">1</span>;</div><div class="line">		ll l=<span class="number">1</span>,r=d+<span class="number">1</span>,mid;</div><div class="line">		<span class="keyword">while</span>(r-l&gt;<span class="number">1</span>)&#123;</div><div class="line">			mid=(l+r)&gt;&gt;<span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span>(check(mid)) l=mid;</div><div class="line">			<span class="keyword">else</span> r=mid;</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,l);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
+        <h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="http://train.usaco.org/usacoprob2?a=ONvqe5bkAcm&amp;S=milk2" target="_blank" rel="external">http://train.usaco.org/usacoprob2?a=ONvqe5bkAcm&amp;S=milk2</a></p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Three farmers rise at 5 am each morning and head for the barn to milk three cows. The first farmer begins milking his cow at time 300 (measured in seconds after 5 am) and ends at time 1000. The second farmer begins at time 700 and ends at time 1200. The third farmer begins at time 1500 and ends at time 2100. The longest continuous time during which at least one farmer was milking a cow was 900 seconds (from 300 to 1200). The longest time no milking was done, between the beginning and the ending of all milking, was 300 seconds (1500 minus 1200).</p>
+<p>Your job is to write a program that will examine a list of beginning and ending times for N (1 &lt;= N &lt;= 5000) farmers milking N cows and compute (in seconds):</p>
+<p>The longest time interval at least one cow was milked.<br>The longest time interval (after milking starts) during which no cows were being milked.</p>
+<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>Line 1:    The single integer, N<br>Lines 2..N+1:    Two non-negative integers less than 1,000,000, respectively the starting and ending time in seconds after 0500</p>
+<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>A single line with two integers that represent the longest continuous time of milking and the longest idle time.</p>
+<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>3<br>300 1000<br>700 1200<br>1500 2100</p>
+<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>900 300</p>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>给出每头牛的工作时间段，输出最长至少一头牛的工作时间长度以及最长没有妞工作的时间长度。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>时间按开始时间早晚排序，用cur维护当前最长的从头到尾的时间段，若开始时间在cur的结束时间之前，且当前时间段的结束时间&gt;cur的结束时间，则更新cur的结束时间为当前时间的结束时间，否则如果当前时间段开始时间&gt;=cur的结束时间，而且结束时间&gt;=cur的结束时间，说明这个时间段在cur之外，则维护tnomilk的值和tmilk的值，且令这个时间段成为cur。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> ID: hyson601</div><div class="line"> PROG: milk2</div><div class="line"> LANG: C++11</div><div class="line"> */</div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e4</span>+<span class="number">10</span>;</div><div class="line"><span class="keyword">int</span> nmilking,tmilk,tnomilk,t;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></div><div class="line">    <span class="keyword">int</span> begin;</div><div class="line">    <span class="keyword">int</span> end;</div><div class="line">    <span class="keyword">friend</span> <span class="keyword">bool</span> <span class="keyword">operator</span> &lt;(node a,node b)&#123;</div><div class="line">        <span class="keyword">return</span> a.begin&lt;b.begin;</div><div class="line">    &#125;</div><div class="line">&#125;milking[maxn],cur;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    freopen(<span class="string">"milk2.in"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</div><div class="line">    freopen(<span class="string">"milk2.out"</span>, <span class="string">"w"</span>, <span class="built_in">stdout</span>);</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;nmilking);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;nmilking;++i)</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;milking[i].begin,&amp;milking[i].end);</div><div class="line">    sort(milking,milking+nmilking);</div><div class="line">    tmilk=<span class="number">0</span>,tnomilk=<span class="number">0</span>;</div><div class="line">    cur=milking[<span class="number">0</span>];</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;nmilking;++i)&#123;</div><div class="line">        <span class="keyword">if</span>(milking[i].begin&gt;cur.end)&#123;</div><div class="line">            t=milking[i].begin-cur.end;</div><div class="line">            <span class="keyword">if</span>(t&gt;tnomilk)</div><div class="line">            tnomilk=t;</div><div class="line">            t=cur.end-cur.begin;</div><div class="line">            <span class="keyword">if</span>(t&gt;tmilk)</div><div class="line">            tmilk=t;</div><div class="line">            cur=milking[i];</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            <span class="keyword">if</span>(milking[i].end&gt;cur.end)</div><div class="line">            cur.end=milking[i].end;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    t=cur.end-cur.begin;</div><div class="line">    <span class="keyword">if</span>(t&gt;tmilk)</div><div class="line">    tmilk=t;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d %d\n"</span>,tmilk,tnomilk);</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -403,12 +400,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/二分/" rel="tag"># 二分</a>
-          
-        </div>
-      
 
       
         
@@ -418,8 +409,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/10/POJ3104/" rel="next" title="POJ3104 - Drying 二分">
-                <i class="fa fa-chevron-left"></i> POJ3104 - Drying 二分
+              <a href="/2017/06/10/MathJax/" rel="next" title="在Hexo中渲染MathJax数学公式">
+                <i class="fa fa-chevron-left"></i> 在Hexo中渲染MathJax数学公式
               </a>
             
           </div>
@@ -427,10 +418,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/15/ECNU3260/" rel="prev" title="ECNU3260 袋鼠妈妈找孩子 - DFS暴搜">
-                ECNU3260 袋鼠妈妈找孩子 - DFS暴搜 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
