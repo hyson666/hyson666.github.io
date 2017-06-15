@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/06/15/unvariablegradient/</loc>
+    <lastmod>2017-06-15T12:14:21.000Z</lastmod>
+    <data>
+        <display>
+        <title>斯坦福机器学习(一)单变量线性回归问题</title>
+        <pubTime>2017-06-15T06:19:52.000Z</pubTime>
+        
+        <tag>梯度下降法</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/06/12/12milking/</loc>
     <lastmod>2017-06-11T16:45:19.000Z</lastmod>
     <data>

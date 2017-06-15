@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="二分," />
+  <meta name="keywords" content="梯度下降法," />
 
 
 
@@ -92,17 +92,23 @@
 
 
 
-<meta name="description" content="题目连接DescriptionStudents in a class are making towers of blocks. Each student makes a (non-zero) tower by stacking pieces lengthwise on top of each other. n of the students use pieces made of two block">
-<meta name="keywords" content="二分">
+<meta name="description" content="约定符号$m —— 训练集中训练样本个个数$$x’s —— 输入变量/特征量(即features，用X_i刻画样本数)$$y’s —— 输出变量/约定变量$ 监督学习与回归问题监督学习指机器能够通过使用包含特征量、已知结果的训练集训练，具备能够对问题给出“正确答案”的能力。回归问题指能够机器能够对问题给出一个预计的真值输出（相对于分类问题）。 单变量线性回归要解决的问题$Hypothesis: h">
+<meta name="keywords" content="梯度下降法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Codeforces 626 C - Block Towers 二分">
-<meta property="og:url" content="http://yoursite.com/2017/05/09/626C/index.html">
+<meta property="og:title" content="斯坦福机器学习(一)单变量线性回归问题">
+<meta property="og:url" content="http://yoursite.com/2017/06/15/unvariablegradient/index.html">
 <meta property="og:site_name" content="HysonQAQ">
-<meta property="og:description" content="题目连接DescriptionStudents in a class are making towers of blocks. Each student makes a (non-zero) tower by stacking pieces lengthwise on top of each other. n of the students use pieces made of two block">
-<meta property="og:updated_time" content="2017-05-09T17:05:30.000Z">
+<meta property="og:description" content="约定符号$m —— 训练集中训练样本个个数$$x’s —— 输入变量/特征量(即features，用X_i刻画样本数)$$y’s —— 输出变量/约定变量$ 监督学习与回归问题监督学习指机器能够通过使用包含特征量、已知结果的训练集训练，具备能够对问题给出“正确答案”的能力。回归问题指能够机器能够对问题给出一个预计的真值输出（相对于分类问题）。 单变量线性回归要解决的问题$Hypothesis: h">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fglwia2t55j308n081aap.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fglwmjy7ovj30db0a1q6u.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNbRwgy1fglwoswiluj30cn0bxq7i.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fglx7z9ztyj30ff07tjus.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tNbRwgy1fglxmaiymkj30hy09xdh9.jpg">
+<meta property="og:updated_time" content="2017-06-15T12:14:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Codeforces 626 C - Block Towers 二分">
-<meta name="twitter:description" content="题目连接DescriptionStudents in a class are making towers of blocks. Each student makes a (non-zero) tower by stacking pieces lengthwise on top of each other. n of the students use pieces made of two block">
+<meta name="twitter:title" content="斯坦福机器学习(一)单变量线性回归问题">
+<meta name="twitter:description" content="约定符号$m —— 训练集中训练样本个个数$$x’s —— 输入变量/特征量(即features，用X_i刻画样本数)$$y’s —— 输出变量/约定变量$ 监督学习与回归问题监督学习指机器能够通过使用包含特征量、已知结果的训练集训练，具备能够对问题给出“正确答案”的能力。回归问题指能够机器能够对问题给出一个预计的真值输出（相对于分类问题）。 单变量线性回归要解决的问题$Hypothesis: h">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tNbRwgy1fglwia2t55j308n081aap.jpg">
 
 
 
@@ -130,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/05/09/626C/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/15/unvariablegradient/"/>
 
 
 
 
 
-  <title> Codeforces 626 C - Block Towers 二分 | HysonQAQ </title>
+  <title> 斯坦福机器学习(一)单变量线性回归问题 | HysonQAQ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -265,7 +271,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/09/626C/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/15/unvariablegradient/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hyson">
@@ -286,7 +292,7 @@
             
             
               
-                Codeforces 626 C - Block Towers 二分
+                斯坦福机器学习(一)单变量线性回归问题
               
             
           </h1>
@@ -301,8 +307,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-05-09T02:06:14+08:00">
-                2017-05-09
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-06-15T14:19:52+08:00">
+                2017-06-15
               </time>
             
 
@@ -324,8 +330,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/其他-二分/" itemprop="url" rel="index">
-                    <span itemprop="name">其他 二分</span>
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
                   </a>
                 </span>
 
@@ -364,15 +370,28 @@
       
 
       
-        <h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Students in a class are making towers of blocks. Each student makes a (non-zero) tower by stacking pieces lengthwise on top of each other. n of the students use pieces made of two blocks and m of the students use pieces made of three blocks.</p>
-<p>The students don’t want to use too many blocks, but they also want to be unique, so no two students’ towers may contain the same number of blocks. Find the minimum height necessary for the tallest of the students’ towers.</p>
-<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>The first line of the input contains two space-separated integers n and m (0 ≤ n, m ≤ 1 000 000, n + m &gt; 0) — the number of students using two-block pieces and the number of students using three-block pieces, respectively.</p>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>Print a single integer, denoting the minimum possible height of the tallest tower.</p>
-<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>1 3</p>
-<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>9</p>
-<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>小朋友堆塔，一部分用2的倍数堆，另一部分用3的倍数堆，他们都希望自己的塔是独一无二的（层数不能重复），问最高的塔最小可能为多少？</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>显然的二分最小化最大值，利用了些许集合的只是。如果2的集合总数&lt;n则返回false，3的集合总数&lt;m返回false，最后还有个关键的条件是无法取得所需mid的情况，就是(l1+l2-l3)&lt;m+n的情况，即A和B集合并集中的所有数也不够m+n取到，也返回false。其余情况返回true即可。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> n,m;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> mid)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> l1=mid/<span class="number">2</span>;</div><div class="line">	<span class="keyword">int</span> l2=mid/<span class="number">3</span>;</div><div class="line">	<span class="keyword">int</span> l3=mid/<span class="number">6</span>;</div><div class="line">	<span class="keyword">if</span>(l1&lt;n || l2&lt;m) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">	<span class="keyword">if</span>(l1+l2-l3&lt;m+n) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</div><div class="line">	<span class="keyword">int</span> l=<span class="number">0</span>,r=<span class="number">1e9</span>+<span class="number">10</span>;</div><div class="line">	<span class="keyword">while</span>(l&lt;=r)&#123;</div><div class="line">		<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span>(check(mid)) r=mid<span class="number">-1</span>;</div><div class="line">		<span class="keyword">else</span> l=mid+<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,l);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        <h2 id="约定符号"><a href="#约定符号" class="headerlink" title="约定符号"></a>约定符号</h2><p>$m —— 训练集中训练样本个个数$<br>$x’s —— 输入变量/特征量(即features，用X_i刻画样本数)$<br>$y’s —— 输出变量/约定变量$</p>
+<h2 id="监督学习与回归问题"><a href="#监督学习与回归问题" class="headerlink" title="监督学习与回归问题"></a>监督学习与回归问题</h2><p>监督学习指机器能够通过使用包含特征量、已知结果的训练集训练，具备能够对问题给出“正确答案”的能力。<br>回归问题指能够机器能够对问题给出一个预计的真值输出（相对于分类问题）。</p>
+<h2 id="单变量线性回归要解决的问题"><a href="#单变量线性回归要解决的问题" class="headerlink" title="单变量线性回归要解决的问题"></a>单变量线性回归要解决的问题</h2><p>$Hypothesis: h_\theta(x) = \theta_0 + \theta_1x$<br>$\theta_i’s: Parameters$<br>$How\ to\ choose\ \theta_i’s?$</p>
+<h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><p>为了解决$\theta_0$和$\theta_1$的选择问题，使它能够很好地拟合训练集的已知数据，我们必须引入评判模型误差的手段，这就是将要说明的代价函数，即Cost Function。<br>针对前面的公式，我们现在要解决两个参数$\theta_0$和$\theta_1$的选取，而代价函数定义为：</p>
+<script type="math/tex; mode=display">
+J(\theta_1,\theta_2)=\frac{1}{2m}\sum_{i=1}^{m}(h_0(x_i)-y_i)^2</script><p>可以从公式看出，其做的是计算当前<script type="math/tex">\theta_0</script>和<script type="math/tex">\theta_1</script>的确定的预测函数与精确已知值的方差。<br>我们构造模型的目标就是<script type="math/tex">\min_{\theta_0,\theta_1} J(\theta_0,\theta_1)</script><br>当仅有一个参数$\theta_1$时的代价函数图：<br><img src="https://ws1.sinaimg.cn/large/006tNbRwgy1fglwia2t55j308n081aap.jpg" alt=""><br>两个参数$\theta_0$和$\theta_1$时的代价函数<strong>立体图</strong>：<br><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fglwmjy7ovj30db0a1q6u.jpg" alt=""><br>两个参数$\theta_0$和$\theta_1$时的代价函数<strong>轮廓图</strong>：<br><img src="https://ws2.sinaimg.cn/large/006tNbRwgy1fglwoswiluj30cn0bxq7i.jpg" alt=""><br>其最中心点就是为局部最优点取值对应的点位。</p>
+<h2 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h2><p>梯度下降法能通过下山得到问题的一个最优解，其大多数情况是局部最优解，不一定为全局最优解。<br>梯度下降法的算法方程如下:</p>
+<script type="math/tex; mode=display">
+\begin{align*} \text{repeat until convergence: } \lbrace & \newline
+\theta_j := \theta_j - \alpha\frac{\partial }{\partial \theta_j}J(\theta_0,\theta_1)  \newline\rbrace& \end{align*}</script><p>公式中的$\theta_0$和$\theta_1$的每次更新都是同步的，写代码的时候不能够拆分成先后写，这样有时虽然也可能得到正确结果，但也可能导致不可预知的错误。<br>正确的同步更新写法可以写为：</p>
+<script type="math/tex; mode=display">
+\begin{align}
+temp_0 := \theta_0 - \frac{\partial }{\partial \theta_0}J(\theta_0,\theta_1)\\
+temp_1 := \theta_0 - \frac{\partial }{\partial \theta_1}J(\theta_0,\theta_1)\\
+\theta_0 := temp_0\\
+\theta_1 := temp_1\\
+\end{align}</script><p>梯度下降(也称下山）图解：<br><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fglx7z9ztyj30ff07tjus.jpg" alt=""><br>注意，其中:<br>$\alpha$ —— 学习速率(即learning rate)，其决定了下山的步子迈多大，如果$\alpha$大的话说明迈的是大步子，其收敛速度快，但是如果过快的话会导致无法收敛的问题,而$\alpha$选取过小的话又会导致收敛速度过慢的问题。</p>
+<h2 id="学习速率的选取"><a href="#学习速率的选取" class="headerlink" title="学习速率的选取"></a>学习速率的选取</h2><p><img src="https://ws4.sinaimg.cn/large/006tNbRwgy1fglxmaiymkj30hy09xdh9.jpg" alt=""><br>由图可以得出如下结论：<br>1.如果$\alpha$选取过小，则下降会非常缓慢，迟迟无法收敛。<br>2.如果$\alpha$选取过小，则步子过大会迈过最优点不断迭代发散导致振荡、溢出，得不到最优解。<br>为了选择最佳的学习速率，我们可以通过Octave画图观察不同迭代速率收敛的速度来选取，若每次迭代代价函数的值都在下降，即单调递减，再次基础上保证循环次数最少，即是我们想要的$\alpha$值。<br>尝试$\alpha$的时候可以从0.01、0.03、0.1、0.3、1……来进行粗调，再进行微调即可。</p>
+<h2 id="单变量线性回归的梯度下降法运用"><a href="#单变量线性回归的梯度下降法运用" class="headerlink" title="单变量线性回归的梯度下降法运用"></a>单变量线性回归的梯度下降法运用</h2><p>对前面的代价公式求导后，得到算法流程如下：</p>
+<script type="math/tex; mode=display">
+\begin{align*} \text{repeat until convergence: } \lbrace & \newline \theta_0 := & \theta_0 - \alpha \frac{1}{m} \sum\limits_{i=1}^{m}(h_\theta(x_{i}) - y_{i}) \newline \theta_1 := & \theta_1 - \alpha \frac{1}{m} \sum\limits_{i=1}^{m}\left((h_\theta(x_{i}) - y_{i}) x_{i}\right) \newline \rbrace& \end{align*}</script><p>注意，实现时一定要避免使用for循环结构，直接利用向量化解决问题会使得算法效率极大提高。<br>在变量$x$的矩阵当中，一定要记得添加一列全为1的<script type="math/tex">X_{0}</script>伴随矩阵于最左边。所以我们可以得到$X * \theta = h_{\theta}(x)$，其中X为特征矩阵。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>至此，单变量线性回归问题的知识点全部介绍完，利用训练集求出的参数值就可以把模型应用于解决实际问题，它是之后多变量线性回归（多于一个特征值）的基础，需要牢固掌握，以及能够熟练编写代码解决实际问题。同时要注意编写程序的时候一定要应用向量化提高代码的执行效率，这需要对线性代数知识有扎实的基础。</p>
 
       
     </div>
@@ -402,7 +421,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/二分/" rel="tag"># 二分</a>
+            <a href="/tags/梯度下降法/" rel="tag"># 梯度下降法</a>
           
         </div>
       
@@ -415,8 +434,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/09/EDU20D/" rel="next" title="Educational Codeforces Round 20 D.Magazine Ad 二分+贪心">
-                <i class="fa fa-chevron-left"></i> Educational Codeforces Round 20 D.Magazine Ad 二分+贪心
+              <a href="/2017/06/12/12milking/" rel="next" title="USACO 1.2 Milking Cows">
+                <i class="fa fa-chevron-left"></i> USACO 1.2 Milking Cows
               </a>
             
           </div>
@@ -424,10 +443,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/10/POJ3104/" rel="prev" title="POJ3104 - Drying 二分">
-                POJ3104 - Drying 二分 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -594,7 +609,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#题目连接"><span class="nav-number">1.</span> <span class="nav-text">题目连接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Description"><span class="nav-number">2.</span> <span class="nav-text">Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Input"><span class="nav-number">3.</span> <span class="nav-text">Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Output"><span class="nav-number">4.</span> <span class="nav-text">Output</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Input"><span class="nav-number">5.</span> <span class="nav-text">Sample Input</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sample-Output"><span class="nav-number">6.</span> <span class="nav-text">Sample Output</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">7.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">8.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">9.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#约定符号"><span class="nav-number">1.</span> <span class="nav-text">约定符号</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#监督学习与回归问题"><span class="nav-number">2.</span> <span class="nav-text">监督学习与回归问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单变量线性回归要解决的问题"><span class="nav-number">3.</span> <span class="nav-text">单变量线性回归要解决的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代价函数"><span class="nav-number">4.</span> <span class="nav-text">代价函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度下降法"><span class="nav-number">5.</span> <span class="nav-text">梯度下降法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#学习速率的选取"><span class="nav-number">6.</span> <span class="nav-text">学习速率的选取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#单变量线性回归的梯度下降法运用"><span class="nav-number">7.</span> <span class="nav-text">单变量线性回归的梯度下降法运用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -807,6 +822,26 @@
   
 
   
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
