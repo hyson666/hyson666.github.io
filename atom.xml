@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-06-15T12:14:21.000Z</updated>
+  <updated>2017-06-15T16:16:33.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,9 +20,9 @@
     <link href="http://yoursite.com/2017/06/15/unvariablegradient/"/>
     <id>http://yoursite.com/2017/06/15/unvariablegradient/</id>
     <published>2017-06-15T06:19:52.000Z</published>
-    <updated>2017-06-15T12:14:21.000Z</updated>
+    <updated>2017-06-15T16:16:33.000Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="约定符号"><a href="#约定符号" class="headerlink" title="约定符号"></a>约定符号</h2><p>$m —— 训练集中训练样本个个数$<br>$x’s —— 输入变量/特征量(即features，用X_i刻画样本数)$<br>$y’s —— 输出变量/约定变量$</p>
+    <content type="html"><![CDATA[<h2 id="约定符号"><a href="#约定符号" class="headerlink" title="约定符号"></a>约定符号</h2><p>$m$ —— 训练集中训练样本个个数<br>$x’s$ —— 输入变量/特征量(即$features$，用$X_i$刻画样本数)<br>$y’s$ —— 输出变量/约定变量</p>
 <h2 id="监督学习与回归问题"><a href="#监督学习与回归问题" class="headerlink" title="监督学习与回归问题"></a>监督学习与回归问题</h2><p>监督学习指机器能够通过使用包含特征量、已知结果的训练集训练，具备能够对问题给出“正确答案”的能力。<br>回归问题指能够机器能够对问题给出一个预计的真值输出（相对于分类问题）。</p>
 <h2 id="单变量线性回归要解决的问题"><a href="#单变量线性回归要解决的问题" class="headerlink" title="单变量线性回归要解决的问题"></a>单变量线性回归要解决的问题</h2><p>$Hypothesis: h_\theta(x) = \theta_0 + \theta_1x$<br>$\theta_i’s: Parameters$<br>$How\ to\ choose\ \theta_i’s?$</p>
 <h2 id="代价函数"><a href="#代价函数" class="headerlink" title="代价函数"></a>代价函数</h2><p>为了解决$\theta_0$和$\theta_1$的选择问题，使它能够很好地拟合训练集的已知数据，我们必须引入评判模型误差的手段，这就是将要说明的代价函数，即Cost Function。<br>针对前面的公式，我们现在要解决两个参数$\theta_0$和$\theta_1$的选取，而代价函数定义为：</p>
@@ -48,7 +48,7 @@ temp_1 := \theta_0 - \frac{\partial }{\partial \theta_1}J(\theta_0,\theta_1)\\
     
     <summary type="html">
     
-      &lt;h2 id=&quot;约定符号&quot;&gt;&lt;a href=&quot;#约定符号&quot; class=&quot;headerlink&quot; title=&quot;约定符号&quot;&gt;&lt;/a&gt;约定符号&lt;/h2&gt;&lt;p&gt;$m —— 训练集中训练样本个个数$&lt;br&gt;$x’s —— 输入变量/特征量(即features，用X_i刻画样本数)$&lt;b
+      &lt;h2 id=&quot;约定符号&quot;&gt;&lt;a href=&quot;#约定符号&quot; class=&quot;headerlink&quot; title=&quot;约定符号&quot;&gt;&lt;/a&gt;约定符号&lt;/h2&gt;&lt;p&gt;$m$ —— 训练集中训练样本个个数&lt;br&gt;$x’s$ —— 输入变量/特征量(即$features$，用$X_i$刻画样本
     
     </summary>
     
