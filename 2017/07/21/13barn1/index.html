@@ -74,7 +74,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="GCD," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -92,17 +92,16 @@
 
 
 
-<meta name="description" content="题目连接http://codeforces.com/problemset/problem/798/C DescriptionMike has a sequence A = [a1, a2, …, an] of length n. He considers the sequence B = [b1, b2, …, bn] beautiful if the gcd of all its element">
-<meta name="keywords" content="GCD">
+<meta name="description" content="题目连接http://train.usaco.org/usacoprob2?a=fnrIvV5X91K&amp;amp;S=barn1 DescriptionIt was a dark and stormy night that ripped the roof and gates off the stalls that hold Farmer John’s cows. Happily, many of t">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Codeforces Round 410 (Div. 2) C -Mike and gcd problem 数论 GCD">
-<meta property="og:url" content="http://yoursite.com/2017/04/22/CF410C/index.html">
+<meta property="og:title" content="USACO 1.2 Barn Repair 贪心 牛棚问题">
+<meta property="og:url" content="http://yoursite.com/2017/07/21/13barn1/index.html">
 <meta property="og:site_name" content="HysonQAQ">
-<meta property="og:description" content="题目连接http://codeforces.com/problemset/problem/798/C DescriptionMike has a sequence A = [a1, a2, …, an] of length n. He considers the sequence B = [b1, b2, …, bn] beautiful if the gcd of all its element">
-<meta property="og:updated_time" content="2017-04-23T07:52:23.000Z">
+<meta property="og:description" content="题目连接http://train.usaco.org/usacoprob2?a=fnrIvV5X91K&amp;amp;S=barn1 DescriptionIt was a dark and stormy night that ripped the roof and gates off the stalls that hold Farmer John’s cows. Happily, many of t">
+<meta property="og:updated_time" content="2017-07-21T06:33:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Codeforces Round 410 (Div. 2) C -Mike and gcd problem 数论 GCD">
-<meta name="twitter:description" content="题目连接http://codeforces.com/problemset/problem/798/C DescriptionMike has a sequence A = [a1, a2, …, an] of length n. He considers the sequence B = [b1, b2, …, bn] beautiful if the gcd of all its element">
+<meta name="twitter:title" content="USACO 1.2 Barn Repair 贪心 牛棚问题">
+<meta name="twitter:description" content="题目连接http://train.usaco.org/usacoprob2?a=fnrIvV5X91K&amp;amp;S=barn1 DescriptionIt was a dark and stormy night that ripped the roof and gates off the stalls that hold Farmer John’s cows. Happily, many of t">
 
 
 
@@ -130,13 +129,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/04/22/CF410C/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/07/21/13barn1/"/>
 
 
 
 
 
-  <title> Codeforces Round 410 (Div. 2) C -Mike and gcd problem 数论 GCD | HysonQAQ </title>
+  <title> USACO 1.2 Barn Repair 贪心 牛棚问题 | HysonQAQ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -265,7 +264,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/04/22/CF410C/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/07/21/13barn1/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Hyson">
@@ -286,7 +285,7 @@
             
             
               
-                Codeforces Round 410 (Div. 2) C -Mike and gcd problem 数论 GCD
+                USACO 1.2 Barn Repair 贪心 牛棚问题
               
             
           </h1>
@@ -301,8 +300,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-04-22T19:42:31+08:00">
-                2017-04-22
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-21T14:26:15+08:00">
+                2017-07-21
               </time>
             
 
@@ -324,8 +323,8 @@
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/数学/" itemprop="url" rel="index">
-                    <span itemprop="name">数学</span>
+                  <a href="/categories/其他-贪心/" itemprop="url" rel="index">
+                    <span itemprop="name">其他 贪心</span>
                   </a>
                 </span>
 
@@ -364,20 +363,19 @@
       
 
       
-        <h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="http://codeforces.com/problemset/problem/798/C" target="_blank" rel="external">http://codeforces.com/problemset/problem/798/C</a></p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Mike has a sequence A = [a1, a2, …, an] of length n. He considers the sequence B = [b1, b2, …, bn] beautiful if the gcd of all its elements is bigger than 1, i.e. .</p>
-<p>Mike wants to change his sequence in order to make it beautiful. In one move he can choose an index i (1 ≤ i &lt; n), delete numbers ai, ai + 1 and put numbers ai - ai + 1, ai + ai + 1 in their place instead, in this order. He wants perform as few operations as possible. Find the minimal number of operations to make sequence A beautiful if it’s possible, or tell him that it is impossible to do so.</p>
-<p> is the biggest non-negative number d such that d divides bi for every i (1 ≤ i ≤ n).</p>
-<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>The first line contains a single integer n (2 ≤ n ≤ 100 000) — length of sequence A.</p>
-<p>The second line contains n space-separated integers a1, a2, …, an (1 ≤ ai ≤ 109) — elements of sequence A.</p>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>Output on the first line “YES” (without quotes) if it is possible to make sequence A beautiful by performing operations described above, and “NO” (without quotes) otherwise.</p>
-<p>If the answer was “YES”, output the minimal number of moves needed to make sequence A beautiful.</p>
-<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>2<br>1 1</p>
-<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>YES<br>1</p>
-<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>给出一串数，如果能够通过N次操作使他们的gcd&gt;1,那么输出YES，并给出最少操作次数，否则输出NO。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>可以通过推理证明得一次操作将会导致前后两个数字的gcd增长一倍，那么容易知道现在要求的就是把所有数字的gcd变成2，而互质的时候是1，最快变成2的办法就是找出所有连起来的奇数，对起一个数字进行操作，使他们两个都变成偶数，最后找出落单的奇数，容易知道可以通过对其操作两次让它变为偶数。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1e5</span>+<span class="number">10</span>;</div><div class="line"><span class="keyword">int</span> a[maxn];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> x,<span class="keyword">int</span> y)</span></span>&#123;</div><div class="line">	<span class="keyword">if</span>(x%y!=<span class="number">0</span>) <span class="keyword">return</span> gcd(y,x%y);</div><div class="line">	<span class="keyword">else</span> <span class="keyword">return</span> y;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> n;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">	<span class="keyword">int</span> g=<span class="number">0</span>,temp;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)&#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;temp);</div><div class="line">		g=gcd(g,temp);</div><div class="line">		a[i]=temp&amp;<span class="number">1</span>?<span class="number">1</span>:<span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(g&gt;<span class="number">1</span>)&#123;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"YES\n0\n"</span>);</div><div class="line">		<span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">int</span> ans=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n<span class="number">-1</span>;++i)&#123;</div><div class="line">		<span class="keyword">if</span>(a[i]&amp;&amp;a[i+<span class="number">1</span>])&#123;</div><div class="line">			a[i]=!a[i],a[i+<span class="number">1</span>]=!a[i+<span class="number">1</span>];</div><div class="line">			ans++;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)</div><div class="line">		<span class="keyword">if</span>(a[i]) ans+=<span class="number">2</span>;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"YES\n%d\n"</span>,ans);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-
+        <h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="http://train.usaco.org/usacoprob2?a=fnrIvV5X91K&amp;S=barn1" target="_blank" rel="external">http://train.usaco.org/usacoprob2?a=fnrIvV5X91K&amp;S=barn1</a></p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>It was a dark and stormy night that ripped the roof and gates off the stalls that hold Farmer John’s cows. Happily, many of the cows were on vacation, so the barn was not completely full.</p>
+<p>The cows spend the night in stalls that are arranged adjacent to each other in a long line. Some stalls have cows in them; some do not. All stalls are the same width.</p>
+<p>Farmer John must quickly erect new boards in front of the stalls, since the doors were lost. His new lumber supplier will supply him boards of any length he wishes, but the supplier can only deliver a small number of total boards. Farmer John wishes to minimize the total length of the boards he must purchase.</p>
+<p>Given M (1 &lt;= M &lt;= 50), the maximum number of boards that can be purchased; S (1 &lt;= S &lt;= 200), the total number of stalls; C (1 &lt;= C &lt;= S) the number of cows in the stalls, and the C occupied stall numbers (1 &lt;= stall_number &lt;= S), calculate the minimum number of stalls that must be blocked in order to block all the stalls that have cows in them.</p>
+<p>Print your answer as the total number of stalls blocked.</p>
+<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>Line 1:    M, S, and C (space separated)<br>Lines 2-C+1:    Each line contains one integer, the number of an occupied stall.</p>
+<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>A single line with one integer that represents the total number of stalls blocked.</p>
+<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>4 50 18<br>3<br>4<br>6<br>8<br>14<br>15<br>16<br>17<br>21<br>25<br>26<br>27<br>30<br>31<br>40<br>41<br>42<br>43</p>
+<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>25</p>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>可以任意使用任何规格的木板，给出牛棚的位置，用最少长度的m块模板去覆盖所有牛棚。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>贪心之前练得真的不多，本身也不喜欢做贪心，所以水平可能因此提不上去吧。这题的思路比较简单，算一道经典题。先用一块大木板去覆盖整个最左边和最右边的牛棚，容易知道使用所有m块木板是最优策略，因为如果少使用一块的话必定多一块木板覆盖不用覆盖的区间。然后m块木板必定产生m-1个空隙，这个就是我们可以优化掉的空间，每次选取最大的缝隙即可，直到选取到m-1个。最后答案就是总长度减去最左边不用覆盖的区间和最右边不用覆盖的区间，再减去刚才选取的优化区间。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line"> ID: hyson601</div><div class="line"> PROG: barn1</div><div class="line"> LANG: C++11</div><div class="line"> */</div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">210</span>;</div><div class="line"><span class="keyword">int</span> m,s,c,board[maxn],pos[maxn];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> a&gt;b;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    freopen(<span class="string">"barn1.in"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">    freopen(<span class="string">"barn1.out"</span>,<span class="string">"w"</span>,<span class="built_in">stdout</span>);    <span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>,&amp;m,&amp;s,&amp;c);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;c;++i) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;pos[i]);</div><div class="line">    sort(pos,pos+c);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;c;++i) board[i]=pos[i]-pos[i<span class="number">-1</span>]<span class="number">-1</span>;</div><div class="line">    sort(board+<span class="number">1</span>,board+c,cmp);</div><div class="line">    <span class="keyword">int</span> cnt=<span class="number">1</span>,ans=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;c &amp;&amp; cnt!=m;++i)&#123;</div><div class="line">        ans+=board[i];</div><div class="line">        ++cnt;</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,s-ans-(pos[<span class="number">0</span>]<span class="number">-1</span>)-(s-pos[c<span class="number">-1</span>]));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
       
     </div>
 
@@ -404,12 +402,6 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/GCD/" rel="tag"># GCD</a>
-          
-        </div>
-      
 
       
         
@@ -419,8 +411,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/04/22/POJ3348/" rel="next" title="POJ3348 Cows - 求凸包面积">
-                <i class="fa fa-chevron-left"></i> POJ3348 Cows - 求凸包面积
+              <a href="/2017/07/16/1-2dualpal/" rel="next" title="USACO 1.2 Dual Palindromes">
+                <i class="fa fa-chevron-left"></i> USACO 1.2 Dual Palindromes
               </a>
             
           </div>
@@ -428,10 +420,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/24/POJ1365/" rel="prev" title="POJ1365 Prime Land - 质因数分解">
-                POJ1365 Prime Land - 质因数分解 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
