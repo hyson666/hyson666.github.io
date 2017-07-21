@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-21T06:33:21.000Z</updated>
+  <updated>2017-07-21T07:12:11.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,39 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>计蒜客 三值排序</title>
+    <link href="http://yoursite.com/2017/07/21/triplesort/"/>
+    <id>http://yoursite.com/2017/07/21/triplesort/</id>
+    <published>2017-07-21T07:06:39.000Z</published>
+    <updated>2017-07-21T07:12:11.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="https://nanti.jisuanke.com/t/27" target="_blank" rel="external">https://nanti.jisuanke.com/t/27</a></p>
+<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>排序是一种很频繁的计算任务。一个实际的例子是，当我们给某项竞赛的优胜者按金银铜牌排序的时候。在这个任务中可能的值只有三种1，2和3。我们用交换的方法把他排成升序的。</p>
+<p>写一个程序计算出，计算出的一个包括1、2、3三种值的数字序列，排成升序所需的最少交换次数。</p>
+<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>输入第1行为类别的数量N（1≤N≤1000）</p>
+<p>输入第2行到第N+1行，每行包括一个数字（1或2或3）。</p>
+<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>输出包含一行，为排成升序所需的最少交换次数。</p>
+<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>9<br>2<br>2<br>1<br>3<br>3<br>3<br>2<br>3<br>1</p>
+<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>4</p>
+<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>最少交换多少次可以让3值按照升序排序？</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>显然要用贪心解决。首先知道的是有三种方式交换是最优的：<br>1.1区中的2和2区中的1交换，一次能让两个数字到达正确位置。<br>2.1区中的3和3区中的2交换，同上。<br>3.2区中的3和3区中的2交换，同上。<br>本体显然有最优解结构，且交换次序不影响最优解结构，那么我们可以换一个角度看，先把1全部归位到1区，然后只要再令2中3和3中2回到正确位置即可，这个次数为max（2中3数目，3中2数目）。加上1归位的操作次数，便是贪心最优解。</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn = <span class="number">1000</span>+<span class="number">10</span>;</div><div class="line"><span class="keyword">int</span> n,a[maxn],b[maxn];</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    freopen(<span class="string">"in.txt"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)&#123;</div><div class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</div><div class="line">        b[i]=a[i];</div><div class="line">    &#125;</div><div class="line">    sort(a,a+n);</div><div class="line">    <span class="keyword">int</span> ans=<span class="number">0</span>,tempx=<span class="number">0</span>,tempy=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;++i)&#123;</div><div class="line">        <span class="keyword">if</span>(a[i]==<span class="number">1</span> &amp;&amp; b[i]!=<span class="number">1</span>)</div><div class="line">            ans++;</div><div class="line">        <span class="keyword">if</span>(a[i]==<span class="number">2</span> &amp;&amp; b[i]==<span class="number">3</span>)</div><div class="line">            tempx++;</div><div class="line">        <span class="keyword">if</span>(a[i]==<span class="number">3</span> &amp;&amp; b[i]==<span class="number">2</span>)</div><div class="line">            tempy++;</div><div class="line">    &#125;</div><div class="line">    ans+=max(tempx,tempy);</div><div class="line">    <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;题目连接&quot;&gt;&lt;a href=&quot;#题目连接&quot; class=&quot;headerlink&quot; title=&quot;题目连接&quot;&gt;&lt;/a&gt;题目连接&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;https://nanti.jisuanke.com/t/27&quot; target=&quot;_blank&quot; rel=
+    
+    </summary>
+    
+      <category term="其他 贪心" scheme="http://yoursite.com/categories/%E5%85%B6%E4%BB%96-%E8%B4%AA%E5%BF%83/"/>
+    
+    
+      <category term="三值排序" scheme="http://yoursite.com/tags/%E4%B8%89%E5%80%BC%E6%8E%92%E5%BA%8F/"/>
+    
+  </entry>
   
   <entry>
     <title>USACO 1.2 Barn Repair 贪心 牛棚问题</title>
@@ -687,44 +720,6 @@ J(\theta_1,\theta_2)=\frac{1}{2m}\sum_{i=1}^{m}(\widehat{y_i}-y_i)^2 = \frac{1}{
     <summary type="html">
     
       &lt;h2 id=&quot;题目连接&quot;&gt;&lt;a href=&quot;#题目连接&quot; class=&quot;headerlink&quot; title=&quot;题目连接&quot;&gt;&lt;/a&gt;题目连接&lt;/h2&gt;&lt;h2 id=&quot;Description&quot;&gt;&lt;a href=&quot;#Description&quot; class=&quot;headerlink&quot; ti
-    
-    </summary>
-    
-      <category term="其他 二分" scheme="http://yoursite.com/categories/%E5%85%B6%E4%BB%96-%E4%BA%8C%E5%88%86/"/>
-    
-    
-      <category term="二分" scheme="http://yoursite.com/tags/%E4%BA%8C%E5%88%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Educational Codeforces Round 20 D.Magazine Ad 二分+贪心</title>
-    <link href="http://yoursite.com/2017/05/09/EDU20D/"/>
-    <id>http://yoursite.com/2017/05/09/EDU20D/</id>
-    <published>2017-05-08T17:01:25.000Z</published>
-    <updated>2017-05-08T17:14:20.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="http://codeforces.com/contest/803/problem/D" target="_blank" rel="external">http://codeforces.com/contest/803/problem/D</a></p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>The main city magazine offers its readers an opportunity to publish their ads. The format of the ad should be like this:</p>
-<p>There are space-separated non-empty words of lowercase and uppercase Latin letters.</p>
-<p>There are hyphen characters ‘-‘ in some words, their positions set word wrapping points. Word can include more than one hyphen.</p>
-<p>It is guaranteed that there are no adjacent spaces and no adjacent hyphens. No hyphen is adjacent to space. There are no spaces and no hyphens before the first word and after the last word.</p>
-<p>When the word is wrapped, the part of the word before hyphen and the hyphen itself stay on current line and the next part of the word is put on the next line. You can also put line break between two words, in that case the space stays on current line. Check notes for better understanding.</p>
-<p>The ad can occupy no more that k lines and should have minimal width. The width of the ad is the maximal length of string (letters, spaces and hyphens are counted) in it.</p>
-<p>You should write a program that will find minimal width of the ad.</p>
-<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>The first line contains number k (1 ≤ k ≤ 105).</p>
-<p>The second line contains the text of the ad — non-empty space-separated words of lowercase and uppercase Latin letters and hyphens. Total length of the ad don’t exceed 106 characters.</p>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>Output minimal width of the ad.</p>
-<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>4<br>garage for sa-le</p>
-<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>7</p>
-<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>报纸刊登广告，已知“-”和空格都是可以换行的位置，现在要求广告整理成k行，现在问长度最大的那行的长度最小可以为多少?（包含空格和“-”）</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>最近在刷二分，所以回头把上一场codeforeces的这题给补了。根据题意要最小化最大值，显然可以对猜测的结果进行二分。先把可以拆分的每一段都转化为不同长度的木板存入数组，利用贪心思想，按顺序for一遍，能够结合成为一块板子的果断结合，不能的划分数加一，处理下一块板子使它继续结合即可。如果某一块板子长度大于当前二分mid值，返回false，最后结果如果大于k，由于已经贪心了最优策略，所以是无论怎样结合也不可能符合条件划分为k个的（反之总可以随意划分到k块），返回false，其他返回true即可。1A之。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e6</span>+<span class="number">10</span>;</div><div class="line"><span class="keyword">int</span> a[maxn];</div><div class="line"><span class="keyword">int</span> k,cnt;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> mid)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> num=<span class="number">1</span>,temp=<span class="number">0</span>;</div><div class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=cnt;++i)&#123;</div><div class="line">        <span class="keyword">if</span>(a[i]&gt;mid) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">		<span class="keyword">if</span>(temp+a[i]&lt;=mid)&#123;</div><div class="line">			temp+=a[i];</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span>&#123;</div><div class="line">			temp=a[i];</div><div class="line">			num++;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	<span class="keyword">if</span>(num&lt;=k) <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">	<span class="keyword">else</span> <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d\n"</span>,&amp;k);</div><div class="line">	<span class="keyword">char</span> x;</div><div class="line">	<span class="keyword">int</span> temp=<span class="number">0</span>;</div><div class="line">    <span class="keyword">int</span> total=<span class="number">0</span>;</div><div class="line">	<span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%c"</span>,&amp;x) &amp;&amp; x!=<span class="string">'\n'</span>)&#123;</div><div class="line">		++temp;</div><div class="line">		<span class="keyword">if</span>(x==<span class="string">'-'</span> || x==<span class="string">' '</span>)&#123;</div><div class="line">			a[++cnt]=temp;</div><div class="line">			temp=<span class="number">0</span>;</div><div class="line">		&#125;</div><div class="line">        ++total;</div><div class="line">	&#125;</div><div class="line">	a[++cnt]=temp;</div><div class="line">	<span class="keyword">int</span> l=<span class="number">1</span>,r=total;</div><div class="line">	<span class="keyword">int</span> ans;</div><div class="line">	<span class="keyword">while</span>(l&lt;=r)&#123;</div><div class="line">		<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span>(check(mid))&#123;</div><div class="line">			ans=mid;</div><div class="line">			r=mid<span class="number">-1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> l=mid+<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,ans);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目连接&quot;&gt;&lt;a href=&quot;#题目连接&quot; class=&quot;headerlink&quot; title=&quot;题目连接&quot;&gt;&lt;/a&gt;题目连接&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://codeforces.com/contest/803/problem/D&quot; target=&quot;
     
     </summary>
     
