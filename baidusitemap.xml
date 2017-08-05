@@ -4,11 +4,51 @@
 
     
   <url>
-    <loc>http://yoursite.com/2017/07/21/triplesort/</loc>
-    <lastmod>2017-07-21T07:12:11.000Z</lastmod>
+    <loc>http://yoursite.com/2017/08/05/standford2/</loc>
+    <lastmod>2017-08-05T06:49:04.000Z</lastmod>
     <data>
         <display>
-        <title>计蒜客 三值排序</title>
+        <title>斯坦福机器学习（二）多变量线性回归</title>
+        <pubTime>2017-08-05T06:28:36.000Z</pubTime>
+        
+        <tag>正规方程</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/06/15/unvariablegradient/</loc>
+    <lastmod>2017-08-05T06:29:41.000Z</lastmod>
+    <data>
+        <display>
+        <title>斯坦福机器学习(一)单变量线性回归</title>
+        <pubTime>2017-06-15T06:19:52.000Z</pubTime>
+        
+        <tag>梯度下降法</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/07/21/triplesort/</loc>
+    <lastmod>2017-07-21T07:13:26.000Z</lastmod>
+    <data>
+        <display>
+        <title>计蒜客 三值排序 贪心</title>
         <pubTime>2017-07-21T07:06:39.000Z</pubTime>
         
         <tag>三值排序</tag>
@@ -111,26 +151,6 @@
            
              
               <breadCrumb title="其他 水题" url="http://yoursite.com/categories/%E5%85%B6%E4%BB%96-%E6%B0%B4%E9%A2%98/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://yoursite.com/2017/06/15/unvariablegradient/</loc>
-    <lastmod>2017-06-15T16:16:33.000Z</lastmod>
-    <data>
-        <display>
-        <title>斯坦福机器学习(一)单变量线性回归问题</title>
-        <pubTime>2017-06-15T06:19:52.000Z</pubTime>
-        
-        <tag>梯度下降法</tag>
-         
-         
-           
-             
-              <breadCrumb title="机器学习" url="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
           
         </display>
     </data>

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-07-21T07:12:11.000Z</updated>
+  <updated>2017-08-05T06:49:04.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,11 +16,59 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>计蒜客 三值排序</title>
+    <title>斯坦福机器学习（二）多变量线性回归</title>
+    <link href="http://yoursite.com/2017/08/05/standford2/"/>
+    <id>http://yoursite.com/2017/08/05/standford2/</id>
+    <published>2017-08-05T06:28:36.000Z</published>
+    <updated>2017-08-05T06:49:04.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="约定符号"><a href="#约定符号" class="headerlink" title="约定符号"></a>约定符号</h2><p>$n$ —— 特征数量<br>$x^{(i)}$ —— 第i组训练样例的特征值<br>$x^{(i)}_j$ —— 第i组训练样例的第j个特征值</p>
+<h2 id="矩阵向量乘法的应用"><a href="#矩阵向量乘法的应用" class="headerlink" title="矩阵向量乘法的应用"></a>矩阵向量乘法的应用</h2><p>矩阵向量乘法是向量化的基础，给定$theta<em>i$的值以及特征向量$X$,利用矩阵向量乘法计算$h</em>{\theta}的公式如下：</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}1&a\\1& b\\1 &c \\ 1&d \end{bmatrix} \times \begin{bmatrix}\theta_1\\\theta_2\end{bmatrix}= \begin{bmatrix}h_{\theta}(a)\\ h_{\theta}(b)\\ h_{\theta}(c)\\ h_{\theta}(d)\end{bmatrix}</script><p>即预测值 = 特征矩阵 * 参数矩阵。当参数矩阵为n维的时候，我们可以同时对几组预测函数进行计算。</p>
+<p>之后的多变量线性回归向量化也依照此形式对$h_{\theta}$的值进行计算，而尽量避免对for循环的使用。</p>
+<h2 id="逆矩阵复习"><a href="#逆矩阵复习" class="headerlink" title="逆矩阵复习"></a>逆矩阵复习</h2><p>仅m*m方阵有逆矩阵（只有这种情况相乘可以得到单位矩阵），其他情况利用Octave求得的矩阵均为奇异矩阵（退化矩阵）。</p>
+<p>用Octave对矩阵A求逆矩阵可以用inv(A)，这个时候必须保证A是方阵，但当不是的时候也可以求得逆矩阵，利用pinv(A)即可，也可以得到一个不错的结果，不过一般不建议这样做。</p>
+<h2 id="多变量线性回归"><a href="#多变量线性回归" class="headerlink" title="多变量线性回归"></a>多变量线性回归</h2><p>多变量线性回归要解决的是如下方程的最优参数值（代价最小）选取问题：</p>
+<script type="math/tex; mode=display">
+h_\theta(x) = \theta_0+\theta_1x_1+\theta_2x_2+...+\theta_nx_n</script><p>其与单变量线性回归形式非常相似，只需要把其延展到多变量即可。</p>
+<h2 id="多变量线性回归的代价函数"><a href="#多变量线性回归的代价函数" class="headerlink" title="多变量线性回归的代价函数"></a>多变量线性回归的代价函数</h2><p>根据已经知道的单变量线性回归的代价函数的定义，延展其为多变量线性回归方程的形式如下：</p>
+<script type="math/tex; mode=display">
+J(\theta_0,\theta_1,...,\theta_n)=\frac{1}{2m}\sum _{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^2</script><h2 id="用梯度下降法求多变量线性回归问题"><a href="#用梯度下降法求多变量线性回归问题" class="headerlink" title="用梯度下降法求多变量线性回归问题"></a>用梯度下降法求多变量线性回归问题</h2><p>已经得到多变量线性回归的代价函数，同样是基于同步更新，则进行梯度下降的伪代码可以写成如下形式：</p>
+<script type="math/tex; mode=display">
+\begin{align*}& \text{repeat until convergence:} \; \lbrace \newline \; & \theta_j := \theta_j - \alpha\frac{\partial }{\partial \theta_j}J(\theta_0,\theta_1,...,\theta_n) & \text{for j := 0...n}\newline \rbrace\end{align*}</script><p>进行微分后就是如下形式：</p>
+<script type="math/tex; mode=display">
+\begin{align*}& \text{repeat until convergence:} \; \lbrace \newline \; & \theta_j := \theta_j - \alpha \frac{1}{m} \sum\limits_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)}) \cdot x_j^{(i)} \; & \text{for j := 0...n}\newline \rbrace\end{align*}</script><h2 id="特征缩放"><a href="#特征缩放" class="headerlink" title="特征缩放"></a>特征缩放</h2><p>目的：确保变量都在一个相同的规模与比例之内，比如全部缩放为-1~1的范围之内，从而使梯度下降法收敛速度更快。</p>
+<p>这里介绍特征缩放的其中一个方法就是<strong>均值归一化</strong>，即每个变量减去该变量的平均值，再除以极差或者方差，这样就可以控制变量范围在-1~1之内了。</p>
+<p>E.g.房子的尺寸$x_1$变化范围为0~2000$feet^2$，房子的房间数$x_2$的变化范围为1~5，显然他们的规模相差非常大，如果不进行特征缩放就开始跑梯度下降，那么其下降过程的轨迹会变成如下这样：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi8t2y2iz0j208v09p3yy.jpg" alt=""><br>可见其要通过比较多次的循环才能够达到全局最优解，通过特征缩放之后轮廓图会比较接近于一个圆形，此时的下降过程就如下图：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi8ta96pyqj209d063dg2.jpg" alt=""><br>显然其收敛速度更快，更快达到了全局最优点。</p>
+<h2 id="确保梯度下降法能够正确进行"><a href="#确保梯度下降法能够正确进行" class="headerlink" title="确保梯度下降法能够正确进行"></a>确保梯度下降法能够正确进行</h2><p>为了让梯度下降法能够正确地进行，我们需要选取合适的学习速率$\alpha$，通过观察代价函数随着循环进行的具体走向不失为一个好办法，因为好的曲线应该是每次循环进行代价函数的值都会下降并且具有良好的收敛速度。尝试的时候从小数开始，每次乘10再观察1/3处的值，每次输出图形即可。当然这一部分也不总是通过手动完成，在之后会接触能够自动选取学习速率以及能够随着循环次数改变学习速率，使其收敛更加迅速的高级算法。</p>
+<h2 id="多项式回归"><a href="#多项式回归" class="headerlink" title="多项式回归"></a>多项式回归</h2><p>多项式回归即如下的形式：</p>
+<script type="math/tex; mode=display">
+h_\theta(x)=\theta_0+\theta_1x+\theta_2x^2+...+\theta_nx^n</script><p>显然，通过取根，更改变化范围，我们同样可以化成多变量线性回归求解，过程就省略不说了。</p>
+<h2 id="正规方程解多变量线性回归"><a href="#正规方程解多变量线性回归" class="headerlink" title="正规方程解多变量线性回归"></a>正规方程解多变量线性回归</h2><p>正规方程求解参数值是利用一种解析性的方法求解参数的选取问题，且可以保证得到全局最优解，且在变量比较少的情况下具有优秀的运行速度。其向量化的表达形式如下：</p>
+<script type="math/tex; mode=display">
+\theta = (X^TX)^{-1}X^Ty</script><p>利用Octave表示即：pinv(x’*x)*x’*y<br>其证明过程略。相比于梯度下降，其具有不需要选择虚席速率、不需要多次循环且一定能获得全局最优解的优点，但是由于计算逆矩阵的复杂度是$O(n^3)$,一旦n比较大的时候，运行速度就会非常缓慢，而此时的梯度下降法依然能够以比较高的效率继续进行，同时，在某两组变量线性相关，或者样例数少于特征数的时候，会出现逆矩阵奇异的情况，无法使用普通方程，此时可以通过选主元素减少变量或者正则化的方法解决问题，这会在后面有所提及。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;约定符号&quot;&gt;&lt;a href=&quot;#约定符号&quot; class=&quot;headerlink&quot; title=&quot;约定符号&quot;&gt;&lt;/a&gt;约定符号&lt;/h2&gt;&lt;p&gt;$n$ —— 特征数量&lt;br&gt;$x^{(i)}$ —— 第i组训练样例的特征值&lt;br&gt;$x^{(i)}_j$ —— 第i组训
+    
+    </summary>
+    
+      <category term="机器学习" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="正规方程" scheme="http://yoursite.com/tags/%E6%AD%A3%E8%A7%84%E6%96%B9%E7%A8%8B/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计蒜客 三值排序 贪心</title>
     <link href="http://yoursite.com/2017/07/21/triplesort/"/>
     <id>http://yoursite.com/2017/07/21/triplesort/</id>
     <published>2017-07-21T07:06:39.000Z</published>
-    <updated>2017-07-21T07:12:11.000Z</updated>
+    <updated>2017-07-21T07:13:26.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="https://nanti.jisuanke.com/t/27" target="_blank" rel="external">https://nanti.jisuanke.com/t/27</a></p>
 <h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>排序是一种很频繁的计算任务。一个实际的例子是，当我们给某项竞赛的优胜者按金银铜牌排序的时候。在这个任务中可能的值只有三种1，2和3。我们用交换的方法把他排成升序的。</p>
@@ -212,11 +260,11 @@
   </entry>
   
   <entry>
-    <title>斯坦福机器学习(一)单变量线性回归问题</title>
+    <title>斯坦福机器学习(一)单变量线性回归</title>
     <link href="http://yoursite.com/2017/06/15/unvariablegradient/"/>
     <id>http://yoursite.com/2017/06/15/unvariablegradient/</id>
     <published>2017-06-15T06:19:52.000Z</published>
-    <updated>2017-06-15T16:16:33.000Z</updated>
+    <updated>2017-08-05T06:29:41.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="约定符号"><a href="#约定符号" class="headerlink" title="约定符号"></a>约定符号</h2><p>$m$ —— 训练集中训练样本个个数<br>$x’s$ —— 输入变量/特征量(即$features$，用$X_i$刻画样本数)<br>$y’s$ —— 输出变量/约定变量</p>
 <h2 id="监督学习与回归问题"><a href="#监督学习与回归问题" class="headerlink" title="监督学习与回归问题"></a>监督学习与回归问题</h2><p>监督学习指机器能够通过使用包含特征量、已知结果的训练集训练，具备能够对问题给出“正确答案”的能力。<br>回归问题指能够机器能够对问题给出一个预计的真值输出（相对于分类问题）。</p>
@@ -689,37 +737,6 @@ J(\theta_1,\theta_2)=\frac{1}{2m}\sum_{i=1}^{m}(\widehat{y_i}-y_i)^2 = \frac{1}{
     <summary type="html">
     
       &lt;h2 id=&quot;题目连接&quot;&gt;&lt;a href=&quot;#题目连接&quot; class=&quot;headerlink&quot; title=&quot;题目连接&quot;&gt;&lt;/a&gt;题目连接&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://poj.org/problem?id=3104&quot; target=&quot;_blank&quot; rel=&quot;
-    
-    </summary>
-    
-      <category term="其他 二分" scheme="http://yoursite.com/categories/%E5%85%B6%E4%BB%96-%E4%BA%8C%E5%88%86/"/>
-    
-    
-      <category term="二分" scheme="http://yoursite.com/tags/%E4%BA%8C%E5%88%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Codeforces 626 C - Block Towers 二分</title>
-    <link href="http://yoursite.com/2017/05/09/626C/"/>
-    <id>http://yoursite.com/2017/05/09/626C/</id>
-    <published>2017-05-08T18:06:14.000Z</published>
-    <updated>2017-05-09T17:05:30.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Students in a class are making towers of blocks. Each student makes a (non-zero) tower by stacking pieces lengthwise on top of each other. n of the students use pieces made of two blocks and m of the students use pieces made of three blocks.</p>
-<p>The students don’t want to use too many blocks, but they also want to be unique, so no two students’ towers may contain the same number of blocks. Find the minimum height necessary for the tallest of the students’ towers.</p>
-<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>The first line of the input contains two space-separated integers n and m (0 ≤ n, m ≤ 1 000 000, n + m &gt; 0) — the number of students using two-block pieces and the number of students using three-block pieces, respectively.</p>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>Print a single integer, denoting the minimum possible height of the tallest tower.</p>
-<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>1 3</p>
-<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>9</p>
-<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>小朋友堆塔，一部分用2的倍数堆，另一部分用3的倍数堆，他们都希望自己的塔是独一无二的（层数不能重复），问最高的塔最小可能为多少？</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>显然的二分最小化最大值，利用了些许集合的只是。如果2的集合总数&lt;n则返回false，3的集合总数&lt;m返回false，最后还有个关键的条件是无法取得所需mid的情况，就是(l1+l2-l3)&lt;m+n的情况，即A和B集合并集中的所有数也不够m+n取到，也返回false。其余情况返回true即可。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> n,m;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> mid)</span></span>&#123;</div><div class="line">	<span class="keyword">int</span> l1=mid/<span class="number">2</span>;</div><div class="line">	<span class="keyword">int</span> l2=mid/<span class="number">3</span>;</div><div class="line">	<span class="keyword">int</span> l3=mid/<span class="number">6</span>;</div><div class="line">	<span class="keyword">if</span>(l1&lt;n || l2&lt;m) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">	<span class="keyword">if</span>(l1+l2-l3&lt;m+n) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">	<span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>,&amp;n,&amp;m);</div><div class="line">	<span class="keyword">int</span> l=<span class="number">0</span>,r=<span class="number">1e9</span>+<span class="number">10</span>;</div><div class="line">	<span class="keyword">while</span>(l&lt;=r)&#123;</div><div class="line">		<span class="keyword">int</span> mid=(l+r)&gt;&gt;<span class="number">1</span>;</div><div class="line">		<span class="keyword">if</span>(check(mid)) r=mid<span class="number">-1</span>;</div><div class="line">		<span class="keyword">else</span> l=mid+<span class="number">1</span>;</div><div class="line">	&#125;</div><div class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>,l);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目连接&quot;&gt;&lt;a href=&quot;#题目连接&quot; class=&quot;headerlink&quot; title=&quot;题目连接&quot;&gt;&lt;/a&gt;题目连接&lt;/h2&gt;&lt;h2 id=&quot;Description&quot;&gt;&lt;a href=&quot;#Description&quot; class=&quot;headerlink&quot; ti
     
     </summary>
     
