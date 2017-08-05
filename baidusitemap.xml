@@ -5,13 +5,33 @@
     
   <url>
     <loc>http://yoursite.com/2017/08/05/standford2/</loc>
-    <lastmod>2017-08-05T06:49:04.000Z</lastmod>
+    <lastmod>2017-08-05T11:34:17.000Z</lastmod>
     <data>
         <display>
         <title>斯坦福机器学习（二）多变量线性回归</title>
         <pubTime>2017-08-05T06:28:36.000Z</pubTime>
         
         <tag>正规方程</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/08/05/standford3/</loc>
+    <lastmod>2017-08-05T11:32:03.000Z</lastmod>
+    <data>
+        <display>
+        <title>斯坦福机器学习(三)逻辑回归与正则化</title>
+        <pubTime>2017-08-05T11:26:51.000Z</pubTime>
+        
+        <tag>梯度下降法</tag>
          
          
            

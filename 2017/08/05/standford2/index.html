@@ -101,7 +101,7 @@
 <meta property="og:description" content="约定符号$n$ —— 特征数量$x^{(i)}$ —— 第i组训练样例的特征值$x^{(i)}_j$ —— 第i组训练样例的第j个特征值 矩阵向量乘法的应用矩阵向量乘法是向量化的基础，给定$thetai$的值以及特征向量$X$,利用矩阵向量乘法计算$h{\theta}的公式如下：  \begin{bmatrix}1&amp;a\\1&amp; b\\1 &amp;c \\ 1&amp;d \end{bmatrix} \times">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/618874b0gy1fi8t2y2iz0j208v09p3yy.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/618874b0gy1fi8ta96pyqj209d063dg2.jpg">
-<meta property="og:updated_time" content="2017-08-05T06:49:04.000Z">
+<meta property="og:updated_time" content="2017-08-05T11:34:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="斯坦福机器学习（二）多变量线性回归">
 <meta name="twitter:description" content="约定符号$n$ —— 特征数量$x^{(i)}$ —— 第i组训练样例的特征值$x^{(i)}_j$ —— 第i组训练样例的第j个特征值 矩阵向量乘法的应用矩阵向量乘法是向量化的基础，给定$thetai$的值以及特征向量$X$,利用矩阵向量乘法计算$h{\theta}的公式如下：  \begin{bmatrix}1&amp;a\\1&amp; b\\1 &amp;c \\ 1&amp;d \end{bmatrix} \times">
@@ -370,10 +370,8 @@
         <h2 id="约定符号"><a href="#约定符号" class="headerlink" title="约定符号"></a>约定符号</h2><p>$n$ —— 特征数量<br>$x^{(i)}$ —— 第i组训练样例的特征值<br>$x^{(i)}_j$ —— 第i组训练样例的第j个特征值</p>
 <h2 id="矩阵向量乘法的应用"><a href="#矩阵向量乘法的应用" class="headerlink" title="矩阵向量乘法的应用"></a>矩阵向量乘法的应用</h2><p>矩阵向量乘法是向量化的基础，给定$theta<em>i$的值以及特征向量$X$,利用矩阵向量乘法计算$h</em>{\theta}的公式如下：</p>
 <script type="math/tex; mode=display">
-\begin{bmatrix}1&a\\1& b\\1 &c \\ 1&d \end{bmatrix} \times \begin{bmatrix}\theta_1\\\theta_2\end{bmatrix}= \begin{bmatrix}h_{\theta}(a)\\ h_{\theta}(b)\\ h_{\theta}(c)\\ h_{\theta}(d)\end{bmatrix}</script><p>即预测值 = 特征矩阵 * 参数矩阵。当参数矩阵为n维的时候，我们可以同时对几组预测函数进行计算。</p>
-<p>之后的多变量线性回归向量化也依照此形式对$h_{\theta}$的值进行计算，而尽量避免对for循环的使用。</p>
-<h2 id="逆矩阵复习"><a href="#逆矩阵复习" class="headerlink" title="逆矩阵复习"></a>逆矩阵复习</h2><p>仅m*m方阵有逆矩阵（只有这种情况相乘可以得到单位矩阵），其他情况利用Octave求得的矩阵均为奇异矩阵（退化矩阵）。</p>
-<p>用Octave对矩阵A求逆矩阵可以用inv(A)，这个时候必须保证A是方阵，但当不是的时候也可以求得逆矩阵，利用pinv(A)即可，也可以得到一个不错的结果，不过一般不建议这样做。</p>
+\begin{bmatrix}1&a\\1& b\\1 &c \\ 1&d \end{bmatrix} \times \begin{bmatrix}\theta_1\\\theta_2\end{bmatrix}= \begin{bmatrix}h_{\theta}(a)\\ h_{\theta}(b)\\ h_{\theta}(c)\\ h_{\theta}(d)\end{bmatrix}</script><p>即预测值 = 特征矩阵 * 参数矩阵。当参数矩阵为n维的时候，我们可以同时对几组预测函数进行计算。<br>之后的多变量线性回归向量化也依照此形式对$h_{\theta}$的值进行计算，而尽量避免对for循环的使用。</p>
+<h2 id="逆矩阵复习"><a href="#逆矩阵复习" class="headerlink" title="逆矩阵复习"></a>逆矩阵复习</h2><p>仅m*m方阵有逆矩阵（只有这种情况相乘可以得到单位矩阵），其他情况利用Octave求得的矩阵均为奇异矩阵（退化矩阵）。<br>用Octave对矩阵A求逆矩阵可以用inv(A)，这个时候必须保证A是方阵，但当不是的时候也可以求得逆矩阵，利用pinv(A)即可，也可以得到一个不错的结果，不过一般不建议这样做。</p>
 <h2 id="多变量线性回归"><a href="#多变量线性回归" class="headerlink" title="多变量线性回归"></a>多变量线性回归</h2><p>多变量线性回归要解决的是如下方程的最优参数值（代价最小）选取问题：</p>
 <script type="math/tex; mode=display">
 h_\theta(x) = \theta_0+\theta_1x_1+\theta_2x_2+...+\theta_nx_n</script><p>其与单变量线性回归形式非常相似，只需要把其延展到多变量即可。</p>
@@ -383,8 +381,7 @@ J(\theta_0,\theta_1,...,\theta_n)=\frac{1}{2m}\sum _{i=1}^{m}(h_{\theta}(x^{(i)}
 <script type="math/tex; mode=display">
 \begin{align*}& \text{repeat until convergence:} \; \lbrace \newline \; & \theta_j := \theta_j - \alpha\frac{\partial }{\partial \theta_j}J(\theta_0,\theta_1,...,\theta_n) & \text{for j := 0...n}\newline \rbrace\end{align*}</script><p>进行微分后就是如下形式：</p>
 <script type="math/tex; mode=display">
-\begin{align*}& \text{repeat until convergence:} \; \lbrace \newline \; & \theta_j := \theta_j - \alpha \frac{1}{m} \sum\limits_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)}) \cdot x_j^{(i)} \; & \text{for j := 0...n}\newline \rbrace\end{align*}</script><h2 id="特征缩放"><a href="#特征缩放" class="headerlink" title="特征缩放"></a>特征缩放</h2><p>目的：确保变量都在一个相同的规模与比例之内，比如全部缩放为-1~1的范围之内，从而使梯度下降法收敛速度更快。</p>
-<p>这里介绍特征缩放的其中一个方法就是<strong>均值归一化</strong>，即每个变量减去该变量的平均值，再除以极差或者方差，这样就可以控制变量范围在-1~1之内了。</p>
+\begin{align*}& \text{repeat until convergence:} \; \lbrace \newline \; & \theta_j := \theta_j - \alpha \frac{1}{m} \sum\limits_{i=1}^{m} (h_\theta(x^{(i)}) - y^{(i)}) \cdot x_j^{(i)} \; & \text{for j := 0...n}\newline \rbrace\end{align*}</script><h2 id="特征缩放"><a href="#特征缩放" class="headerlink" title="特征缩放"></a>特征缩放</h2><p>目的：确保变量都在一个相同的规模与比例之内，比如全部缩放为-1~1的范围之内，从而使梯度下降法收敛速度更快。<br>这里介绍特征缩放的其中一个方法就是<strong>均值归一化</strong>，即每个变量减去该变量的平均值，再除以极差或者方差，这样就可以控制变量范围在-1~1之内了。</p>
 <p>E.g.房子的尺寸$x_1$变化范围为0~2000$feet^2$，房子的房间数$x_2$的变化范围为1~5，显然他们的规模相差非常大，如果不进行特征缩放就开始跑梯度下降，那么其下降过程的轨迹会变成如下这样：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi8t2y2iz0j208v09p3yy.jpg" alt=""><br>可见其要通过比较多次的循环才能够达到全局最优解，通过特征缩放之后轮廓图会比较接近于一个圆形，此时的下降过程就如下图：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi8ta96pyqj209d063dg2.jpg" alt=""><br>显然其收敛速度更快，更快达到了全局最优点。</p>
 <h2 id="确保梯度下降法能够正确进行"><a href="#确保梯度下降法能够正确进行" class="headerlink" title="确保梯度下降法能够正确进行"></a>确保梯度下降法能够正确进行</h2><p>为了让梯度下降法能够正确地进行，我们需要选取合适的学习速率$\alpha$，通过观察代价函数随着循环进行的具体走向不失为一个好办法，因为好的曲线应该是每次循环进行代价函数的值都会下降并且具有良好的收敛速度。尝试的时候从小数开始，每次乘10再观察1/3处的值，每次输出图形即可。当然这一部分也不总是通过手动完成，在之后会接触能够自动选取学习速率以及能够随着循环次数改变学习速率，使其收敛更加迅速的高级算法。</p>
 <h2 id="多项式回归"><a href="#多项式回归" class="headerlink" title="多项式回归"></a>多项式回归</h2><p>多项式回归即如下的形式：</p>
@@ -444,6 +441,10 @@ h_\theta(x)=\theta_0+\theta_1x+\theta_2x^2+...+\theta_nx^n</script><p>显然，�
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/05/standford3/" rel="prev" title="斯坦福机器学习(三)逻辑回归与正则化">
+                斯坦福机器学习(三)逻辑回归与正则化 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -517,7 +518,7 @@ h_\theta(x)=\theta_0+\theta_1x+\theta_2x^2+...+\theta_nx^n</script><p>显然，�
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">51</span>
+                <span class="site-state-item-count">52</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

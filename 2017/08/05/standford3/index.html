@@ -1,0 +1,884 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="梯度下降法," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="HysonQAQ" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="提出背景现实生活经常会碰到的一种问题就是分类问题，通过机器学习我们可以让机器进行判断某一个事物的好坏或者对事物进行分类。例如判断肿瘤是否为恶性肿瘤，判断葡萄酒属于哪一等级的葡萄酒等。我们很容易想到可以利用线性回归来解决这类问题，通过判断预测值是否大于某一个值来进行对数据的分类，这看起来似乎可行，但实际上是有严重缺陷的,例如下图这种情况：其试图以预测值是否大于0.5来判断肿瘤是否为恶性肿瘤，但是当加">
+<meta name="keywords" content="梯度下降法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="斯坦福机器学习(三)逻辑回归与正则化">
+<meta property="og:url" content="http://yoursite.com/2017/08/05/standford3/index.html">
+<meta property="og:site_name" content="HysonQAQ">
+<meta property="og:description" content="提出背景现实生活经常会碰到的一种问题就是分类问题，通过机器学习我们可以让机器进行判断某一个事物的好坏或者对事物进行分类。例如判断肿瘤是否为恶性肿瘤，判断葡萄酒属于哪一等级的葡萄酒等。我们很容易想到可以利用线性回归来解决这类问题，通过判断预测值是否大于某一个值来进行对数据的分类，这看起来似乎可行，但实际上是有严重缺陷的,例如下图这种情况：其试图以预测值是否大于0.5来判断肿瘤是否为恶性肿瘤，但是当加">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/618874b0gy1fi8vbfl9mvj20og077gmn.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/618874b0gy1fi8vgh2up1j20l703rt8v.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/618874b0gy1fi8w1lxc0tj20m907f0u0.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/618874b0gy1fi8w30m5j9j20nf07i0u7.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/618874b0gy1fi8zmaz1b1j20a207274d.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/618874b0gy1fi8zppi64sj208g06tjru.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/618874b0gy1fi8zrft0jnj208j07sdg7.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/618874b0gy1fi91m3vjjmj20d307ggmk.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/618874b0gy1fi91qsi0j0j20es03v74c.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/618874b0gy1fi91xnqoy7j20dr07f3zk.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/618874b0gy1fi92h6irgaj20dj06jmy8.jpg">
+<meta property="og:updated_time" content="2017-08-05T11:32:03.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="斯坦福机器学习(三)逻辑回归与正则化">
+<meta name="twitter:description" content="提出背景现实生活经常会碰到的一种问题就是分类问题，通过机器学习我们可以让机器进行判断某一个事物的好坏或者对事物进行分类。例如判断肿瘤是否为恶性肿瘤，判断葡萄酒属于哪一等级的葡萄酒等。我们很容易想到可以利用线性回归来解决这类问题，通过判断预测值是否大于某一个值来进行对数据的分类，这看起来似乎可行，但实际上是有严重缺陷的,例如下图这种情况：其试图以预测值是否大于0.5来判断肿瘤是否为恶性肿瘤，但是当加">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/618874b0gy1fi8vbfl9mvj20og077gmn.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/08/05/standford3/"/>
+
+
+
+
+
+  <title> 斯坦福机器学习(三)逻辑回归与正则化 | HysonQAQ </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HysonQAQ</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">很卑微，不努力。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/08/05/standford3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hyson">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/头像.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HysonQAQ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                斯坦福机器学习(三)逻辑回归与正则化
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-05T19:26:51+08:00">
+                2017-08-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="提出背景"><a href="#提出背景" class="headerlink" title="提出背景"></a>提出背景</h2><p>现实生活经常会碰到的一种问题就是分类问题，通过机器学习我们可以让机器进行判断某一个事物的好坏或者对事物进行分类。例如判断肿瘤是否为恶性肿瘤，判断葡萄酒属于哪一等级的葡萄酒等。我们很容易想到可以利用线性回归来解决这类问题，通过判断预测值是否大于某一个值来进行对数据的分类，这看起来似乎可行，但实际上是有严重缺陷的,例如下图这种情况：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi8vbfl9mvj20og077gmn.jpg" alt=""><br>其试图以预测值是否大于0.5来判断肿瘤是否为恶性肿瘤，但是当加入最右边的样例的时候，预测曲线显然出现了很大的偏置，导致模型不能够很好地拟合数据。<br>所以我们必须找到一种更好的办法来解决这种分类问题，逻辑回归便因此产生。</p>
+<h2 id="逻辑回归模型"><a href="#逻辑回归模型" class="headerlink" title="逻辑回归模型"></a>逻辑回归模型</h2><p>逻辑回归模型可以用公式表示如下：</p>
+<script type="math/tex; mode=display">
+\begin{align*}& h_\theta (x) = g ( \theta^T x ) \newline \newline& z = \theta^T x \newline& g(z) = \dfrac{1}{1 + e^{-z}}\end{align*}</script><p>可以称之为S型函数（sigmoid function）或者逻辑函数其函数图形如下：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi8vgh2up1j20l703rt8v.jpg" alt=""><br>取值范围为（0,1），通过这种转化，把原来的线性函数转化成为了更佳适用于分类问题的函数取值类型。<br>预测函数$h<em>\theta$会给出该模型认为其属于某一类型的可能性大小，比如$h</em>\theta=0.7$代表有70%的可能我们的输出是1，如果这个1是肿瘤是否恶性，那么我们可以说我们有70%的把握说这个肿瘤是恶性肿瘤，同时其为良性肿瘤的概率便是30%，显然满足如下关系：</p>
+<script type="math/tex; mode=display">
+\begin{align*}& h_\theta(x) = P(y=1 | x ; \theta) = 1 - P(y=0 | x ; \theta) \newline& P(y = 0 | x;\theta) + P(y = 1 | x ; \theta) = 1\end{align*}</script><h2 id="决策边界"><a href="#决策边界" class="headerlink" title="决策边界"></a>决策边界</h2><p>为了把预测函数的值转化为离散的0/1取值，我们可以把预测函数转化为如下形式：</p>
+<script type="math/tex; mode=display">
+\begin{align*}& g(z) \geq 0.5 \newline& when \; z \geq 0\end{align*}</script><p>我们根据前面逻辑函数的形式可以知道，当其输入Z≥0的时候，函数g的输出值将会大于或等于0.5，即如下表现形式：</p>
+<script type="math/tex; mode=display">
+\begin{align*}& g(z) \geq 0.5 \newline& when \; z \geq 0\end{align*}</script><p>而且有如下的性质：</p>
+<script type="math/tex; mode=display">
+\begin{align*}z=0, e^{0}=1 \Rightarrow g(z)=1/2\newline z \to \infty, e^{-\infty} \to 0 \Rightarrow g(z)=1 \newline z \to -\infty, e^{\infty}\to \infty \Rightarrow g(z)=0 \end{align*}</script><p>如果此时我们把输入Z换成$\theta^TX$输入的话，就意味着：</p>
+<script type="math/tex; mode=display">
+\begin{align*}& h_\theta(x) = g(\theta^T x) \geq 0.5 \newline& when \; \theta^T x \geq 0\end{align*}</script><p>根据上面的表述，也即可以说：</p>
+<script type="math/tex; mode=display">
+\begin{align*}& \theta^T x \geq 0 \Rightarrow y = 1 \newline& \theta^T x < 0 \Rightarrow y = 0 \newline\end{align*}</script><p>其图形就是决策边界。决策边界是一条把y=0与y=1区域分开线，它是由预测函数本身参数决定的，是一种属性。<br>当决策边界是直线时表现为如下形式：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi8w1lxc0tj20m907f0u0.jpg" alt=""><br>当然它也可能是其他各种非线性的形状如下所示：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi8w30m5j9j20nf07i0u7.jpg" alt=""><br>根据Z的值是否大于零就可以确定区域内与区域外的分类情况。</p>
+<h2 id="逻辑回归的代价函数"><a href="#逻辑回归的代价函数" class="headerlink" title="逻辑回归的代价函数"></a>逻辑回归的代价函数</h2><p>线性回归的代价函数看起来似乎也很符合逻辑回归的应用，但是经过实际观察得知其实并不如此。画出图形发现使其用于逻辑回归会成为如下的形状：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi8zmaz1b1j20a207274d.jpg" alt=""><br>显然函数是非凸的（convex），这样很可能不会得到全局最优解，因此需要找到一种新的代价函数形式专门用于逻辑回归，现在我们把新的形式定义如下：</p>
+<script type="math/tex; mode=display">
+\begin{align*}& J(\theta) = \dfrac{1}{m} \sum_{i=1}^m \mathrm{Cost}(h_\theta(x^{(i)}),y^{(i)}) \newline & \mathrm{Cost}(h_\theta(x),y) = -\log(h_\theta(x)) \; & \text{if y = 1} \newline & \mathrm{Cost}(h_\theta(x),y) = -\log(1-h_\theta(x)) \; & \text{if y = 0}\end{align*}</script><p>当y=1的时候，代价函数的图像如下：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi8zppi64sj208g06tjru.jpg" alt=""><br>其单调递减，且当预测值趋于0时，代价函数的值趋于正无穷，当预测值为1时，代价函数的值为0。<br>当y=0的时候，代价函数的图像如下：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi8zrft0jnj208j07sdg7.jpg" alt=""><br>其单调递增，且当预测值趋于1时，代价函数的值趋于正无穷，当预测值为0时，代价函数的值为0。<br>这很容易理解，当y=1的时候，预测为1当然是百分百准确的，代价必然为0，反之预测为0是一点都不准确的，同理对y=0的时候也是如此。<br>这两个函数都是凸函数，显然可以很好地应用于逻辑回归作为代价函数。</p>
+<h2 id="简化代价函数并进行梯度下降"><a href="#简化代价函数并进行梯度下降" class="headerlink" title="简化代价函数并进行梯度下降"></a>简化代价函数并进行梯度下降</h2><p>显然对于两条方程并不能适用于梯度下降，我们必须对其简化，使之化为一条式子才能够进行梯度下降，因此可以写出新的费用形式如下：</p>
+<script type="math/tex; mode=display">
+\mathrm{Cost}(h_\theta(x),y) = - y \; \log(h_\theta(x)) - (1 - y) \log(1 - h_\theta(x))</script><p>显然其余前面的方程是等价的，由此转化成为了一条式子，并可以据此写出新的代价函数如下：</p>
+<script type="math/tex; mode=display">
+J(\theta) = - \frac{1}{m} \displaystyle \sum_{i=1}^m [y^{(i)}\log (h_\theta (x^{(i)})) + (1 - y^{(i)})\log (1 - h_\theta(x^{(i)}))]</script><p>可以向量化表示为：</p>
+<script type="math/tex; mode=display">
+\begin{align*} & h = g(X\theta)\newline & J(\theta) = \frac{1}{m} \cdot \left(-y^{T}\log(h)-(1-y)^{T}\log(1-h)\right) \end{align*}</script><p>由此就可以得到新的梯度下降的形式：</p>
+<script type="math/tex; mode=display">
+\begin{align*}& Repeat \; \lbrace \newline & \; \theta_j := \theta_j - \alpha \dfrac{\partial}{\partial \theta_j}J(\theta) \newline & \rbrace\end{align*}</script><p>对其解出微分后的形式如下：</p>
+<script type="math/tex; mode=display">
+\begin{align*} & Repeat \; \lbrace \newline & \; \theta_j := \theta_j - \frac{\alpha}{m} \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)}) x_j^{(i)} \newline & \rbrace \end{align*}</script><p>其形式和之前缩写的代价函数是一致的，并且可以向量化地表述为如下形式：</p>
+<script type="math/tex; mode=display">
+\theta := \theta - \frac{\alpha}{m} X^{T} (g(X \theta ) - \vec{y})</script><h2 id="高级最优化算法"><a href="#高级最优化算法" class="headerlink" title="高级最优化算法"></a>高级最优化算法</h2><p>比梯度下降法更加高级的算法有共轭梯度法、BFGS、L-BGFS等，这些算法都具有自动选取学习速率$\alpha$等能力，甚至能够在循环进行的过程中自动改变学习速率的值，并通常比梯度下降法快得多。但是多数情况下我们并不需要知道他们具体是怎么实现的，只要掌握运用即可。在Octave已经封装好了用以上几种方法求解最优参数值得函数”fminunc()”,我们只需要提供好参数直接进行调用求解即可。<br>代价函数依照以下形式编写：<br><figure class="highlight m"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function [jVal, gradient] <span class="built_in">=</span> costFunction(theta)</div><div class="line">  jVal <span class="built_in">=</span> [...code to compute J(theta)...];</div><div class="line">  gradient <span class="built_in">=</span> [...code to compute derivative of J(theta)...];</div><div class="line">end</div></pre></td></tr></table></figure></p>
+<p>则调用如下：<br><figure class="highlight m"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">% GradObj表示是否可以利用梯度下降，MaxIter表示在聚集前最大可以循环的次数</span></div><div class="line"><span class="comment">% 提供给fminunc的参数有代价函数、用以求得最优解值的参数矩阵以及其他可选项。</span></div><div class="line">options <span class="built_in">=</span> optimset(<span class="string">'GradObj'</span>, <span class="string">'on'</span>, <span class="string">'MaxIter'</span>, <span class="number">100</span>);</div><div class="line">initialTheta <span class="built_in">=</span> zeros(<span class="number">2</span>,<span class="number">1</span>);</div><div class="line">   [optTheta, functionVal, exitFlag] <span class="built_in">=</span> fminunc(@costFunction, initialTheta, options);</div></pre></td></tr></table></figure></p>
+<p>运行之后，将会返回最优参数值、函数值以及一个表明是否已经聚集的标志。</p>
+<h2 id="多重分类"><a href="#多重分类" class="headerlink" title="多重分类"></a>多重分类</h2><p>多重分类只要把每一组向数据独立出来与其余数据进行逻辑回归求解，得到对每一个类型的预测函数，输出可能性最大那个类型即可，可以列出公式如下：</p>
+<script type="math/tex; mode=display">
+\begin{align*}& y \in \lbrace0, 1 ... n\rbrace \newline& h_\theta^{(0)}(x) = P(y = 0 | x ; \theta) \newline& h_\theta^{(1)}(x) = P(y = 1 | x ; \theta) \newline& \cdots \newline& h_\theta^{(n)}(x) = P(y = n | x ; \theta) \newline& \mathrm{prediction} = \max_i( h_\theta ^{(i)}(x) )\newline\end{align*}</script><p>当n=2的时候，要进行一次逻辑回归，而当n≥3的时候，要进行n次逻辑回归，其示意图如下图所示：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi91m3vjjmj20d307ggmk.jpg" alt=""></p>
+<h2 id="过拟合现象以及其解决方式"><a href="#过拟合现象以及其解决方式" class="headerlink" title="过拟合现象以及其解决方式"></a>过拟合现象以及其解决方式</h2><p>当进行线性回归的时候，待拟合函数的最高次数如果比较低的话，往往拟合效果会非常差。如果待拟合函数的最高次数足越高，一般与现行数据的拟合程度就会越好，但是这并不总是意见好事，有时就会出现一种叫过拟合的现象。一下三幅函数图分别代表了欠拟合、拟合较好、过拟合三种情况：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi91qsi0j0j20es03v74c.jpg" alt=""><br>当出现过拟合现象的时候，预测函数能够非常好地拟合用于拟合的数据，但是却不能很好地把这些数据泛化到其他未输入的数据当中，造成高方差的情况，而且函数图像会变得没有规律。其出现的主要原因是因为函数的维度太大、以及训练集的数量太少。<br>为此，要解决过拟合的现象，我们可以人为或者使用特定的某种算法（PAC、因子分析等）去选择保留哪些特征，删掉掉哪些贡献不大的特征，当然这些特征对原函数肯定是有贡献的，删除掉必然导致某些信息的缺失，所以更好的办法是使用正则化处理，这样可以保留所有的特征，但是减少$\theta_j$的规模与大小，正则化尤其适用于那些贡献不大的特征比较多的场合。</p>
+<h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><p>通过正则化可以通过对参数进行“惩罚”，让拟合函数的图形变得更加平滑，其应用于线性回归时候的伪代码如下所示：</p>
+<script type="math/tex; mode=display">
+\begin{align*} & \text{Repeat}\ \lbrace \newline & \ \ \ \ \theta_0 := \theta_0 - \alpha\ \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_0^{(i)} \newline & \ \ \ \ \theta_j := \theta_j - \alpha\ \left[ \left( \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} \right) + \frac{\lambda}{m}\theta_j \right] &\ \ \ \ \ \ \ \ \ \ j \in \lbrace 1,2...n\rbrace\newline & \rbrace \end{align*}</script><p>为什么通过加上惩罚可以使函数更加平滑呢？把其展开可以发现正则化其实是做了如下操作：</p>
+<script type="math/tex; mode=display">
+\theta_j := \theta_j(1 - \alpha\frac{\lambda}{m}) - \alpha\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)}</script><p>观察知道，除了$\theta_j$会在每次循环的时候先替换成一个比本身小一点点的值在进行更新，这样循环下来\theta_j的值都会减小一点点，达到了控制进行速度，减小参数值，从而更好地拟合数据的目的。<br>学到这里，我们就可以解决前面正规方程面对奇异矩阵的问题了，通过正则化，可以把矩阵变化成为一个可逆阵，只需要按照以下的公式进行：</p>
+<script type="math/tex; mode=display">
+\begin{align*}& \theta = \left( X^TX + \lambda \cdot L \right)^{-1} X^Ty \newline& \text{where}\ \ L = \begin{bmatrix} 0 & & & & \newline & 1 & & & \newline & & 1 & & \newline & & & \ddots & \newline & & & & 1 \newline\end{bmatrix}\end{align*}</script><p>即加上了$\lambda·L$,实现了其正则化，可以证明知道这样获得矩阵是可逆的，故正规方程可解。<br>接下来介绍用于逻辑回归的正则化，其能够把决策边界变得更加光滑，从而泛化到更多的数据，效果如下图所示：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi91xnqoy7j20dr07f3zk.jpg" alt=""><br>其正则化的代价函数如下：</p>
+<script type="math/tex; mode=display">
+J(\theta) = - \frac{1}{m} \sum_{i=1}^m \large[ y^{(i)}\ \log (h_\theta (x^{(i)})) + (1 - y^{(i)})\ \log (1 - h_\theta(x^{(i)}))\large] + \frac{\lambda}{2m}\sum_{j=1}^n \theta_j^2</script><p>注意一定要从i=1开始，对应的要把i=0的常数项排除在正则化之外，否则可能会带来不好的影响。所以对逻辑回归进行梯度下降形式如下：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi92h6irgaj20dj06jmy8.jpg" alt=""><br>结合正规化以及之前所学的高级最优化函数，我们已经可以解决绝大部分的线性回归、逻辑回归问题了。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/梯度下降法/" rel="tag"># 梯度下降法</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/05/standford2/" rel="next" title="斯坦福机器学习（二）多变量线性回归">
+                <i class="fa fa-chevron-left"></i> 斯坦福机器学习（二）多变量线性回归
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODMyNy80ODk5"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/头像.gif"
+               alt="Hyson" />
+          <p class="site-author-name" itemprop="name">Hyson</p>
+           
+              <p class="site-description motion-element" itemprop="description">HFUT大二在读/ACMER/Machine-Learner</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hyson666" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/huang-yi-xun-12" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="tencent://message/?uin=601852941&Site=www.hitux.com&Menu=yes" target="_blank" title="QQ">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  QQ
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#提出背景"><span class="nav-number">1.</span> <span class="nav-text">提出背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑回归模型"><span class="nav-number">2.</span> <span class="nav-text">逻辑回归模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#决策边界"><span class="nav-number">3.</span> <span class="nav-text">决策边界</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逻辑回归的代价函数"><span class="nav-number">4.</span> <span class="nav-text">逻辑回归的代价函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简化代价函数并进行梯度下降"><span class="nav-number">5.</span> <span class="nav-text">简化代价函数并进行梯度下降</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高级最优化算法"><span class="nav-number">6.</span> <span class="nav-text">高级最优化算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多重分类"><span class="nav-number">7.</span> <span class="nav-text">多重分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#过拟合现象以及其解决方式"><span class="nav-number">8.</span> <span class="nav-text">过拟合现象以及其解决方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#正则化"><span class="nav-number">9.</span> <span class="nav-text">正则化</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hyson</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
