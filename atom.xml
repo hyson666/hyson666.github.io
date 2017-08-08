@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-08-05T11:32:03.000Z</updated>
+  <updated>2017-08-08T14:34:46.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -16,16 +16,73 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>斯坦福机器学习(三)逻辑回归与正则化</title>
+    <title>斯坦福机器学习（四）神经网络</title>
+    <link href="http://yoursite.com/2017/08/08/standford4/"/>
+    <id>http://yoursite.com/2017/08/08/standford4/</id>
+    <published>2017-08-08T14:26:55.000Z</published>
+    <updated>2017-08-08T14:34:46.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="约定符号"><a href="#约定符号" class="headerlink" title="约定符号"></a>约定符号</h2><p>$a^{(j)}_{i}$ —— 第j层第i个单元的激励值<br>$\Theta^{(j)}$ —— 第j层的权重矩阵，对应从第j层到j+1层的变换</p>
+<h2 id="为什么要使用神经网络解决非线性回归问题？"><a href="#为什么要使用神经网络解决非线性回归问题？" class="headerlink" title="为什么要使用神经网络解决非线性回归问题？"></a>为什么要使用神经网络解决非线性回归问题？</h2><p>当特征数n很大的时候，我们继续使用一般的逻辑回归就会遇上复杂度上面的障碍，比如我们选择最高次数项次数为2，那么就会有<script type="math/tex">\frac{n^2}{2}</script>项，其复杂度为<script type="math/tex">O(n^2)</script>，而如果你打算使用最高次数项为三次方去拟合的话，这将会达到<script type="math/tex">O(n^3)</script>的复杂度。有一种想法是，仅仅保留高次数项，比方说二次项，这看起来行得通，但在某些需要使用直线的点拟合的却不是特别的好，比如希望拟合如下的图形：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1ficmaoep32j20bf07ya9u.jpg" alt=""><br>得到的可能会变成下面这样的图形：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1ficmamm204j20bg0840si.jpg" alt=""><br>这时欠拟合的。显然我们需要使用一种新算法，当在n特别大的时候依然能够有效率地运行，这就是我们使用神经网络解决问题的原因。</p>
+<h2 id="大脑中的简单神经元结构"><a href="#大脑中的简单神经元结构" class="headerlink" title="大脑中的简单神经元结构"></a>大脑中的简单神经元结构</h2><p>大脑神经具有惊人的学习能力，而且这种学习能力具有普适性。所谓普适性，即处理大脑某一特定功能的区域连接到一个不同的地方，如把嗅觉神经区与眼部相连，可以令嗅觉神经区学会观看事物。所以神经网络模型就是一种通过一种算法解决多种学习问题的模型。一个典型的神经元结构如下图所示：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1ficmivjmgij20he0amjvw.jpg" alt=""><br>神经元类似一个计算单元，从输入神经，即Dendrite（树突）中接受一定的信息之后，经过一定的计算后通过输出神经Axon（轴突）可以把这些信息传输到其他的节点或者大脑中的其他神经元，神经网络就是通过模拟大脑神经元的这种信息输入输出的特性工作的。</p>
+<h2 id="神经网络模型概述"><a href="#神经网络模型概述" class="headerlink" title="神经网络模型概述"></a>神经网络模型概述</h2><p>简单的说，神经元就是一个简单的计算单元，它从输入神经中获取电信号输入后经过计算后到输出神经中输出，所以我们就可以模型拆分为三个层次，分别是输入层、隐藏层与输出层，其中隐藏层之中又可能包含数个不同的层次，模型看起来类似下面这样：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1ficn61owgfj20iz09ctbv.jpg" alt=""></p>
+<h3 id="输入层-Layer-1"><a href="#输入层-Layer-1" class="headerlink" title="输入层(Layer 1)"></a>输入层(Layer 1)</h3><p>输入层对应大脑神经元中的树突结构，它以特征向量的形式即<script type="math/tex">x_1,x_2,...,x_n</script>接受数据的输入，然后以<script type="math/tex">h_{\theta}</script>最为结果在输出层输出。在这个模型当中，当然也包括<script type="math/tex">x_0</script>,我们称其为偏置单元，其值永远等于一，在计算的时候务必记得在每一层中都手动加入它。<br>在神经网络的每一层当中，我们都是用同样的逻辑函数和我们之前的分类问题一样。我们可以把他们封装起来，称为sigmoid(logistic) activation function,即逻辑激励函数，在很多不同的文献当中，我们也会把参数<script type="math/tex">\theta</script>称为weights，即权重。此时的模型可以如下表示：</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}x_0 \newline x_1 \newline x_2 \newline \end{bmatrix}\rightarrow\begin{bmatrix}\ \ \ \newline \end{bmatrix}\rightarrow h_\theta(x)</script><h3 id="隐藏层-Layer-2"><a href="#隐藏层-Layer-2" class="headerlink" title="隐藏层(Layer 2)"></a>隐藏层(Layer 2)</h3><p>一般的神经网络模型中，隐藏层至少拥有一层，而且当预测函数比较复杂的时候可能超过一层而拥有数层。它负责神经元中的计算工作，当只有一层的时候我们可以把公式表示为如下：</p>
+<script type="math/tex; mode=display">
+\begin{align*} a_1^{(2)} = g(\Theta_{10}^{(1)}x_0 + \Theta_{11}^{(1)}x_1 + \Theta_{12}^{(1)}x_2 + \Theta_{13}^{(1)}x_3) \newline a_2^{(2)} = g(\Theta_{20}^{(1)}x_0 + \Theta_{21}^{(1)}x_1 + \Theta_{22}^{(1)}x_2 + \Theta_{23}^{(1)}x_3) \newline a_3^{(2)} = g(\Theta_{30}^{(1)}x_0 + \Theta_{31}^{(1)}x_1 + \Theta_{32}^{(1)}x_2 + \Theta_{33}^{(1)}x_3) \newline h_\Theta(x) = a_1^{(3)} = g(\Theta_{10}^{(2)}a_0^{(2)} + \Theta_{11}^{(2)}a_1^{(2)} + \Theta_{12}^{(2)}a_2^{(2)} + \Theta_{13}^{(2)}a_3^{(2)}) \newline \end{align*}</script><p>也就是说我们可以通过一个<script type="math/tex">3\times4</script>的参数矩阵矩阵来就算我们的激励值。<br>推广至多层神经网络，我们用上一层的参数矩阵<script type="math/tex">\Theta^{(i-1)}</script>中每一行的值来计算上一层中获得的的输入值来计算该层的激励值<script type="math/tex">a_i^{(2)}</script>每一层中我们都进行逻辑回归的计算，也即：</p>
+<script type="math/tex; mode=display">
+\begin{align*}a_1^{(2)} = g(z_1^{(2)}) \newline a_2^{(2)} = g(z_2^{(2)}) \newline a_3^{(2)} = g(z_3^{(2)}) \newline \end{align*}</script><p>其中z的值可以用以下公式进行计算：</p>
+<script type="math/tex; mode=display">
+z_k^{(2)} = \Theta_{k,0}^{(1)}x_0 + \Theta_{k,1}^{(1)}x_1 + \cdots + \Theta_{k,n}^{(1)}x_n</script><p>此时的模型可以如下表示：</p>
+<script type="math/tex; mode=display">
+\begin{bmatrix}x_0 \newline x_1 \newline x_2 \newline x_3\end{bmatrix}\rightarrow\begin{bmatrix}a_1^{(2)} \newline a_2^{(2)} \newline a_3^{(2)} \newline \end{bmatrix}\rightarrow h_\theta(x)</script><p>当神经网络有 <script type="math/tex">s_j</script> 个单元于层 $j$ 和 <script type="math/tex">s_{j+1}</script> 个单元于层 <script type="math/tex">j+1</script>, 那么 <script type="math/tex">\Theta^{(j)}</script> 的维度为 <script type="math/tex">s_{j+1} \times (s_j + 1)</script>。</p>
+<h3 id="输出层-Layer-3"><a href="#输出层-Layer-3" class="headerlink" title="输出层(Layer 3)"></a>输出层(Layer 3)</h3><p>输出层的计算同隐藏层一致，通过一定的处理之后把所得到的预测值转化为预测矩阵输出。</p>
+<h2 id="利用神经网络计算逻辑与"><a href="#利用神经网络计算逻辑与" class="headerlink" title="利用神经网络计算逻辑与"></a>利用神经网络计算逻辑与</h2><p>首先复习一下逻辑函数的图形如下：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fico2lp6ngj20ci06odgl.jpg" alt=""><br>当x=4.6的时候，可以说函数值约等于1，由对称性，当x=-4.6的时候，可以说函数值约等于0，基于这个特点，我们给权重赋予一定的值就可以进行各种逻辑计算。</p>
+<h3 id="利用神经网络计算逻辑与-1"><a href="#利用神经网络计算逻辑与-1" class="headerlink" title="利用神经网络计算逻辑与"></a>利用神经网络计算逻辑与</h3><p>首先给第一个参数矩阵赋值如下：</p>
+<script type="math/tex; mode=display">
+\Theta^{(1)} =\begin{bmatrix}-30 & 20 & 20\end{bmatrix}</script><p>因为此时<script type="math/tex">x_1、x_2</script>都是二进制数，结合逻辑函数图像，我们可以得到如下的结果：</p>
+<script type="math/tex; mode=display">
+\begin{align*}& h_\Theta(x) = g(-30 + 20x_1 + 20x_2) \newline \newline & x_1 = 0 \ \ and \ \ x_2 = 0 \ \ then \ \ g(-30) \approx 0 \newline & x_1 = 0 \ \ and \ \ x_2 = 1 \ \ then \ \ g(-10) \approx 0 \newline & x_1 = 1 \ \ and \ \ x_2 = 0 \ \ then \ \ g(-10) \approx 0 \newline & x_1 = 1 \ \ and \ \ x_2 = 1 \ \ then \ \ g(10) \approx 1\end{align*}</script><p>一个好的办法是列出真值表如下：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fico7gpzqqj20gb07raaw.jpg" alt=""><br>这样我们就完成了逻辑与的表示，同样的，把参数赋值为以下值就可以表示逻辑或了：</p>
+<script type="math/tex; mode=display">
+\Theta^{(1)} =\begin{bmatrix}-10 & 20 & 20\end{bmatrix}</script><h3 id="利用神经网络计算或非"><a href="#利用神经网络计算或非" class="headerlink" title="利用神经网络计算或非"></a>利用神经网络计算或非</h3><p>可以容易把或非拆分为与、与非后再或的形式，由此把与和与非作为隐藏层，再进行一次或到输出层我们就可以表示或非了，每种形式我们赋权值如下：</p>
+<script type="math/tex; mode=display">
+\begin{align*}AND:\newline\Theta^{(1)} &=\begin{bmatrix}-30 & 20 & 20\end{bmatrix} \newline NOR:\newline\Theta^{(1)} &= \begin{bmatrix}10 & -20 & -20\end{bmatrix} \newline OR:\newline\Theta^{(1)} &= \begin{bmatrix}-10 & 20 & 20\end{bmatrix} \newline\end{align*}</script><p>则第一层参数矩阵如下：</p>
+<script type="math/tex; mode=display">
+\Theta^{(1)} =\begin{bmatrix}-30 & 20 & 20 \newline 10 & -20 & -20\end{bmatrix}</script><p>第二层参数矩阵如下：</p>
+<script type="math/tex; mode=display">
+\Theta^{(2)} =\begin{bmatrix}-10 & 20 & 20\end{bmatrix}</script><p>结合起来写就成为如下的形式：</p>
+<script type="math/tex; mode=display">
+\begin{align*}& a^{(2)} = g(\Theta^{(1)} \cdot x) \newline& a^{(3)} = g(\Theta^{(2)} \cdot a^{(2)}) \newline& h_\Theta(x) = a^{(3)}\end{align*}</script><p>整合起来用表示为如下图：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1ficodbubwmj20hb09h40o.jpg" alt=""></p>
+<h2 id="一对多分类（One-vs-all）的神经网络"><a href="#一对多分类（One-vs-all）的神经网络" class="headerlink" title="一对多分类（One-vs-all）的神经网络"></a>一对多分类（One-vs-all）的神经网络</h2><p>为了把数据分为多个种类，我们的预测函数可以返回一个向量值。现在我们说我们要把一组数据分为四个种类，我们会使用如下这个例子，把图片分为四类：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1ficog2w1kjj20h309en0f.jpg" alt=""><br>输出y应该具有如下四个类型：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1ficogyh306j205v02cq2y.jpg" alt=""><br>其中第j个元素值为1则说明预测分类为第j类，而且其他位置应该全部为0。<br>而我们的一对多分类模型可以表示为如下：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1ficoj0z725j208u02w3yn.jpg" alt=""><br>预测函数为如下向量的时候：</p>
+<script type="math/tex; mode=display">
+h_\Theta(x) =\begin{bmatrix}0 \newline 0 \newline 1 \newline 0 \newline\end{bmatrix}</script><p>我们就可以判断我们模型推断这张图片是摩托车。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;约定符号&quot;&gt;&lt;a href=&quot;#约定符号&quot; class=&quot;headerlink&quot; title=&quot;约定符号&quot;&gt;&lt;/a&gt;约定符号&lt;/h2&gt;&lt;p&gt;$a^{(j)}_{i}$ —— 第j层第i个单元的激励值&lt;br&gt;$\Theta^{(j)}$ —— 第j层的权重矩阵，对应
+    
+    </summary>
+    
+      <category term="机器学习" scheme="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="神经网络" scheme="http://yoursite.com/tags/%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>斯坦福机器学习（三）逻辑回归与正则化</title>
     <link href="http://yoursite.com/2017/08/05/standford3/"/>
     <id>http://yoursite.com/2017/08/05/standford3/</id>
     <published>2017-08-05T11:26:51.000Z</published>
-    <updated>2017-08-05T11:32:03.000Z</updated>
+    <updated>2017-08-08T14:37:28.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="提出背景"><a href="#提出背景" class="headerlink" title="提出背景"></a>提出背景</h2><p>现实生活经常会碰到的一种问题就是分类问题，通过机器学习我们可以让机器进行判断某一个事物的好坏或者对事物进行分类。例如判断肿瘤是否为恶性肿瘤，判断葡萄酒属于哪一等级的葡萄酒等。我们很容易想到可以利用线性回归来解决这类问题，通过判断预测值是否大于某一个值来进行对数据的分类，这看起来似乎可行，但实际上是有严重缺陷的,例如下图这种情况：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi8vbfl9mvj20og077gmn.jpg" alt=""><br>其试图以预测值是否大于0.5来判断肿瘤是否为恶性肿瘤，但是当加入最右边的样例的时候，预测曲线显然出现了很大的偏置，导致模型不能够很好地拟合数据。<br>所以我们必须找到一种更好的办法来解决这种分类问题，逻辑回归便因此产生。</p>
 <h2 id="逻辑回归模型"><a href="#逻辑回归模型" class="headerlink" title="逻辑回归模型"></a>逻辑回归模型</h2><p>逻辑回归模型可以用公式表示如下：</p>
 <script type="math/tex; mode=display">
-\begin{align*}& h_\theta (x) = g ( \theta^T x ) \newline \newline& z = \theta^T x \newline& g(z) = \dfrac{1}{1 + e^{-z}}\end{align*}</script><p>可以称之为S型函数（sigmoid function）或者逻辑函数其函数图形如下：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi8vgh2up1j20l703rt8v.jpg" alt=""><br>取值范围为（0,1），通过这种转化，把原来的线性函数转化成为了更佳适用于分类问题的函数取值类型。<br>预测函数$h<em>\theta$会给出该模型认为其属于某一类型的可能性大小，比如$h</em>\theta=0.7$代表有70%的可能我们的输出是1，如果这个1是肿瘤是否恶性，那么我们可以说我们有70%的把握说这个肿瘤是恶性肿瘤，同时其为良性肿瘤的概率便是30%，显然满足如下关系：</p>
+\begin{align*}& h_\theta (x) = g ( \theta^T x ) \newline \newline& z = \theta^T x \newline& g(z) = \dfrac{1}{1 + e^{-z}}\end{align*}</script><p>可以称之为S型函数（sigmoid function）或者逻辑函数其函数图形如下：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi8vgh2up1j20l703rt8v.jpg" alt=""><br>取值范围为（0,1），通过这种转化，把原来的线性函数转化成为了更佳适用于分类问题的函数取值类型。<br>预测函数<script type="math/tex">h_{\theta}</script>会给出该模型认为其属于某一类型的可能性大小，比如<script type="math/tex">h_{\theta}=0.7</script>代表有70%的可能我们的输出是1，如果这个1是肿瘤是否恶性，那么我们可以说我们有70%的把握说这个肿瘤是恶性肿瘤，同时其为良性肿瘤的概率便是30%，显然满足如下关系：</p>
 <script type="math/tex; mode=display">
 \begin{align*}& h_\theta(x) = P(y=1 | x ; \theta) = 1 - P(y=0 | x ; \theta) \newline& P(y = 0 | x;\theta) + P(y = 1 | x ; \theta) = 1\end{align*}</script><h2 id="决策边界"><a href="#决策边界" class="headerlink" title="决策边界"></a>决策边界</h2><p>为了把预测函数的值转化为离散的0/1取值，我们可以把预测函数转化为如下形式：</p>
 <script type="math/tex; mode=display">
@@ -59,12 +116,12 @@ J(\theta) = - \frac{1}{m} \displaystyle \sum_{i=1}^m [y^{(i)}\log (h_\theta (x^{
 <h2 id="多重分类"><a href="#多重分类" class="headerlink" title="多重分类"></a>多重分类</h2><p>多重分类只要把每一组向数据独立出来与其余数据进行逻辑回归求解，得到对每一个类型的预测函数，输出可能性最大那个类型即可，可以列出公式如下：</p>
 <script type="math/tex; mode=display">
 \begin{align*}& y \in \lbrace0, 1 ... n\rbrace \newline& h_\theta^{(0)}(x) = P(y = 0 | x ; \theta) \newline& h_\theta^{(1)}(x) = P(y = 1 | x ; \theta) \newline& \cdots \newline& h_\theta^{(n)}(x) = P(y = n | x ; \theta) \newline& \mathrm{prediction} = \max_i( h_\theta ^{(i)}(x) )\newline\end{align*}</script><p>当n=2的时候，要进行一次逻辑回归，而当n≥3的时候，要进行n次逻辑回归，其示意图如下图所示：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi91m3vjjmj20d307ggmk.jpg" alt=""></p>
-<h2 id="过拟合现象以及其解决方式"><a href="#过拟合现象以及其解决方式" class="headerlink" title="过拟合现象以及其解决方式"></a>过拟合现象以及其解决方式</h2><p>当进行线性回归的时候，待拟合函数的最高次数如果比较低的话，往往拟合效果会非常差。如果待拟合函数的最高次数足越高，一般与现行数据的拟合程度就会越好，但是这并不总是意见好事，有时就会出现一种叫过拟合的现象。一下三幅函数图分别代表了欠拟合、拟合较好、过拟合三种情况：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi91qsi0j0j20es03v74c.jpg" alt=""><br>当出现过拟合现象的时候，预测函数能够非常好地拟合用于拟合的数据，但是却不能很好地把这些数据泛化到其他未输入的数据当中，造成高方差的情况，而且函数图像会变得没有规律。其出现的主要原因是因为函数的维度太大、以及训练集的数量太少。<br>为此，要解决过拟合的现象，我们可以人为或者使用特定的某种算法（PAC、因子分析等）去选择保留哪些特征，删掉掉哪些贡献不大的特征，当然这些特征对原函数肯定是有贡献的，删除掉必然导致某些信息的缺失，所以更好的办法是使用正则化处理，这样可以保留所有的特征，但是减少$\theta_j$的规模与大小，正则化尤其适用于那些贡献不大的特征比较多的场合。</p>
+<h2 id="过拟合现象以及其解决方式"><a href="#过拟合现象以及其解决方式" class="headerlink" title="过拟合现象以及其解决方式"></a>过拟合现象以及其解决方式</h2><p>当进行线性回归的时候，待拟合函数的最高次数如果比较低的话，往往拟合效果会非常差。如果待拟合函数的最高次数足越高，一般与现行数据的拟合程度就会越好，但是这并不总是意见好事，有时就会出现一种叫过拟合的现象。一下三幅函数图分别代表了欠拟合、拟合较好、过拟合三种情况：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi91qsi0j0j20es03v74c.jpg" alt=""><br>当出现过拟合现象的时候，预测函数能够非常好地拟合用于拟合的数据，但是却不能很好地把这些数据泛化到其他未输入的数据当中，造成高方差的情况，而且函数图像会变得没有规律。其出现的主要原因是因为函数的维度太大、以及训练集的数量太少。<br>为此，要解决过拟合的现象，我们可以人为或者使用特定的某种算法（PAC、因子分析等）去选择保留哪些特征，删掉掉哪些贡献不大的特征，当然这些特征对原函数肯定是有贡献的，删除掉必然导致某些信息的缺失，所以更好的办法是使用正则化处理，这样可以保留所有的特征，但是减少<script type="math/tex">\theta_j</script>的规模与大小，正则化尤其适用于那些贡献不大的特征比较多的场合。</p>
 <h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><p>通过正则化可以通过对参数进行“惩罚”，让拟合函数的图形变得更加平滑，其应用于线性回归时候的伪代码如下所示：</p>
 <script type="math/tex; mode=display">
 \begin{align*} & \text{Repeat}\ \lbrace \newline & \ \ \ \ \theta_0 := \theta_0 - \alpha\ \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_0^{(i)} \newline & \ \ \ \ \theta_j := \theta_j - \alpha\ \left[ \left( \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} \right) + \frac{\lambda}{m}\theta_j \right] &\ \ \ \ \ \ \ \ \ \ j \in \lbrace 1,2...n\rbrace\newline & \rbrace \end{align*}</script><p>为什么通过加上惩罚可以使函数更加平滑呢？把其展开可以发现正则化其实是做了如下操作：</p>
 <script type="math/tex; mode=display">
-\theta_j := \theta_j(1 - \alpha\frac{\lambda}{m}) - \alpha\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)}</script><p>观察知道，除了$\theta_j$会在每次循环的时候先替换成一个比本身小一点点的值在进行更新，这样循环下来\theta_j的值都会减小一点点，达到了控制进行速度，减小参数值，从而更好地拟合数据的目的。<br>学到这里，我们就可以解决前面正规方程面对奇异矩阵的问题了，通过正则化，可以把矩阵变化成为一个可逆阵，只需要按照以下的公式进行：</p>
+\theta_j := \theta_j(1 - \alpha\frac{\lambda}{m}) - \alpha\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)}</script><p>观察知道，除了$\theta_j$会在每次循环的时候先替换成一个比本身小一点点的值在进行更新，这样循环下来<script type="math/tex">\theta_j</script>的值都会减小一点点，达到了控制进行速度，减小参数值，从而更好地拟合数据的目的。<br>学到这里，我们就可以解决前面正规方程面对奇异矩阵的问题了，通过正则化，可以把矩阵变化成为一个可逆阵，只需要按照以下的公式进行：</p>
 <script type="math/tex; mode=display">
 \begin{align*}& \theta = \left( X^TX + \lambda \cdot L \right)^{-1} X^Ty \newline& \text{where}\ \ L = \begin{bmatrix} 0 & & & & \newline & 1 & & & \newline & & 1 & & \newline & & & \ddots & \newline & & & & 1 \newline\end{bmatrix}\end{align*}</script><p>即加上了$\lambda·L$,实现了其正则化，可以证明知道这样获得矩阵是可逆的，故正规方程可解。<br>接下来介绍用于逻辑回归的正则化，其能够把决策边界变得更加光滑，从而泛化到更多的数据，效果如下图所示：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi91xnqoy7j20dr07f3zk.jpg" alt=""><br>其正则化的代价函数如下：</p>
 <script type="math/tex; mode=display">
@@ -89,10 +146,10 @@ J(\theta) = - \frac{1}{m} \sum_{i=1}^m \large[ y^{(i)}\ \log (h_\theta (x^{(i)})
     <link href="http://yoursite.com/2017/08/05/standford2/"/>
     <id>http://yoursite.com/2017/08/05/standford2/</id>
     <published>2017-08-05T06:28:36.000Z</published>
-    <updated>2017-08-05T11:34:17.000Z</updated>
+    <updated>2017-08-08T14:39:14.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="约定符号"><a href="#约定符号" class="headerlink" title="约定符号"></a>约定符号</h2><p>$n$ —— 特征数量<br>$x^{(i)}$ —— 第i组训练样例的特征值<br>$x^{(i)}_j$ —— 第i组训练样例的第j个特征值</p>
-<h2 id="矩阵向量乘法的应用"><a href="#矩阵向量乘法的应用" class="headerlink" title="矩阵向量乘法的应用"></a>矩阵向量乘法的应用</h2><p>矩阵向量乘法是向量化的基础，给定$theta<em>i$的值以及特征向量$X$,利用矩阵向量乘法计算$h</em>{\theta}的公式如下：</p>
+<h2 id="矩阵向量乘法的应用"><a href="#矩阵向量乘法的应用" class="headerlink" title="矩阵向量乘法的应用"></a>矩阵向量乘法的应用</h2><p>矩阵向量乘法是向量化的基础，给定<script type="math/tex">theta_i</script>的值以及特征向量$X$,利用矩阵向量乘法计算<script type="math/tex">h_{\theta}</script>的公式如下：</p>
 <script type="math/tex; mode=display">
 \begin{bmatrix}1&a\\1& b\\1 &c \\ 1&d \end{bmatrix} \times \begin{bmatrix}\theta_1\\\theta_2\end{bmatrix}= \begin{bmatrix}h_{\theta}(a)\\ h_{\theta}(b)\\ h_{\theta}(c)\\ h_{\theta}(d)\end{bmatrix}</script><p>即预测值 = 特征矩阵 * 参数矩阵。当参数矩阵为n维的时候，我们可以同时对几组预测函数进行计算。<br>之后的多变量线性回归向量化也依照此形式对$h_{\theta}$的值进行计算，而尽量避免对for循环的使用。</p>
 <h2 id="逆矩阵复习"><a href="#逆矩阵复习" class="headerlink" title="逆矩阵复习"></a>逆矩阵复习</h2><p>仅m*m方阵有逆矩阵（只有这种情况相乘可以得到单位矩阵），其他情况利用Octave求得的矩阵均为奇异矩阵（退化矩阵）。<br>用Octave对矩阵A求逆矩阵可以用inv(A)，这个时候必须保证A是方阵，但当不是的时候也可以求得逆矩阵，利用pinv(A)即可，也可以得到一个不错的结果，不过一般不建议这样做。</p>
@@ -326,11 +383,11 @@ h_\theta(x)=\theta_0+\theta_1x+\theta_2x^2+...+\theta_nx^n</script><p>显然，�
   </entry>
   
   <entry>
-    <title>斯坦福机器学习(一)单变量线性回归</title>
+    <title>斯坦福机器学习（一）单变量线性回归</title>
     <link href="http://yoursite.com/2017/06/15/unvariablegradient/"/>
     <id>http://yoursite.com/2017/06/15/unvariablegradient/</id>
     <published>2017-06-15T06:19:52.000Z</published>
-    <updated>2017-08-05T06:29:41.000Z</updated>
+    <updated>2017-08-05T11:36:03.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="约定符号"><a href="#约定符号" class="headerlink" title="约定符号"></a>约定符号</h2><p>$m$ —— 训练集中训练样本个个数<br>$x’s$ —— 输入变量/特征量(即$features$，用$X_i$刻画样本数)<br>$y’s$ —— 输出变量/约定变量</p>
 <h2 id="监督学习与回归问题"><a href="#监督学习与回归问题" class="headerlink" title="监督学习与回归问题"></a>监督学习与回归问题</h2><p>监督学习指机器能够通过使用包含特征量、已知结果的训练集训练，具备能够对问题给出“正确答案”的能力。<br>回归问题指能够机器能够对问题给出一个预计的真值输出（相对于分类问题）。</p>
@@ -740,40 +797,6 @@ J(\theta_1,\theta_2)=\frac{1}{2m}\sum_{i=1}^{m}(\widehat{y_i}-y_i)^2 = \frac{1}{
     
     
       <category term="DFS" scheme="http://yoursite.com/tags/DFS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>POJ3258 - River Hopscotch 二分</title>
-    <link href="http://yoursite.com/2017/05/10/POJ3258/"/>
-    <id>http://yoursite.com/2017/05/10/POJ3258/</id>
-    <published>2017-05-09T17:26:15.000Z</published>
-    <updated>2017-05-09T17:37:34.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="http://poj.org/problem?id=3258" target="_blank" rel="external">http://poj.org/problem?id=3258</a></p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Every year the cows hold an event featuring a peculiar version of hopscotch that involves carefully jumping from rock to rock in a river. The excitement takes place on a long, straight river with a rock at the start and another rock at the end, L units away from the start (1 ≤ L ≤ 1,000,000,000). Along the river between the starting and ending rocks, N (0 ≤ N ≤ 50,000) more rocks appear, each at an integral distance Di from the start (0 &lt; Di &lt; L).</p>
-<p>To play the game, each cow in turn starts at the starting rock and tries to reach the finish at the ending rock, jumping only from rock to rock. Of course, less agile cows never make it to the final rock, ending up instead in the river.</p>
-<p>Farmer John is proud of his cows and watches this event each year. But as time goes by, he tires of watching the timid cows of the other farmers limp across the short distances between rocks placed too closely together. He plans to remove several rocks in order to increase the shortest distance a cow will have to jump to reach the end. He knows he cannot remove the starting and ending rocks, but he calculates that he has enough resources to remove up to M rocks (0 ≤ M ≤ N).</p>
-<p>FJ wants to know exactly how much he can increase the shortest distance *before* he starts removing the rocks. Help Farmer John determine the greatest possible shortest distance a cow has to jump after removing the optimal set of M rocks.</p>
-<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>Line 1: Three space-separated integers: L, N, and M<br>Lines 2..N+1: Each line contains a single integer indicating how far some rock is away from the starting rock. No two rocks share the same position.</p>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>Line 1: A single integer that is the maximum of the shortest distance a cow has to jump after removing M rocks</p>
-<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>25 5 2<br>2<br>14<br>11<br>21<br>17</p>
-<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>4</p>
-<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>通过取走M块石头令最小距离最大化，问这个最大的最小距离为多少。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>有两种理解，第一种在ai位置上摆放n-m块石头，每一块石头都放得尽可能近，而且这个距离要大于mid，看能否把石子摆放完（即在最后一个位置前全部摆完），能摆放完就返回true，这样就转化成了白书上题目的变式。还有一种理解是假定C（x）是最大的最短距离，那么for一遍，如果有小于这个C（x）的情况，则通过增添石子来拓展距离（显然从前往后，由贪心思想可知是正确的），否则继续遍历下一个石子，统计删除石头的个数是否为小于等于m，因为这种情况总可以继续删除石子使最大距离大于C（x），为可行解，返回true。代码给出第一种理解。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">50000</span>+<span class="number">10</span>;</div><div class="line">ll a[maxn];</div><div class="line">ll d,n,m;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(ll x)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> last=<span class="number">0</span>;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;n-m;++i)&#123;</div><div class="line">        <span class="keyword">int</span> cur=last+<span class="number">1</span>;</div><div class="line">        <span class="keyword">while</span>(cur&lt;n &amp;&amp; a[cur]-a[last]&lt;x &amp;&amp; cur-last&lt;=m)&#123;</div><div class="line">            ++cur;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">if</span>(cur==n) <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">        last = cur;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">	<span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%lld%lld%lld"</span>,&amp;d,&amp;n,&amp;m))&#123;</div><div class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;++i) <span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;a[i]);</div><div class="line">		a[n+<span class="number">1</span>]=d;</div><div class="line">        sort(a,a+n+<span class="number">1</span>);</div><div class="line">        n+=<span class="number">1</span>;</div><div class="line">		ll l=<span class="number">1</span>,r=d+<span class="number">1</span>,mid;</div><div class="line">		<span class="keyword">while</span>(r-l&gt;<span class="number">1</span>)&#123;</div><div class="line">			mid=(l+r)&gt;&gt;<span class="number">1</span>;</div><div class="line">			<span class="keyword">if</span>(check(mid)) l=mid;</div><div class="line">			<span class="keyword">else</span> r=mid;</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,l);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目连接&quot;&gt;&lt;a href=&quot;#题目连接&quot; class=&quot;headerlink&quot; title=&quot;题目连接&quot;&gt;&lt;/a&gt;题目连接&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://poj.org/problem?id=3258&quot; target=&quot;_blank&quot; rel=&quot;
-    
-    </summary>
-    
-      <category term="其他 二分" scheme="http://yoursite.com/categories/%E5%85%B6%E4%BB%96-%E4%BA%8C%E5%88%86/"/>
-    
-    
-      <category term="二分" scheme="http://yoursite.com/tags/%E4%BA%8C%E5%88%86/"/>
     
   </entry>
   

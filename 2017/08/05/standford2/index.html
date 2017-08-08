@@ -92,19 +92,19 @@
 
 
 
-<meta name="description" content="约定符号$n$ —— 特征数量$x^{(i)}$ —— 第i组训练样例的特征值$x^{(i)}_j$ —— 第i组训练样例的第j个特征值 矩阵向量乘法的应用矩阵向量乘法是向量化的基础，给定$thetai$的值以及特征向量$X$,利用矩阵向量乘法计算$h{\theta}的公式如下：  \begin{bmatrix}1&amp;a\\1&amp; b\\1 &amp;c \\ 1&amp;d \end{bmatrix} \times">
+<meta name="description" content="约定符号$n$ —— 特征数量$x^{(i)}$ —— 第i组训练样例的特征值$x^{(i)}_j$ —— 第i组训练样例的第j个特征值 矩阵向量乘法的应用矩阵向量乘法是向量化的基础，给定theta_i的值以及特征向量$X$,利用矩阵向量乘法计算h_{\theta}的公式如下：  \begin{bmatrix}1&amp;a\\1&amp; b\\1 &amp;c \\ 1&amp;d \end{bmatrix} \times">
 <meta name="keywords" content="正规方程">
 <meta property="og:type" content="article">
 <meta property="og:title" content="斯坦福机器学习（二）多变量线性回归">
 <meta property="og:url" content="http://yoursite.com/2017/08/05/standford2/index.html">
 <meta property="og:site_name" content="HysonQAQ">
-<meta property="og:description" content="约定符号$n$ —— 特征数量$x^{(i)}$ —— 第i组训练样例的特征值$x^{(i)}_j$ —— 第i组训练样例的第j个特征值 矩阵向量乘法的应用矩阵向量乘法是向量化的基础，给定$thetai$的值以及特征向量$X$,利用矩阵向量乘法计算$h{\theta}的公式如下：  \begin{bmatrix}1&amp;a\\1&amp; b\\1 &amp;c \\ 1&amp;d \end{bmatrix} \times">
+<meta property="og:description" content="约定符号$n$ —— 特征数量$x^{(i)}$ —— 第i组训练样例的特征值$x^{(i)}_j$ —— 第i组训练样例的第j个特征值 矩阵向量乘法的应用矩阵向量乘法是向量化的基础，给定theta_i的值以及特征向量$X$,利用矩阵向量乘法计算h_{\theta}的公式如下：  \begin{bmatrix}1&amp;a\\1&amp; b\\1 &amp;c \\ 1&amp;d \end{bmatrix} \times">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/618874b0gy1fi8t2y2iz0j208v09p3yy.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/618874b0gy1fi8ta96pyqj209d063dg2.jpg">
-<meta property="og:updated_time" content="2017-08-05T11:34:17.000Z">
+<meta property="og:updated_time" content="2017-08-08T14:39:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="斯坦福机器学习（二）多变量线性回归">
-<meta name="twitter:description" content="约定符号$n$ —— 特征数量$x^{(i)}$ —— 第i组训练样例的特征值$x^{(i)}_j$ —— 第i组训练样例的第j个特征值 矩阵向量乘法的应用矩阵向量乘法是向量化的基础，给定$thetai$的值以及特征向量$X$,利用矩阵向量乘法计算$h{\theta}的公式如下：  \begin{bmatrix}1&amp;a\\1&amp; b\\1 &amp;c \\ 1&amp;d \end{bmatrix} \times">
+<meta name="twitter:description" content="约定符号$n$ —— 特征数量$x^{(i)}$ —— 第i组训练样例的特征值$x^{(i)}_j$ —— 第i组训练样例的第j个特征值 矩阵向量乘法的应用矩阵向量乘法是向量化的基础，给定theta_i的值以及特征向量$X$,利用矩阵向量乘法计算h_{\theta}的公式如下：  \begin{bmatrix}1&amp;a\\1&amp; b\\1 &amp;c \\ 1&amp;d \end{bmatrix} \times">
 <meta name="twitter:image" content="https://ws1.sinaimg.cn/large/618874b0gy1fi8t2y2iz0j208v09p3yy.jpg">
 
 
@@ -368,7 +368,7 @@
 
       
         <h2 id="约定符号"><a href="#约定符号" class="headerlink" title="约定符号"></a>约定符号</h2><p>$n$ —— 特征数量<br>$x^{(i)}$ —— 第i组训练样例的特征值<br>$x^{(i)}_j$ —— 第i组训练样例的第j个特征值</p>
-<h2 id="矩阵向量乘法的应用"><a href="#矩阵向量乘法的应用" class="headerlink" title="矩阵向量乘法的应用"></a>矩阵向量乘法的应用</h2><p>矩阵向量乘法是向量化的基础，给定$theta<em>i$的值以及特征向量$X$,利用矩阵向量乘法计算$h</em>{\theta}的公式如下：</p>
+<h2 id="矩阵向量乘法的应用"><a href="#矩阵向量乘法的应用" class="headerlink" title="矩阵向量乘法的应用"></a>矩阵向量乘法的应用</h2><p>矩阵向量乘法是向量化的基础，给定<script type="math/tex">theta_i</script>的值以及特征向量$X$,利用矩阵向量乘法计算<script type="math/tex">h_{\theta}</script>的公式如下：</p>
 <script type="math/tex; mode=display">
 \begin{bmatrix}1&a\\1& b\\1 &c \\ 1&d \end{bmatrix} \times \begin{bmatrix}\theta_1\\\theta_2\end{bmatrix}= \begin{bmatrix}h_{\theta}(a)\\ h_{\theta}(b)\\ h_{\theta}(c)\\ h_{\theta}(d)\end{bmatrix}</script><p>即预测值 = 特征矩阵 * 参数矩阵。当参数矩阵为n维的时候，我们可以同时对几组预测函数进行计算。<br>之后的多变量线性回归向量化也依照此形式对$h_{\theta}$的值进行计算，而尽量避免对for循环的使用。</p>
 <h2 id="逆矩阵复习"><a href="#逆矩阵复习" class="headerlink" title="逆矩阵复习"></a>逆矩阵复习</h2><p>仅m*m方阵有逆矩阵（只有这种情况相乘可以得到单位矩阵），其他情况利用Octave求得的矩阵均为奇异矩阵（退化矩阵）。<br>用Octave对矩阵A求逆矩阵可以用inv(A)，这个时候必须保证A是方阵，但当不是的时候也可以求得逆矩阵，利用pinv(A)即可，也可以得到一个不错的结果，不过一般不建议这样做。</p>
@@ -442,8 +442,8 @@ h_\theta(x)=\theta_0+\theta_1x+\theta_2x^2+...+\theta_nx^n</script><p>显然，�
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/08/05/standford3/" rel="prev" title="斯坦福机器学习(三)逻辑回归与正则化">
-                斯坦福机器学习(三)逻辑回归与正则化 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/08/05/standford3/" rel="prev" title="斯坦福机器学习（三）逻辑回归与正则化">
+                斯坦福机器学习（三）逻辑回归与正则化 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -518,7 +518,7 @@ h_\theta(x)=\theta_0+\theta_1x+\theta_2x^2+...+\theta_nx^n</script><p>显然，�
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">53</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -540,7 +540,7 @@ h_\theta(x)=\theta_0+\theta_1x+\theta_2x^2+...+\theta_nx^n</script><p>显然，�
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

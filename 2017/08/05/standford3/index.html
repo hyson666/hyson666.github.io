@@ -95,7 +95,7 @@
 <meta name="description" content="提出背景现实生活经常会碰到的一种问题就是分类问题，通过机器学习我们可以让机器进行判断某一个事物的好坏或者对事物进行分类。例如判断肿瘤是否为恶性肿瘤，判断葡萄酒属于哪一等级的葡萄酒等。我们很容易想到可以利用线性回归来解决这类问题，通过判断预测值是否大于某一个值来进行对数据的分类，这看起来似乎可行，但实际上是有严重缺陷的,例如下图这种情况：其试图以预测值是否大于0.5来判断肿瘤是否为恶性肿瘤，但是当加">
 <meta name="keywords" content="梯度下降法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="斯坦福机器学习(三)逻辑回归与正则化">
+<meta property="og:title" content="斯坦福机器学习（三）逻辑回归与正则化">
 <meta property="og:url" content="http://yoursite.com/2017/08/05/standford3/index.html">
 <meta property="og:site_name" content="HysonQAQ">
 <meta property="og:description" content="提出背景现实生活经常会碰到的一种问题就是分类问题，通过机器学习我们可以让机器进行判断某一个事物的好坏或者对事物进行分类。例如判断肿瘤是否为恶性肿瘤，判断葡萄酒属于哪一等级的葡萄酒等。我们很容易想到可以利用线性回归来解决这类问题，通过判断预测值是否大于某一个值来进行对数据的分类，这看起来似乎可行，但实际上是有严重缺陷的,例如下图这种情况：其试图以预测值是否大于0.5来判断肿瘤是否为恶性肿瘤，但是当加">
@@ -110,9 +110,9 @@
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/618874b0gy1fi91qsi0j0j20es03v74c.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/618874b0gy1fi91xnqoy7j20dr07f3zk.jpg">
 <meta property="og:image" content="https://ws1.sinaimg.cn/large/618874b0gy1fi92h6irgaj20dj06jmy8.jpg">
-<meta property="og:updated_time" content="2017-08-05T11:32:03.000Z">
+<meta property="og:updated_time" content="2017-08-08T14:37:28.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="斯坦福机器学习(三)逻辑回归与正则化">
+<meta name="twitter:title" content="斯坦福机器学习（三）逻辑回归与正则化">
 <meta name="twitter:description" content="提出背景现实生活经常会碰到的一种问题就是分类问题，通过机器学习我们可以让机器进行判断某一个事物的好坏或者对事物进行分类。例如判断肿瘤是否为恶性肿瘤，判断葡萄酒属于哪一等级的葡萄酒等。我们很容易想到可以利用线性回归来解决这类问题，通过判断预测值是否大于某一个值来进行对数据的分类，这看起来似乎可行，但实际上是有严重缺陷的,例如下图这种情况：其试图以预测值是否大于0.5来判断肿瘤是否为恶性肿瘤，但是当加">
 <meta name="twitter:image" content="https://ws1.sinaimg.cn/large/618874b0gy1fi8vbfl9mvj20og077gmn.jpg">
 
@@ -148,7 +148,7 @@
 
 
 
-  <title> 斯坦福机器学习(三)逻辑回归与正则化 | HysonQAQ </title>
+  <title> 斯坦福机器学习（三）逻辑回归与正则化 | HysonQAQ </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -298,7 +298,7 @@
             
             
               
-                斯坦福机器学习(三)逻辑回归与正则化
+                斯坦福机器学习（三）逻辑回归与正则化
               
             
           </h1>
@@ -379,7 +379,7 @@
         <h2 id="提出背景"><a href="#提出背景" class="headerlink" title="提出背景"></a>提出背景</h2><p>现实生活经常会碰到的一种问题就是分类问题，通过机器学习我们可以让机器进行判断某一个事物的好坏或者对事物进行分类。例如判断肿瘤是否为恶性肿瘤，判断葡萄酒属于哪一等级的葡萄酒等。我们很容易想到可以利用线性回归来解决这类问题，通过判断预测值是否大于某一个值来进行对数据的分类，这看起来似乎可行，但实际上是有严重缺陷的,例如下图这种情况：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi8vbfl9mvj20og077gmn.jpg" alt=""><br>其试图以预测值是否大于0.5来判断肿瘤是否为恶性肿瘤，但是当加入最右边的样例的时候，预测曲线显然出现了很大的偏置，导致模型不能够很好地拟合数据。<br>所以我们必须找到一种更好的办法来解决这种分类问题，逻辑回归便因此产生。</p>
 <h2 id="逻辑回归模型"><a href="#逻辑回归模型" class="headerlink" title="逻辑回归模型"></a>逻辑回归模型</h2><p>逻辑回归模型可以用公式表示如下：</p>
 <script type="math/tex; mode=display">
-\begin{align*}& h_\theta (x) = g ( \theta^T x ) \newline \newline& z = \theta^T x \newline& g(z) = \dfrac{1}{1 + e^{-z}}\end{align*}</script><p>可以称之为S型函数（sigmoid function）或者逻辑函数其函数图形如下：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi8vgh2up1j20l703rt8v.jpg" alt=""><br>取值范围为（0,1），通过这种转化，把原来的线性函数转化成为了更佳适用于分类问题的函数取值类型。<br>预测函数$h<em>\theta$会给出该模型认为其属于某一类型的可能性大小，比如$h</em>\theta=0.7$代表有70%的可能我们的输出是1，如果这个1是肿瘤是否恶性，那么我们可以说我们有70%的把握说这个肿瘤是恶性肿瘤，同时其为良性肿瘤的概率便是30%，显然满足如下关系：</p>
+\begin{align*}& h_\theta (x) = g ( \theta^T x ) \newline \newline& z = \theta^T x \newline& g(z) = \dfrac{1}{1 + e^{-z}}\end{align*}</script><p>可以称之为S型函数（sigmoid function）或者逻辑函数其函数图形如下：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi8vgh2up1j20l703rt8v.jpg" alt=""><br>取值范围为（0,1），通过这种转化，把原来的线性函数转化成为了更佳适用于分类问题的函数取值类型。<br>预测函数<script type="math/tex">h_{\theta}</script>会给出该模型认为其属于某一类型的可能性大小，比如<script type="math/tex">h_{\theta}=0.7</script>代表有70%的可能我们的输出是1，如果这个1是肿瘤是否恶性，那么我们可以说我们有70%的把握说这个肿瘤是恶性肿瘤，同时其为良性肿瘤的概率便是30%，显然满足如下关系：</p>
 <script type="math/tex; mode=display">
 \begin{align*}& h_\theta(x) = P(y=1 | x ; \theta) = 1 - P(y=0 | x ; \theta) \newline& P(y = 0 | x;\theta) + P(y = 1 | x ; \theta) = 1\end{align*}</script><h2 id="决策边界"><a href="#决策边界" class="headerlink" title="决策边界"></a>决策边界</h2><p>为了把预测函数的值转化为离散的0/1取值，我们可以把预测函数转化为如下形式：</p>
 <script type="math/tex; mode=display">
@@ -413,12 +413,12 @@ J(\theta) = - \frac{1}{m} \displaystyle \sum_{i=1}^m [y^{(i)}\log (h_\theta (x^{
 <h2 id="多重分类"><a href="#多重分类" class="headerlink" title="多重分类"></a>多重分类</h2><p>多重分类只要把每一组向数据独立出来与其余数据进行逻辑回归求解，得到对每一个类型的预测函数，输出可能性最大那个类型即可，可以列出公式如下：</p>
 <script type="math/tex; mode=display">
 \begin{align*}& y \in \lbrace0, 1 ... n\rbrace \newline& h_\theta^{(0)}(x) = P(y = 0 | x ; \theta) \newline& h_\theta^{(1)}(x) = P(y = 1 | x ; \theta) \newline& \cdots \newline& h_\theta^{(n)}(x) = P(y = n | x ; \theta) \newline& \mathrm{prediction} = \max_i( h_\theta ^{(i)}(x) )\newline\end{align*}</script><p>当n=2的时候，要进行一次逻辑回归，而当n≥3的时候，要进行n次逻辑回归，其示意图如下图所示：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi91m3vjjmj20d307ggmk.jpg" alt=""></p>
-<h2 id="过拟合现象以及其解决方式"><a href="#过拟合现象以及其解决方式" class="headerlink" title="过拟合现象以及其解决方式"></a>过拟合现象以及其解决方式</h2><p>当进行线性回归的时候，待拟合函数的最高次数如果比较低的话，往往拟合效果会非常差。如果待拟合函数的最高次数足越高，一般与现行数据的拟合程度就会越好，但是这并不总是意见好事，有时就会出现一种叫过拟合的现象。一下三幅函数图分别代表了欠拟合、拟合较好、过拟合三种情况：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi91qsi0j0j20es03v74c.jpg" alt=""><br>当出现过拟合现象的时候，预测函数能够非常好地拟合用于拟合的数据，但是却不能很好地把这些数据泛化到其他未输入的数据当中，造成高方差的情况，而且函数图像会变得没有规律。其出现的主要原因是因为函数的维度太大、以及训练集的数量太少。<br>为此，要解决过拟合的现象，我们可以人为或者使用特定的某种算法（PAC、因子分析等）去选择保留哪些特征，删掉掉哪些贡献不大的特征，当然这些特征对原函数肯定是有贡献的，删除掉必然导致某些信息的缺失，所以更好的办法是使用正则化处理，这样可以保留所有的特征，但是减少$\theta_j$的规模与大小，正则化尤其适用于那些贡献不大的特征比较多的场合。</p>
+<h2 id="过拟合现象以及其解决方式"><a href="#过拟合现象以及其解决方式" class="headerlink" title="过拟合现象以及其解决方式"></a>过拟合现象以及其解决方式</h2><p>当进行线性回归的时候，待拟合函数的最高次数如果比较低的话，往往拟合效果会非常差。如果待拟合函数的最高次数足越高，一般与现行数据的拟合程度就会越好，但是这并不总是意见好事，有时就会出现一种叫过拟合的现象。一下三幅函数图分别代表了欠拟合、拟合较好、过拟合三种情况：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi91qsi0j0j20es03v74c.jpg" alt=""><br>当出现过拟合现象的时候，预测函数能够非常好地拟合用于拟合的数据，但是却不能很好地把这些数据泛化到其他未输入的数据当中，造成高方差的情况，而且函数图像会变得没有规律。其出现的主要原因是因为函数的维度太大、以及训练集的数量太少。<br>为此，要解决过拟合的现象，我们可以人为或者使用特定的某种算法（PAC、因子分析等）去选择保留哪些特征，删掉掉哪些贡献不大的特征，当然这些特征对原函数肯定是有贡献的，删除掉必然导致某些信息的缺失，所以更好的办法是使用正则化处理，这样可以保留所有的特征，但是减少<script type="math/tex">\theta_j</script>的规模与大小，正则化尤其适用于那些贡献不大的特征比较多的场合。</p>
 <h2 id="正则化"><a href="#正则化" class="headerlink" title="正则化"></a>正则化</h2><p>通过正则化可以通过对参数进行“惩罚”，让拟合函数的图形变得更加平滑，其应用于线性回归时候的伪代码如下所示：</p>
 <script type="math/tex; mode=display">
 \begin{align*} & \text{Repeat}\ \lbrace \newline & \ \ \ \ \theta_0 := \theta_0 - \alpha\ \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_0^{(i)} \newline & \ \ \ \ \theta_j := \theta_j - \alpha\ \left[ \left( \frac{1}{m}\ \sum_{i=1}^m (h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)} \right) + \frac{\lambda}{m}\theta_j \right] &\ \ \ \ \ \ \ \ \ \ j \in \lbrace 1,2...n\rbrace\newline & \rbrace \end{align*}</script><p>为什么通过加上惩罚可以使函数更加平滑呢？把其展开可以发现正则化其实是做了如下操作：</p>
 <script type="math/tex; mode=display">
-\theta_j := \theta_j(1 - \alpha\frac{\lambda}{m}) - \alpha\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)}</script><p>观察知道，除了$\theta_j$会在每次循环的时候先替换成一个比本身小一点点的值在进行更新，这样循环下来\theta_j的值都会减小一点点，达到了控制进行速度，减小参数值，从而更好地拟合数据的目的。<br>学到这里，我们就可以解决前面正规方程面对奇异矩阵的问题了，通过正则化，可以把矩阵变化成为一个可逆阵，只需要按照以下的公式进行：</p>
+\theta_j := \theta_j(1 - \alpha\frac{\lambda}{m}) - \alpha\frac{1}{m}\sum_{i=1}^m(h_\theta(x^{(i)}) - y^{(i)})x_j^{(i)}</script><p>观察知道，除了$\theta_j$会在每次循环的时候先替换成一个比本身小一点点的值在进行更新，这样循环下来<script type="math/tex">\theta_j</script>的值都会减小一点点，达到了控制进行速度，减小参数值，从而更好地拟合数据的目的。<br>学到这里，我们就可以解决前面正规方程面对奇异矩阵的问题了，通过正则化，可以把矩阵变化成为一个可逆阵，只需要按照以下的公式进行：</p>
 <script type="math/tex; mode=display">
 \begin{align*}& \theta = \left( X^TX + \lambda \cdot L \right)^{-1} X^Ty \newline& \text{where}\ \ L = \begin{bmatrix} 0 & & & & \newline & 1 & & & \newline & & 1 & & \newline & & & \ddots & \newline & & & & 1 \newline\end{bmatrix}\end{align*}</script><p>即加上了$\lambda·L$,实现了其正则化，可以证明知道这样获得矩阵是可逆的，故正规方程可解。<br>接下来介绍用于逻辑回归的正则化，其能够把决策边界变得更加光滑，从而泛化到更多的数据，效果如下图所示：<br><img src="https://ws1.sinaimg.cn/large/618874b0gy1fi91xnqoy7j20dr07f3zk.jpg" alt=""><br>其正则化的代价函数如下：</p>
 <script type="math/tex; mode=display">
@@ -474,6 +474,10 @@ J(\theta) = - \frac{1}{m} \sum_{i=1}^m \large[ y^{(i)}\ \log (h_\theta (x^{(i)})
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/08/standford4/" rel="prev" title="斯坦福机器学习（四）神经网络">
+                斯坦福机器学习（四）神经网络 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -547,7 +551,7 @@ J(\theta) = - \frac{1}{m} \sum_{i=1}^m \large[ y^{(i)}\ \log (h_\theta (x^{(i)})
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">52</span>
+                <span class="site-state-item-count">53</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -569,7 +573,7 @@ J(\theta) = - \frac{1}{m} \sum_{i=1}^m \large[ y^{(i)}\ \log (h_\theta (x^{(i)})
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/index.html">
-                <span class="site-state-item-count">24</span>
+                <span class="site-state-item-count">25</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
