@@ -1,0 +1,874 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="神经网络," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="HysonQAQ" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="利用两天时间看完了这两周的课程内容，顺手把作业写完了。本周的作业比较简单，这里使用逻辑回归构建的神经网络实现了图片是否为猫的判断，由于神经网络层数不高（单层隐藏层），出现了过拟合的现象，训练集上的准确率接近高达99%，而在测试集中只有70%。在这里贴上Python代码方便自己复习以及交流，本周课程页面：Neural Networks Basics，如有疑问可以留言，抽空回复。 库的加载这里加载的几">
+<meta name="keywords" content="神经网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="吴恩达深度学习作业（一）单层神经网络实现">
+<meta property="og:url" content="http://yoursite.com/2017/09/27/adlh1/index.html">
+<meta property="og:site_name" content="HysonQAQ">
+<meta property="og:description" content="利用两天时间看完了这两周的课程内容，顺手把作业写完了。本周的作业比较简单，这里使用逻辑回归构建的神经网络实现了图片是否为猫的判断，由于神经网络层数不高（单层隐藏层），出现了过拟合的现象，训练集上的准确率接近高达99%，而在测试集中只有70%。在这里贴上Python代码方便自己复习以及交流，本周课程页面：Neural Networks Basics，如有疑问可以留言，抽空回复。 库的加载这里加载的几">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fjxzcl4csaj30a00apgp8.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tNc79gy1fjz59py3okj30i40b7wgj.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tNc79gy1fjz5sc5x0ej30eq0a4752.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tNc79gy1fjz6icjl5gj30ey09btj1.jpg">
+<meta property="og:updated_time" content="2017-09-28T04:47:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="吴恩达深度学习作业（一）单层神经网络实现">
+<meta name="twitter:description" content="利用两天时间看完了这两周的课程内容，顺手把作业写完了。本周的作业比较简单，这里使用逻辑回归构建的神经网络实现了图片是否为猫的判断，由于神经网络层数不高（单层隐藏层），出现了过拟合的现象，训练集上的准确率接近高达99%，而在测试集中只有70%。在这里贴上Python代码方便自己复习以及交流，本周课程页面：Neural Networks Basics，如有疑问可以留言，抽空回复。 库的加载这里加载的几">
+<meta name="twitter:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1fjxzcl4csaj30a00apgp8.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/09/27/adlh1/"/>
+
+
+
+
+
+  <title> 吴恩达深度学习作业（一）单层神经网络实现 | HysonQAQ </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HysonQAQ</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">很卑微，不努力。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/27/adlh1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hyson">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/头像.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HysonQAQ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                吴恩达深度学习作业（一）单层神经网络实现
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-27T11:27:57+08:00">
+                2017-09-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>利用两天时间看完了这两周的课程内容，顺手把作业写完了。本周的作业比较简单，这里使用逻辑回归构建的神经网络实现了图片是否为猫的判断，由于神经网络层数不高（单层隐藏层），出现了过拟合的现象，训练集上的准确率接近高达99%，而在测试集中只有70%。在这里贴上Python代码方便自己复习以及交流，本周课程页面：<a href="https://www.coursera.org/learn/neural-networks-deep-learning/home/week/2" target="_blank" rel="external">Neural Networks Basics</a>，如有疑问可以留言，抽空回复。</p>
+<h2 id="库的加载"><a href="#库的加载" class="headerlink" title="库的加载"></a>库的加载</h2><p>这里加载的几个库都是常用于机器学习模型训练的库之一，把功能解释一下：</p>
+<ul>
+<li><a href="www.numpy.org">numpy</a>是基础的Python科学计算库，带有很多经过SIMD优化的矩阵计算方法。</li>
+<li><a href="http://www.h5py.org" target="_blank" rel="external">h5py</a>是一个常见的与使用H5文件存储的数据交互的库。</li>
+<li><a href="http://matplotlib.org" target="_blank" rel="external">matplotlib</a>是一个知名的数据可视化的库。</li>
+<li><a href="http://www.pythonware.com/products/pil/" target="_blank" rel="external">PIL</a> 和<a href="https://www.scipy.org/" target="_blank" rel="external">scipy</a>用来加载我们自己的图片以测试我们的模型。</li>
+</ul>
+<h2 id="查看问题集合"><a href="#查看问题集合" class="headerlink" title="查看问题集合"></a>查看问题集合</h2><p>在这个数据包里面包含了如下的内容：</p>
+<ul>
+<li>带有m_train个样本的数据集，并且利用y=1或者y=0来标记这个样本是否是一只猫。</li>
+<li>一组同样带有标记的m_test个样本的测试集。</li>
+<li>每组图片采用RGB矩阵来存储，其大小是（num_px, num_px, 3)，前两个代表分辨率，最后一个分别是代表R、G、B深度的矩阵。</li>
+</ul>
+<p>首先加载数据集：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Loading the data (cat/non-cat)</span></div><div class="line">train_set_x_orig, train_set_y, test_set_x_orig, test_set_y, classes = load_dataset()</div></pre></td></tr></table></figure></p>
+<p>用orig来命名是因为在后面还要对RGB图像矩阵进行线性向量化的操作。<br>可以用下面的命令来查看数据代表的图片：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Example of a picture</span></div><div class="line">index = <span class="number">25</span></div><div class="line">plt.imshow(train_set_x_orig[index])</div><div class="line"><span class="keyword">print</span> (<span class="string">"y = "</span> + str(train_set_y[:, index]) + <span class="string">", it's a '"</span> + classes[np.squeeze(train_set_y[:, index])].decode(<span class="string">"utf-8"</span>)</div></pre></td></tr></table></figure></p>
+<p>输出如下：<br><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1fjxzcl4csaj30a00apgp8.jpg" alt=""></p>
+<p>对于向量化，一定要了解每个维度代表什么，对于你不清楚数据集具体情况的情况下最好shape属性查看一下各个矩阵的维度：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">### START CODE HERE ### (≈ 3 lines of code)</span></div><div class="line">m_train = train_set_x_orig.shape[<span class="number">0</span>]</div><div class="line">m_test = test_set_x_orig.shape[<span class="number">0</span>]</div><div class="line">num_px = train_set_x_orig.shape[<span class="number">1</span>]</div><div class="line"><span class="comment">### END CODE HERE ###</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> (<span class="string">"Number of training examples: m_train = "</span> + str(m_train))</div><div class="line"><span class="keyword">print</span> (<span class="string">"Number of testing examples: m_test = "</span> + str(m_test))</div><div class="line"><span class="keyword">print</span> (<span class="string">"Height/Width of each image: num_px = "</span> + str(num_px))</div><div class="line"><span class="keyword">print</span> (<span class="string">"Each image is of size: ("</span> + str(num_px) + <span class="string">", "</span> + str(num_px) + <span class="string">", 3)"</span>)</div><div class="line"><span class="keyword">print</span> (<span class="string">"train_set_x shape: "</span> + str(train_set_x_orig.shape))</div><div class="line"><span class="keyword">print</span> (<span class="string">"train_set_y shape: "</span> + str(train_set_y.shape))</div><div class="line"><span class="keyword">print</span> (<span class="string">"test_set_x shape: "</span> + str(test_set_x_orig.shape))</div><div class="line"><span class="keyword">print</span> (<span class="string">"test_set_y shape: "</span> + str(test_set_y.shape))</div></pre></td></tr></table></figure></p>
+<p>确定之后我们使用reshape来吧各个数据集线性化，这里利用了一个优雅小技巧省略了乘法的计算，直接把(a,b,c,d)矩阵转换为(b<em>c</em>d,a)的矩阵：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Reshape the training and test examples</span></div><div class="line"></div><div class="line"><span class="comment">### START CODE HERE ### (≈ 2 lines of code)</span></div><div class="line">train_set_x_flatten = train_set_x_orig.reshape(train_set_x_orig.shape[<span class="number">0</span>],<span class="number">-1</span>).T</div><div class="line">test_set_x_flatten = test_set_x_orig.reshape(test_set_x_orig.shape[<span class="number">0</span>],<span class="number">-1</span>).T</div><div class="line"><span class="comment">### END CODE HERE ###</span></div><div class="line"></div><div class="line"><span class="keyword">print</span> (<span class="string">"train_set_x_flatten shape: "</span> + str(train_set_x_flatten.shape))</div><div class="line"><span class="keyword">print</span> (<span class="string">"train_set_y shape: "</span> + str(train_set_y.shape))</div><div class="line"><span class="keyword">print</span> (<span class="string">"test_set_x_flatten shape: "</span> + str(test_set_x_flatten.shape))</div><div class="line"><span class="keyword">print</span> (<span class="string">"test_set_y shape: "</span> + str(test_set_y.shape))</div><div class="line"><span class="keyword">print</span> (<span class="string">"sanity check after reshaping: "</span> + str(train_set_x_flatten[<span class="number">0</span>:<span class="number">5</span>,<span class="number">0</span>]))</div></pre></td></tr></table></figure></p>
+<p>接下来把训练集的数据标准化到0-1这个区间中：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">train_set_x = train_set_x_flatten/<span class="number">255.</span></div><div class="line">test_set_x = test_set_x_flatten/<span class="number">255.</span></div></pre></td></tr></table></figure></p>
+<h2 id="神经网络结构"><a href="#神经网络结构" class="headerlink" title="神经网络结构"></a>神经网络结构</h2><p>本次作业要实现的是一个单层（隐藏层）神经网络，相关公式在本文中省略，其基本结构如下：<br><img src="https://ws1.sinaimg.cn/large/006tNc79gy1fjz59py3okj30i40b7wgj.jpg" alt=""></p>
+<h2 id="构造算法部分函数代码"><a href="#构造算法部分函数代码" class="headerlink" title="构造算法部分函数代码"></a>构造算法部分函数代码</h2><p>代码均采用向量化实现，保证算法的高效运行。</p>
+<h3 id="sigmoid函数"><a href="#sigmoid函数" class="headerlink" title="sigmoid函数"></a>sigmoid函数</h3><p>首先定义sigmoid函数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sigmoid</span><span class="params">(z)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    Compute the sigmoid of z</div><div class="line"></div><div class="line">    Arguments:</div><div class="line">    z -- A scalar or numpy array of any size.</div><div class="line"></div><div class="line">    Return:</div><div class="line">    s -- sigmoid(z)</div><div class="line">    """</div><div class="line"></div><div class="line">    <span class="comment">### START CODE HERE ### (≈ 1 line of code)</span></div><div class="line">    s = <span class="number">1</span>/(<span class="number">1</span>+np.exp(-z))</div><div class="line">    <span class="comment">### END CODE HERE ###</span></div><div class="line">    </div><div class="line">    <span class="keyword">return</span> s</div></pre></td></tr></table></figure></p>
+<h3 id="初始化函数"><a href="#初始化函数" class="headerlink" title="初始化函数"></a>初始化函数</h3><p>然后是对参数进行初始化的函数，由于可以b是偏置量，所以处处都是相等的，利用广播特性，将其赋为常数即可：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">initialize_with_zeros</span><span class="params">(dim)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    This function creates a vector of zeros of shape (dim, 1) for w and initializes b to 0.</div><div class="line">    </div><div class="line">    Argument:</div><div class="line">    dim -- size of the w vector we want (or number of parameters in this case)</div><div class="line">    </div><div class="line">    Returns:</div><div class="line">    w -- initialized vector of shape (dim, 1)</div><div class="line">    b -- initialized scalar (corresponds to the bias)</div><div class="line">    """</div><div class="line">    </div><div class="line">    <span class="comment">### START CODE HERE ### (≈ 1 line of code)</span></div><div class="line">    w = np.zeros((dim, <span class="number">1</span>))</div><div class="line">    b = <span class="number">0</span></div><div class="line">    <span class="comment">### END CODE HERE ###</span></div><div class="line"></div><div class="line">    <span class="keyword">assert</span>(w.shape == (dim, <span class="number">1</span>))</div><div class="line">    <span class="keyword">assert</span>(isinstance(b, float) <span class="keyword">or</span> isinstance(b, int))</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> w, b</div></pre></td></tr></table></figure></p>
+<h3 id="向前传播FP算法以及反向传播BP算法"><a href="#向前传播FP算法以及反向传播BP算法" class="headerlink" title="向前传播FP算法以及反向传播BP算法"></a>向前传播FP算法以及反向传播BP算法</h3><p>通过先前传播计算代价的值，然后利用反向传播算法计算各个参数的导数值（w和b分离），这里定义的是一次向前推进以及一次向后推进的操作：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">propagate</span><span class="params">(w, b, X, Y)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    Implement the cost function and its gradient for the propagation explained above</div><div class="line"></div><div class="line">    Arguments:</div><div class="line">    w -- weights, a numpy array of size (num_px * num_px * 3, 1)</div><div class="line">    b -- bias, a scalar</div><div class="line">    X -- data of size (num_px * num_px * 3, number of examples)</div><div class="line">    Y -- true "label" vector (containing 0 if non-cat, 1 if cat) of size (1, number of examples)</div><div class="line"></div><div class="line">    Return:</div><div class="line">    cost -- negative log-likelihood cost for logistic regression</div><div class="line">    dw -- gradient of the loss with respect to w, thus same shape as w</div><div class="line">    db -- gradient of the loss with respect to b, thus same shape as b</div><div class="line">    </div><div class="line">    Tips:</div><div class="line">    - Write your code step by step for the propagation. np.log(), np.dot()</div><div class="line">    """</div><div class="line">    </div><div class="line">    m = X.shape[<span class="number">1</span>]</div><div class="line">    </div><div class="line">    <span class="comment"># FORWARD PROPAGATION (FROM X TO COST)</span></div><div class="line">    <span class="comment">### START CODE HERE ### (≈ 2 lines of code)</span></div><div class="line">    A = sigmoid(np.dot(w.T,X)+b)                <span class="comment"># compute activation</span></div><div class="line">    cost = (np.dot(-Y , np.log(A.T)) - np.dot((<span class="number">1</span>-Y) , np.log((<span class="number">1</span>-A).T)))/m    <span class="comment"># compute cost</span></div><div class="line">    <span class="comment">### END CODE HERE ###</span></div><div class="line">    </div><div class="line">    <span class="comment"># BACKWARD PROPAGATION (TO FIND GRAD)</span></div><div class="line">    <span class="comment">### START CODE HERE ### (≈ 2 lines of code)</span></div><div class="line">    dw =  np.dot(X, (A-Y).T) / m</div><div class="line">    db = np.sum(A-Y) / m</div><div class="line">    <span class="comment">### END CODE HERE ###</span></div><div class="line"></div><div class="line">    <span class="keyword">assert</span>(dw.shape == w.shape)</div><div class="line">    <span class="keyword">assert</span>(db.dtype == float)</div><div class="line">    cost = np.squeeze(cost)</div><div class="line">    <span class="keyword">assert</span>(cost.shape == ())</div><div class="line">    </div><div class="line">    grads = &#123;<span class="string">"dw"</span>: dw,</div><div class="line">             <span class="string">"db"</span>: db&#125;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> grads, cost</div></pre></td></tr></table></figure></p>
+<p>对每次操作进行循环迭代得到最优化算法：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># GRADED FUNCTION: optimize</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">optimize</span><span class="params">(w, b, X, Y, num_iterations, learning_rate, print_cost = False)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    This function optimizes w and b by running a gradient descent algorithm</div><div class="line">    </div><div class="line">    Arguments:</div><div class="line">    w -- weights, a numpy array of size (num_px * num_px * 3, 1)</div><div class="line">    b -- bias, a scalar</div><div class="line">    X -- data of shape (num_px * num_px * 3, number of examples)</div><div class="line">    Y -- true "label" vector (containing 0 if non-cat, 1 if cat), of shape (1, number of examples)</div><div class="line">    num_iterations -- number of iterations of the optimization loop</div><div class="line">    learning_rate -- learning rate of the gradient descent update rule</div><div class="line">    print_cost -- True to print the loss every 100 steps</div><div class="line">    </div><div class="line">    Returns:</div><div class="line">    params -- dictionary containing the weights w and bias b</div><div class="line">    grads -- dictionary containing the gradients of the weights and bias with respect to the cost function</div><div class="line">    costs -- list of all the costs computed during the optimization, this will be used to plot the learning curve.</div><div class="line">    </div><div class="line">    Tips:</div><div class="line">    You basically need to write down two steps and iterate through them:</div><div class="line">        1) Calculate the cost and the gradient for the current parameters. Use propagate().</div><div class="line">        2) Update the parameters using gradient descent rule for w and b.</div><div class="line">    """</div><div class="line">    </div><div class="line">    costs = []</div><div class="line">    </div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(num_iterations):</div><div class="line">        </div><div class="line">        </div><div class="line">        <span class="comment"># Cost and gradient calculation (≈ 1-4 lines of code)</span></div><div class="line">        <span class="comment">### START CODE HERE ### </span></div><div class="line">        grads, cost = propagate(w, b, X, Y)</div><div class="line">        <span class="comment">### END CODE HERE ###</span></div><div class="line">        </div><div class="line">        <span class="comment"># Retrieve derivatives from grads</span></div><div class="line">        dw = grads[<span class="string">"dw"</span>]</div><div class="line">        db = grads[<span class="string">"db"</span>]</div><div class="line">        </div><div class="line">        <span class="comment"># update rule (≈ 2 lines of code)</span></div><div class="line">        <span class="comment">### START CODE HERE ###</span></div><div class="line">        w = w - learning_rate * dw</div><div class="line">        b = b - learning_rate * db</div><div class="line">        <span class="comment">### END CODE HERE ###</span></div><div class="line">        </div><div class="line">        <span class="comment"># Record the costs</span></div><div class="line">        <span class="keyword">if</span> i % <span class="number">100</span> == <span class="number">0</span>:</div><div class="line">            costs.append(cost)</div><div class="line">        </div><div class="line">        <span class="comment"># Print the cost every 100 training examples</span></div><div class="line">        <span class="keyword">if</span> print_cost <span class="keyword">and</span> i % <span class="number">100</span> == <span class="number">0</span>:</div><div class="line">            <span class="keyword">print</span> (<span class="string">"Cost after iteration %i: %f"</span> %(i, cost))</div><div class="line">    </div><div class="line">    params = &#123;<span class="string">"w"</span>: w,</div><div class="line">              <span class="string">"b"</span>: b&#125;</div><div class="line">    </div><div class="line">    grads = &#123;<span class="string">"dw"</span>: dw,</div><div class="line">             <span class="string">"db"</span>: db&#125;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> params, grads, costs</div></pre></td></tr></table></figure></p>
+<p>在迭代结束之后就得到了我们要的参数了，利用参数构造预测函数如下：<br>def predict(w, b, X):<br>    ‘’’<br>    Predict whether the label is 0 or 1 using learned logistic regression parameters (w, b)</p>
+<pre><code>Arguments:
+w -- weights, a numpy array of size (num_px * num_px * 3, 1)
+b -- bias, a scalar
+X -- data of size (num_px * num_px * 3, number of examples)
+
+Returns:
+Y_prediction -- a numpy array (vector) containing all predictions (0/1) for the examples in X
+&#39;&#39;&#39;
+
+m = X.shape[1]
+Y_prediction = np.zeros((1,m))
+w = w.reshape(X.shape[0], 1)
+
+# Compute vector &quot;A&quot; predicting the probabilities of a cat being present in the picture
+### START CODE HERE ### (≈ 1 line of code)
+# 在本课程中，全部向量都按列组织，得到横向预测值，Python矩阵从0开始计数，和Octave不一样
+A = sigmoid(np.dot(w.T,X)+b)
+### END CODE HERE ###
+
+for i in range(A.shape[1]):
+
+    # Convert probabilities A[0,i] to actual predictions p[0,i]
+    ### START CODE HERE ### (≈ 4 lines of code)
+    if(A[0][i] &gt; 0.5):
+        Y_prediction[0][i] = 1
+    else:
+        Y_prediction[0][i] = 0
+    ### END CODE HERE ###
+
+assert(Y_prediction.shape == (1, m))
+
+return Y_prediction
+</code></pre><h2 id="综合所有部分得到模型"><a href="#综合所有部分得到模型" class="headerlink" title="综合所有部分得到模型"></a>综合所有部分得到模型</h2><p>把前面的所有算法综合起来就是我们的单层神经网络模型了：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">model</span><span class="params">(X_train, Y_train, X_test, Y_test, num_iterations = <span class="number">2000</span>, learning_rate = <span class="number">0.5</span>, print_cost = False)</span>:</span></div><div class="line">    <span class="string">"""</span></div><div class="line">    Builds the logistic regression model by calling the function you've implemented previously</div><div class="line">    </div><div class="line">    Arguments:</div><div class="line">    X_train -- training set represented by a numpy array of shape (num_px * num_px * 3, m_train)</div><div class="line">    Y_train -- training labels represented by a numpy array (vector) of shape (1, m_train)</div><div class="line">    X_test -- test set represented by a numpy array of shape (num_px * num_px * 3, m_test)</div><div class="line">    Y_test -- test labels represented by a numpy array (vector) of shape (1, m_test)</div><div class="line">    num_iterations -- hyperparameter representing the number of iterations to optimize the parameters</div><div class="line">    learning_rate -- hyperparameter representing the learning rate used in the update rule of optimize()</div><div class="line">    print_cost -- Set to true to print the cost every 100 iterations</div><div class="line">    </div><div class="line">    Returns:</div><div class="line">    d -- dictionary containing information about the model.</div><div class="line">    """</div><div class="line">    </div><div class="line">    <span class="comment">### START CODE HERE ###</span></div><div class="line">    </div><div class="line">    <span class="comment"># initialize parameters with zeros (≈ 1 line of code)</span></div><div class="line">    w, b = initialize_with_zeros(X_train.shape[<span class="number">0</span>])</div><div class="line"></div><div class="line">    <span class="comment"># Gradient descent (≈ 1 line of code)</span></div><div class="line">    parameters, grads, costs = optimize(w, b, X_train, Y_train, num_iterations, learning_rate, print_cost)</div><div class="line">    </div><div class="line">    <span class="comment"># Retrieve parameters w and b from dictionary "parameters"</span></div><div class="line">    w = parameters[<span class="string">"w"</span>]</div><div class="line">    b = parameters[<span class="string">"b"</span>]</div><div class="line">    </div><div class="line">    <span class="comment"># Predict test/train set examples (≈ 2 lines of code)</span></div><div class="line">    Y_prediction_test = predict(w, b, X_test)</div><div class="line">    Y_prediction_train = predict(w, b, X_train)</div><div class="line"></div><div class="line">    <span class="comment">### END CODE HERE ###</span></div><div class="line"></div><div class="line">    <span class="comment"># Print train/test Errors</span></div><div class="line">    print(<span class="string">"train accuracy: &#123;&#125; %"</span>.format(<span class="number">100</span> - np.mean(np.abs(Y_prediction_train - Y_train)) * <span class="number">100</span>))</div><div class="line">    print(<span class="string">"test accuracy: &#123;&#125; %"</span>.format(<span class="number">100</span> - np.mean(np.abs(Y_prediction_test - Y_test)) * <span class="number">100</span>))</div><div class="line"></div><div class="line">    </div><div class="line">    d = &#123;<span class="string">"costs"</span>: costs,</div><div class="line">         <span class="string">"Y_prediction_test"</span>: Y_prediction_test, </div><div class="line">         <span class="string">"Y_prediction_train"</span> : Y_prediction_train, </div><div class="line">         <span class="string">"w"</span> : w, </div><div class="line">         <span class="string">"b"</span> : b,</div><div class="line">         <span class="string">"learning_rate"</span> : learning_rate,</div><div class="line">         <span class="string">"num_iterations"</span>: num_iterations&#125;</div><div class="line">    </div><div class="line">    <span class="keyword">return</span> d</div></pre></td></tr></table></figure></p>
+<p>其训练集上的准确率为99%，测试集上的准确率仅为70%，显然出现了过拟合。</p>
+<h2 id="模型分析"><a href="#模型分析" class="headerlink" title="模型分析"></a>模型分析</h2><p>可以通过查看不同学习速率的图形来确定学习速率的选取（当然是用高级优化函数的时候不用考虑这个问题，这次作业并没有采用）：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">learning_rates = [<span class="number">0.01</span>, <span class="number">0.001</span>, <span class="number">0.0001</span>]</div><div class="line">models = &#123;&#125;</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> learning_rates:</div><div class="line">    <span class="keyword">print</span> (<span class="string">"learning rate is: "</span> + str(i))</div><div class="line">    models[str(i)] = model(train_set_x, train_set_y, test_set_x, test_set_y, num_iterations = <span class="number">1500</span>, learning_rate = i, print_cost = <span class="keyword">False</span>)</div><div class="line">    <span class="keyword">print</span> (<span class="string">'\n'</span> + <span class="string">"-------------------------------------------------------"</span> + <span class="string">'\n'</span>)</div><div class="line"></div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> learning_rates:</div><div class="line">    plt.plot(np.squeeze(models[str(i)][<span class="string">"costs"</span>]), label= str(models[str(i)][<span class="string">"learning_rate"</span>]))</div><div class="line"></div><div class="line">plt.ylabel(<span class="string">'cost'</span>)</div><div class="line">plt.xlabel(<span class="string">'iterations'</span>)</div><div class="line"></div><div class="line">legend = plt.legend(loc=<span class="string">'upper center'</span>, shadow=<span class="keyword">True</span>)</div><div class="line">frame = legend.get_frame()</div><div class="line">frame.set_facecolor(<span class="string">'0.90'</span>)</div><div class="line">plt.show()</div></pre></td></tr></table></figure></p>
+<p>可以看到如下图，显然选取0.01是最好的：<br><img src="https://ws3.sinaimg.cn/large/006tNc79gy1fjz5sc5x0ej30eq0a4752.jpg" alt=""><br>我们还可以选取其他图片来进行测试，其代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## START CODE HERE ## (PUT YOUR IMAGE NAME) </span></div><div class="line">my_image = <span class="string">"tiger.jpg"</span>   <span class="comment"># change this to the name of your image file </span></div><div class="line"><span class="comment">## END CODE HERE ##</span></div><div class="line"></div><div class="line"><span class="comment"># We preprocess the image to fit your algorithm.</span></div><div class="line">fname = <span class="string">"images/"</span> + my_image</div><div class="line">image = np.array(ndimage.imread(fname, flatten=<span class="keyword">False</span>))</div><div class="line">my_image = scipy.misc.imresize(image, size=(num_px,num_px)).reshape((<span class="number">1</span>, num_px*num_px*<span class="number">3</span>)).T</div><div class="line">my_predicted_image = predict(d[<span class="string">"w"</span>], d[<span class="string">"b"</span>], my_image)</div><div class="line"></div><div class="line">plt.imshow(image)</div><div class="line">print(<span class="string">"y = "</span> + str(np.squeeze(my_predicted_image)) + <span class="string">", your algorithm predicts a \""</span> + classes[int(np.squeeze(my_predicted_image)),].decode(<span class="string">"utf-8"</span>) +  <span class="string">"\" picture."</span>)</div></pre></td></tr></table></figure></p>
+<p>在网上随便找了张RGB格式的老虎的图片进行测试：<br><img src="https://ws2.sinaimg.cn/large/006tNc79gy1fjz6icjl5gj30ey09btj1.jpg" alt=""><br>大概是因为都是猫科动物？模型判断图中的老虎为猫..</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/神经网络/" rel="tag"># 神经网络</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/19/pandas1/" rel="next" title="Pandas学习笔记（一）十分钟入门">
+                <i class="fa fa-chevron-left"></i> Pandas学习笔记（一）十分钟入门
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODMyNy80ODk5"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/头像.gif"
+               alt="Hyson" />
+          <p class="site-author-name" itemprop="name">Hyson</p>
+           
+              <p class="site-description motion-element" itemprop="description">HFUT大二在读/ACMER/Machine-Learner</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">55</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">25</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hyson666" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/huang-yi-xun-12" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="tencent://message/?uin=601852941&Site=www.hitux.com&Menu=yes" target="_blank" title="QQ">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  QQ
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#库的加载"><span class="nav-number">1.</span> <span class="nav-text">库的加载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#查看问题集合"><span class="nav-number">2.</span> <span class="nav-text">查看问题集合</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#神经网络结构"><span class="nav-number">3.</span> <span class="nav-text">神经网络结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#构造算法部分函数代码"><span class="nav-number">4.</span> <span class="nav-text">构造算法部分函数代码</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sigmoid函数"><span class="nav-number">4.1.</span> <span class="nav-text">sigmoid函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化函数"><span class="nav-number">4.2.</span> <span class="nav-text">初始化函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#向前传播FP算法以及反向传播BP算法"><span class="nav-number">4.3.</span> <span class="nav-text">向前传播FP算法以及反向传播BP算法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#综合所有部分得到模型"><span class="nav-number">5.</span> <span class="nav-text">综合所有部分得到模型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#模型分析"><span class="nav-number">6.</span> <span class="nav-text">模型分析</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hyson</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+
+  
+
+  
+
+</body>
+</html>
