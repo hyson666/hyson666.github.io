@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/11/05/gan1/</loc>
+    <lastmod>2017-11-05T06:17:25.789Z</lastmod>
+    <data>
+        <display>
+        <title>Generative Adversarial Nets 论文解读与翻译</title>
+        <pubTime>2017-11-05T05:15:48.000Z</pubTime>
+        
+        <tag>生成对抗网络</tag>
+         
+         
+           
+             
+              <breadCrumb title="机器学习" url="http://yoursite.com/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/10/31/activationfunction/</loc>
     <lastmod>2017-10-31T11:13:14.164Z</lastmod>
     <data>
