@@ -1,0 +1,879 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="生成对抗网络," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="HysonQAQ" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="这是进行研究的论文学习笔记，该文主要讲述了一种低内存占用的，利用3D-GAN 变种来实现图像补完的模型。顺手翻译了论文中的主要内容，省略了实验部分，以供日后查阅。 论文的地址是：http://openaccess.thecvf.com/content_ICCV_2017/papers/Wang_Shape_Inpainting_Using_ICCV_2017_paper.pdf 预备知识3D GA">
+<meta name="keywords" content="生成对抗网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="利用 3D-GAN 和 RCN 进行三维图形补全">
+<meta property="og:url" content="http://yoursite.com/2017/11/12/3dedgan/index.html">
+<meta property="og:site_name" content="HysonQAQ">
+<meta property="og:description" content="这是进行研究的论文学习笔记，该文主要讲述了一种低内存占用的，利用3D-GAN 变种来实现图像补完的模型。顺手翻译了论文中的主要内容，省略了实验部分，以供日后查阅。 论文的地址是：http://openaccess.thecvf.com/content_ICCV_2017/papers/Wang_Shape_Inpainting_Using_ICCV_2017_paper.pdf 预备知识3D GA">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1flf6jqp3rwj30ql095gpp.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1flf7u4sfbjj308r02874m.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1flf8kdbm3uj309u036gm1.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1flf8tb0arvj30ab01saa7.jpg">
+<meta property="og:image" content="https://ws3.sinaimg.cn/large/006tKfTcgy1flfa3f5mmrj30kx087n0b.jpg">
+<meta property="og:image" content="https://ws2.sinaimg.cn/large/006tKfTcgy1flfbaypxgzj30kh024q32.jpg">
+<meta property="og:image" content="https://ws4.sinaimg.cn/large/006tKfTcgy1flfcsydlh3j30ct054q43.jpg">
+<meta property="og:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1flfd9xg8p3j309301gdfy.jpg">
+<meta property="og:updated_time" content="2017-11-12T08:54:06.419Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="利用 3D-GAN 和 RCN 进行三维图形补全">
+<meta name="twitter:description" content="这是进行研究的论文学习笔记，该文主要讲述了一种低内存占用的，利用3D-GAN 变种来实现图像补完的模型。顺手翻译了论文中的主要内容，省略了实验部分，以供日后查阅。 论文的地址是：http://openaccess.thecvf.com/content_ICCV_2017/papers/Wang_Shape_Inpainting_Using_ICCV_2017_paper.pdf 预备知识3D GA">
+<meta name="twitter:image" content="https://ws1.sinaimg.cn/large/006tKfTcgy1flf6jqp3rwj30ql095gpp.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/12/3dedgan/"/>
+
+
+
+
+
+  <title> 利用 3D-GAN 和 RCN 进行三维图形补全 | HysonQAQ </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">HysonQAQ</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">很卑微，不努力。</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/12/3dedgan/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Hyson">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/头像.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="HysonQAQ">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                利用 3D-GAN 和 RCN 进行三维图形补全
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-12T16:48:54+08:00">
+                2017-11-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这是进行研究的论文学习笔记，该文主要讲述了一种低内存占用的，利用3D-GAN 变种来实现图像补完的模型。顺手翻译了论文中的主要内容，省略了实验部分，以供日后查阅。</p>
+<p>论文的地址是：<br><a href="http://openaccess.thecvf.com/content_ICCV_2017/papers/Wang_Shape_Inpainting_Using_ICCV_2017_paper.pdf" target="_blank" rel="external">http://openaccess.thecvf.com/content_ICCV_2017/papers/Wang_Shape_Inpainting_Using_ICCV_2017_paper.pdf</a></p>
+<h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><h3 id="3D-GAN"><a href="#3D-GAN" class="headerlink" title="3D GAN"></a>3D GAN</h3><p>3D Generative Adversarial Network (3D-GAN) presented at NIPS 2016.</p>
+<p>Repository：<a href="https://github.com/zck119/3dgan-release" target="_blank" rel="external">https://github.com/zck119/3dgan-release</a></p>
+<p>论文地址：<a href="http://papers.nips.cc/paper/6096-learning-a-probabilistic-latent-space-of-object-shapes-via-3d-generative-adversarial-modeling.pdf" target="_blank" rel="external">http://papers.nips.cc/paper/6096-learning-a-probabilistic-latent-space-of-object-shapes-via-3d-generative-adversarial-modeling.pdf</a></p>
+<h3 id="序列模型"><a href="#序列模型" class="headerlink" title="序列模型"></a>序列模型</h3><p>RNN综述：<a href="https://arxiv.org/pdf/1506.00019.pdf" target="_blank" rel="external">https://arxiv.org/pdf/1506.00019.pdf</a></p>
+<p>RNN正则化：<a href="https://arxiv.org/pdf/1409.2329.pdf" target="_blank" rel="external">https://arxiv.org/pdf/1409.2329.pdf</a></p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>图像的上采样（upsampling）与下采样（subsampled）:<br><a href="http://blog.csdn.net/majinlei121/article/details/46742339" target="_blank" rel="external">http://blog.csdn.net/majinlei121/article/details/46742339</a></p>
+<p>全连接和区域连接：<a href="http://blog.csdn.net/qq_20259459/article/details/70598929" target="_blank" rel="external">http://blog.csdn.net/qq_20259459/article/details/70598929</a></p>
+<p>图像填补论文：<br><a href="https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Pathak_Context_Encoders_Feature_CVPR_2016_paper.pdf" target="_blank" rel="external">https://www.cv-foundation.org/openaccess/content_cvpr_2016/papers/Pathak_Context_Encoders_Feature_CVPR_2016_paper.pdf</a></p>
+<h2 id="概要"><a href="#概要" class="headerlink" title="概要"></a>概要</h2><p>在以往的 3D-GAN 只能实现低像素的三维建模，比如 32*32*32 ，因为卷积网络非常的占用内存资源，所以现在文章提出了一种3D-ED-GAN模型（3D-GAN 的变种）可以输出二维切片图像用以重塑三维模型，再利用基于 LSTM 的 Long-term Recurrent Convolutional Network (LRCN) 模型，就可以产生具有良好细节的结果。LRCN 是一种从数据集学习如何完善图像细节的上采样网络。3D-ED-GAN 的构造可以用下面这张图来表示：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1flf6jqp3rwj30ql095gpp.jpg" alt=""></p>
+<h2 id="3D-ED-GAN"><a href="#3D-ED-GAN" class="headerlink" title="3D-ED-GAN"></a>3D-ED-GAN</h2><p>3D-ED-GAN 把产生器 <script type="math/tex">G</script> 作为一个完全卷积的 Encoder-Decoder 网络，其中 Encoder 是输入数据到隐向量 <script type="math/tex">z</script> 的映射，从而扩展了 GAN 的框架。利用 Decoder 可以实现 <script type="math/tex">z</script> 到立方体的映射。所以整个 3D-ED-GAN 由 一个 Encoder，一个Decoder，和一个判别器组成（如上图）。</p>
+<p>Encoder 用一个规模为 <script type="math/tex">d_l^3</script> 残缺的 3D 数据 <script type="math/tex">x^{'}</script> 作为输入，这里假定 <script type="math/tex">d_l</script> = 32。它包含了三个核的尺寸（Kernel Size）为5，过滤器步长（Stribe）为2 的 3D 卷积层，通过 batch normalization (BN) 和 ReLU 层来进行连接。最后一个卷积层的形状被重塑成向量 <script type="math/tex">z</script> 表示隐藏层的特征。这里不包含全区域连接（即 fc,表明存在 weight share）。GAN 的噪声输入在这里用向量 <script type="math/tex">z</script> 进行替换。因此，3D-ED-GAN 用 3D encoder 来制约 <script type="math/tex">z</script>。</p>
+<p>Decoder 拥有和 GAN 中的 <script type="math/tex">G</script> 相同的结构，就是能够把隐向量 <script type="math/tex">z</script> 转化为尺寸为 <script type="math/tex">d_l^3</script> 的三维像素。它有三个kernerl size为5，strides为3 的 volumetirc full-convolution layers (也被理解为 deconvolution )。在最后一层增加了个 <script type="math/tex">tanh</script> 激活函数层。Encoder-Decoder 网络是完全卷积的，不包含 linear or pooling layers (池化层)。</p>
+<p>判别器和一个具有一个 fc 层和最后有一个 sigmoid 层的 encoder 具有相同的构造。</p>
+<h3 id="损失函数"><a href="#损失函数" class="headerlink" title="损失函数"></a>损失函数</h3><p>在 3D-ED-GAN 中的生成器被描述成一个 Encoder-Deocer 网络。它可以被看做是一个条件限制的 GAN，即在隐藏层的分布被给定的背景数据所限制。因此，代价函数可以通过原 GAN 的代价函数转化推导得到：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1flf7u4sfbjj308r02874m.jpg" alt=""></p>
+<p>其中 <script type="math/tex">F_{ed}:X\rightarrow X</script> 就是 Encoder-Decoder 网络，<script type="math/tex">x^{'}</script> 就是完整量 <script type="math/tex">x</script> 的残缺模型。</p>
+<p>和图像填补论文中的一样，增加一个对象 reconstruct 的 Cross-Entropy 损失，<script type="math/tex">L_recon</script>，由如下公式定义：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1flf8kdbm3uj309u036gm1.jpg" alt=""></p>
+<p>其中 <script type="math/tex">N=d_l^3</script>，<script type="math/tex">x_i</script> 代表第 <script type="math/tex">i</script> 个完整三维像素输入 <script type="math/tex">x</script> , <script type="math/tex">F_{ed}(X^{'})_i</script> 是第 <script type="math/tex">i</script> 个由生成器生成的向量。在这种情况下，Encoder-Decoder 网络的输出 <script type="math/tex">F_{ed}(X^{'})</script> 就是当前三维像素点被填充的可能性。</p>
+<p>完整 3D-ED-GAN 的损失函数如下：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1flf8tb0arvj30ab01saa7.jpg" alt=""></p>
+<p>其中的 <script type="math/tex">\alpha_1</script> 和 <script type="math/tex">\alpha_2</script> 是权重参数。</p>
+<p>通过损失函数可以高效地推断出损失区域的结构从而从数据的分布产生假定的重构。图像的补完需要考虑和给定数据环境的相关性和根据数据的分布产生可能的数据信息。3D-ED-GAN具有描绘隐藏空间和数据分布相关性的能力，因此能够产生合适的近似真实的假设。</p>
+<h2 id="Long-term-Recurrent-Convolutional-Network-LRCN-模型"><a href="#Long-term-Recurrent-Convolutional-Network-LRCN-模型" class="headerlink" title="Long-term Recurrent Convolutional Network (LRCN) 模型"></a>Long-term Recurrent Convolutional Network (LRCN) 模型</h2><p>为了解决三维卷积网络占用内存过高的问题，利用结合了一个 LSTM，一个三维CNN，一个二维深度完全卷积网络模型的 LRCN 模型，可以实现图像从 <script type="math/tex">d_l^3</script> 到 <script type="math/tex">d_h^3</script> 的映射，从而大幅度减低内存的占用，这里的 <script type="math/tex">d_l</script> = 32，<script type="math/tex">d_h</script> = 128。流程如下图所示：</p>
+<p><img src="https://ws3.sinaimg.cn/large/006tKfTcgy1flfa3f5mmrj30kx087n0b.jpg" alt=""></p>
+<p>把模型的三维输入利用 PCA 降维之后把主元素切分为二位图像。LRCN 利用 3D CNN 产生 <script type="math/tex">c</script> （<script type="math/tex">c</script> = 5) 个连续的切片输出给 LSTM ，其中每个切片都是一个固定长度的向量代表 LSTM 的输入。LSTM 把输入送股一个二维完全卷积网络当中从而产生高像素的二维图像。这些高像素二维图像的级连就是高像素的三维完全图像的结果。</p>
+<h3 id="序列输入的公式"><a href="#序列输入的公式" class="headerlink" title="序列输入的公式"></a>序列输入的公式</h3><p>为了最大化从三维对象体中获得的北京数据信息，我们需要最大化空切片的数目。所以给定一个维度为 <script type="math/tex">d_l^3</script> 三维对象体，我们首先使用主元素分析来对齐三维对象，并且用 <script type="math/tex">I</script> 来表示，它的主元素利用向量 <script type="math/tex">\underset{l}{\rightarrow}</script> 来表示。因此 <script type="math/tex">I</script> 作为 伴随<script type="math/tex">\underset{l}{\rightarrow}</script>的大小为<script type="math/tex">d_l \times d_l</script> 的二维图像序列，表示作<script type="math/tex">{I_1,I_2,...,I_{d_l}}</script>。因为 LRCN 的输出是长度为 <script type="math/tex">d_h</script> 的序列，所以输入蓄力的长度也是 <script type="math/tex">d_h</script>。如上面的流程图所示，对每一个步骤，一块切片和 4 块与他相邻的切片（一共五块），在一个小的容器体中形成并提供给网络，我们称为步骤 <script type="math/tex">t</script>。对那些指标为负的切片以及指标超过 <script type="math/tex">d_l</script> 的切片，用 0 0来进行填充。故 3D CNN 的输入为：</p>
+<p><img src="https://ws2.sinaimg.cn/large/006tKfTcgy1flfbaypxgzj30kh024q32.jpg" alt=""></p>
+<h3 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h3><p>如同上面的流程图所示，三维 CNN encoder 把一个规模为 <script type="math/tex">d_l \times d_l \times c</script> 的容器作为输入，其中 <script type="math/tex">c</script> 代表了输入的切片数目，这里的 <script type="math/tex">c</script> = 5。在第 <script type="math/tex">t</script> 步，3D CNN 转换 <script type="math/tex">c</script> 片二维图片 <script type="math/tex">v^{'}_i</script> 成为一个 200 维的向量 <script type="math/tex">v_t</script>。3D CNN encoder在最后拥有一个和3D-ED-GAN中的3D encoder相同的结fc层。在3D CNN之后，循环模型 LSTM 接管数据输出。我们使用和 RNN 正则化文章中相同的 LSTM 神经元：给定输入<script type="math/tex">v_t</script>，那么LSTM在步骤 <script type="math/tex">t</script> 中的更新为：</p>
+<p><img src="https://ws4.sinaimg.cn/large/006tKfTcgy1flfcsydlh3j30ct054q43.jpg" alt=""></p>
+<p>其中<script type="math/tex">\sigma</script>是 logistic sigmoid 函数，<script type="math/tex">i,f,o,c</script> 分别为 <script type="math/tex">inputgate,forgetgate,outputgate,cellgate</script>，</p>
+<p><script type="math/tex">W_{vi,vf,vo,hi,h,f,hc,ho,ci,co,cf}</script> 和 <script type="math/tex">b_{i,f,c,o}</script> 都是参数。<br>LSTM的输出向量 <script type="math/tex">o_t</script> 进一步经过 2D 完全卷积神经网络，产生一个规模为 <script type="math/tex">d_h \times d_h</script> 的图像。它有两个 Kernel size 为 5，stride 为 2 的完全卷积层，其中 BN 和 ReLU 在中间进行处理，紧接着一层 tanh 在最后。</p>
+<h4 id="损失函数-1"><a href="#损失函数-1" class="headerlink" title="损失函数"></a>损失函数</h4><p>我们对 <script type="math/tex">l_1</script> 和 <script type="math/tex">l_2</script> 都进行了损失的实验，同时发现 <script type="math/tex">l_1</script> 的损失降低通常获得获得高质量的结果。在这种情况下，我们把 <script type="math/tex">l_1</script> 的损失作为 LRCN 的损失对模型进行训练，把它表示为 <script type="math/tex">L_{LRCN}</script>。</p>
+<p>完整的联合训练网络模型（联合 3D-ED-GAN 和 LRCN）的代价函数如下：</p>
+<p><img src="https://ws1.sinaimg.cn/large/006tKfTcgy1flfd9xg8p3j309301gdfy.jpg" alt=""></p>
+<p>其中 <script type="math/tex">\alpha_3</script> 和 <script type="math/tex">\alpha_4</script> 是权重参数。</p>
+<p>尽管 LRCN 包含了 3D CNN encoder，由于它细小的输入块仍然使它显著的比常规的 regular volumetric CNN 模型要小。利用 RNN 处理序列数据和大范围依赖数据的能力，该模型得以有效地利用的内存产生高像素的完整结果。</p>
+<h3 id="训练混合网络"><a href="#训练混合网络" class="headerlink" title="训练混合网络"></a>训练混合网络</h3><p>从残缺数据中训练这个 3D-ED-GAN 和 LRCN 联合的模型士一键非常有挑战性的工作，因此，我们提出了一个三个阶段的训练过程。</p>
+<p>在第一阶段，3D-ED-GAN 独立地由残缺的三维输入进行训练，产生完整的低像素的输出，因为判别器的学习要比生成器的学习快，我们首先让 Encoder-Decoder 网络不适用判别器来进行独立的训练，此时只包含 reconstruction 损失。学习速率固定为 <script type="math/tex">10^{-5}</script>，而且训练的 epochs 为 20。然后我们用 100 的 epochs 来联合训练判别器和 Encoder-Decoder。我们设定 Encoder-Decoder 的学习速率为 <script type="math/tex">10^{-4}</script>，同时 <script type="math/tex">D</script> 的为 <script type="math/tex">10^{-6}</script>。之后把 <script type="math/tex">\alpha_1</script> 和 <script type="math/tex">\alpha_2</script> 各自设定为 0.001 和 0.999。对每一个 batch，我们仅仅在上一个 batch 的准确度不高于 80% 的时候对它进行更新。ADAM 最优化使用参数 <script type="math/tex">\beta</script> = 5和大小为4的 batch size 。</p>
+<p>在第二阶段，LRCN 可以独立的由完善的低像素 3D 输入和高像素的 100 epochs 产生的输出进行训练。我们在这里使用 <script type="math/tex">10^{-4}</script> 的学习速率和 4 的 batch size 。在这个阶段，LRCN 作为上取样网络可以由训练的数据分布预测出良好的纹理细节。</p>
+<p>在最后的阶段，我们用联合损失函数，一并调整在第一阶段和第二阶段训练前的 hybrid network 。判别器的学习速率是 <script type="math/tex">10^{-7}</script> ，剩余网络的学习速率为 <script type="math/tex">10^{-6}</script>。<script type="math/tex">\alpha_3</script> 和 <script type="math/tex">\alpha_4</script> 都设置为 0.5。我们观察了大部分发生在 LRCN 中的参数更新，LRCN 在这个阶段的输入是不完整的，输出仍然能够产生高像素的模型，表明了 LRCN 是一种权衡上输入能量和保护当前细节的降噪网络。</p>
+<p>为了方便起见，我们使用前述的 PCA 方法来在训练快开始前对所有模型排列整齐，而不是对 3D-ED-GAN 进行排列。</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/生成对抗网络/" rel="tag"># 生成对抗网络</a>
+          
+        </div>
+      
+
+      
+        
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/05/gan1/" rel="next" title="Generative Adversarial Nets 论文解读与翻译">
+                <i class="fa fa-chevron-left"></i> Generative Adversarial Nets 论文解读与翻译
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="lv-container" data-id="city" data-uid="MTAyMC8yODMyNy80ODk5"></div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/头像.gif"
+               alt="Hyson" />
+          <p class="site-author-name" itemprop="name">Hyson</p>
+           
+              <p class="site-description motion-element" itemprop="description">HFUT大二在读/ACMER/Machine-Learner</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">58</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">27</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/hyson666" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/huang-yi-xun-12" target="_blank" title="知乎">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  知乎
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="tencent://message/?uin=601852941&Site=www.hitux.com&Menu=yes" target="_blank" title="QQ">
+                  
+                    <i class="fa fa-fw fa-globe"></i>
+                  
+                  QQ
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#预备知识"><span class="nav-number">1.</span> <span class="nav-text">预备知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3D-GAN"><span class="nav-number">1.1.</span> <span class="nav-text">3D GAN</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#序列模型"><span class="nav-number">1.2.</span> <span class="nav-text">序列模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他"><span class="nav-number">1.3.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概要"><span class="nav-number">2.</span> <span class="nav-text">概要</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3D-ED-GAN"><span class="nav-number">3.</span> <span class="nav-text">3D-ED-GAN</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#损失函数"><span class="nav-number">3.1.</span> <span class="nav-text">损失函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Long-term-Recurrent-Convolutional-Network-LRCN-模型"><span class="nav-number">4.</span> <span class="nav-text">Long-term Recurrent Convolutional Network (LRCN) 模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#序列输入的公式"><span class="nav-number">4.1.</span> <span class="nav-text">序列输入的公式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#网络结构"><span class="nav-number">4.2.</span> <span class="nav-text">网络结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#损失函数-1"><span class="nav-number">4.2.1.</span> <span class="nav-text">损失函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#训练混合网络"><span class="nav-number">4.3.</span> <span class="nav-text">训练混合网络</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Hyson</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+  
+    <script type="text/javascript">
+      (function(d, s) {
+        var j, e = d.getElementsByTagName(s)[0];
+        if (typeof LivereTower === 'function') { return; }
+        j = d.createElement(s);
+        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+        j.async = true;
+        e.parentNode.insertBefore(j, e);
+      })(document, 'script');
+    </script>
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
