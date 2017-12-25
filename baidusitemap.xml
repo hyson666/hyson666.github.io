@@ -4,6 +4,46 @@
 
     
   <url>
+    <loc>http://yoursite.com/2017/12/25/crawler2/</loc>
+    <lastmod>2017-12-25T15:53:41.623Z</lastmod>
+    <data>
+        <display>
+        <title>BeautifulSoup学习笔记（二）数据定位方法</title>
+        <pubTime>2017-12-25T15:46:51.000Z</pubTime>
+        
+        <tag>正则表达式</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据采集" url="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://yoursite.com/2017/12/25/crawler1/</loc>
+    <lastmod>2017-12-25T15:51:28.490Z</lastmod>
+    <data>
+        <display>
+        <title>BeautifulSoup学习笔记（一）常见异常</title>
+        <pubTime>2017-12-25T15:46:45.000Z</pubTime>
+        
+        <tag>BeautifulSoup</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据采集" url="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://yoursite.com/2017/11/12/3dedgan/</loc>
     <lastmod>2017-11-12T08:54:06.419Z</lastmod>
     <data>

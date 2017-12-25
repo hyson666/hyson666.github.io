@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-11-12T08:54:06.419Z</updated>
+  <updated>2017-12-25T15:53:41.623Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,124 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>BeautifulSoup学习笔记（二）数据定位方法</title>
+    <link href="http://yoursite.com/2017/12/25/crawler2/"/>
+    <id>http://yoursite.com/2017/12/25/crawler2/</id>
+    <published>2017-12-25T15:46:51.000Z</published>
+    <updated>2017-12-25T15:53:41.623Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="BeautifulSoup的find-和findAll"><a href="#BeautifulSoup的find-和findAll" class="headerlink" title="BeautifulSoup的find()和findAll()"></a>BeautifulSoup的find()和findAll()</h2><p>第一个用于只寻找一个的情形，第二个则用于寻找所有符合的情形。示例一段简单的抓取网页中所有绿色内容的代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">nameList = bsObj.findAll(<span class="string">"span"</span>, &#123;<span class="string">"class"</span>:<span class="string">"green"</span>&#125;)</div><div class="line"><span class="keyword">for</span> name <span class="keyword">in</span> nameList:     </div><div class="line">   print(name.get_text())</div></pre></td></tr></table></figure></p>
+<p>其中默认返回的是带有原标签的文本，如果不想要输出这个标签，就用get_text()去处理，一定要记住，一般在最后输出的时候才用到这个方法，在此前应该尽量保持大多数标签。</p>
+<p>文档中对这两个函数的定义如下：</p>
+<p>findAll(tag, attributes, recursive, text, limit, keywords)</p>
+<p>find(tag, attributes, recursive, text, keywords)</p>
+<p>标签参数 tag 可以传递一个标签的名称或者多个标签名称组成的 Python 列表，比如下面的用法：</p>
+<p>.findAll({“h1”,”h2”,”h3”,”h4”,”h5”,”h6”})</p>
+<p>参数参数 attributes 使用一个 Python 字典封装一个标签的若干属性和对应的属性值，例如下面返回 HTML 文档中的 span 标签里面 class 属性为 green 与 red 的值：</p>
+<p>.findAll(“span”, {“class”:{“green”, “red”}})</p>
+<p>递归参数 recursive 数一个布尔变量。你想抓取 HTML 文档标签结构里多少层的信息？如果 recursive 设置为 True，findAll 就会根据你的要求去查找标签参数的所有子标签，以及子标签的子标签。如果 recursive 设置为 False，findAll 就只查找文档的一级标签。findAll 默认是支持递归查找的（recursive 默认值是 True）；一般情况下这个参数不需要设置，除 你真正了解自己需要哪些信息，而且抓取速度非常重要，那时你可以设置递归参数。</p>
+<p>文本参数 text 有点不同，它是用标签的文本内容去匹配，而不是用标签的属性。假如我们 想查找前面网页中包含“the prince”内容的标签数量，我们可以把之前的 findAll 方法换 成下面的代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">nameList = bsObj.findAll(text=<span class="string">"the prince"</span>)</div><div class="line">print(len(nameList))</div></pre></td></tr></table></figure></p>
+<p>范围限制参数 limit，显然只用于 findAll 方法。find 其实等价于 findAll 的 limit 等于 1 时的情形。如果你只对网页中获取的前 x 项结果感兴趣，就可以设置它。但是要注意， 这个参数设置之后，获得的前几项结果是按照网页上的顺序排序的，未必是你想要的那 前几项。</p>
+<p>还有一个关键词参数 keyword，可以让你选择那些具有指定属性的标签。例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">allText = bsObj.findAll(id=<span class="string">"text"</span>)</div><div class="line">print(allText[<span class="number">0</span>].get_text())</div></pre></td></tr></table></figure></p>
+<p>值得至于的是，keyword虽然在一些场景中非常有用，但是它是 BeautifulSoup 在技术上做的一个冗余功能。任何用关键词参数能够完成的任务同样可以用别的技术来替代，比如以下两行代码完全等价：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">bsObj.findAll(id=<span class="string">"text"</span>)</div><div class="line">bsObj.findAll(<span class="string">""</span>, &#123;<span class="string">"id"</span>:<span class="string">"text"</span>&#125;)</div></pre></td></tr></table></figure></p>
+<p>另外在使用 class 属性来寻找标签的时候，用于其是 Python 的保留字，所以不能够当做变量或者参数名来使用，为此 BeautifulSoup 提出了一个方案是使用 class_ 来进行替代，也可以用属性参数把 class 用引号包起来：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">bsObj.findAll(class_=<span class="string">"green"</span>)</div><div class="line">bsObj.findAll(<span class="string">""</span>, &#123;<span class="string">"class"</span>:<span class="string">"green"</span>&#125;)</div></pre></td></tr></table></figure></p>
+<h2 id="BeautifulSoup-中的所有对象"><a href="#BeautifulSoup-中的所有对象" class="headerlink" title="BeautifulSoup 中的所有对象"></a>BeautifulSoup 中的所有对象</h2><ul>
+<li><p>BeautifulSoup 对象</p>
+</li>
+<li><p>标签 Tag 对象</p>
+</li>
+<li><p>NavigableString 对象</p>
+<p>用来表示标签里的文字，不是标签（有些函数可以操作和生成 NavigableString 对象， 而不是标签对象）</p>
+</li>
+<li><p>Comment 对象</p>
+<p>用来查找 HTML 文档的注释标签</p>
+</li>
+</ul>
+<h2 id="导航树"><a href="#导航树" class="headerlink" title="导航树"></a>导航树</h2><h3 id="处理子标签和其他后代标签"><a href="#处理子标签和其他后代标签" class="headerlink" title="处理子标签和其他后代标签"></a>处理子标签和其他后代标签</h3><p>和人类的家谱一样，子标签就是一个父标签的下一级，而后代标签是指一个父标签下面所有级别的标签。如果只想要找出子标签，用 .children 标签就好了：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</div><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</div><div class="line"></div><div class="line">html = urlopen(<span class="string">"http://www.pythonscraping.com/pages/page3.html"</span>) bsObj = BeautifulSoup(html)</div><div class="line"></div><div class="line"><span class="keyword">for</span> child <span class="keyword">in</span> bsObj.find(<span class="string">"table"</span>,&#123;<span class="string">"id"</span>:<span class="string">"giftList"</span>&#125;).children:   </div><div class="line">  print(child)</div></pre></td></tr></table></figure></p>
+<p>这段代码会打印 giftList 表格中所有产品的数据行。如果你用 descendants() 函数而不是 children() 函数，那么就会有二十几个标签打印出来，这些都是子标签的子标签。</p>
+<h3 id="处理兄弟标签"><a href="#处理兄弟标签" class="headerlink" title="处理兄弟标签"></a>处理兄弟标签</h3><p>BeautifulSoup 的 next_siblings() 函数可以让收集表格数据成为简单的事情，尤其是处理 带标题行的表格：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</div><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</div><div class="line">html = urlopen(<span class="string">"http://www.pythonscraping.com/pages/page3.html"</span>)</div><div class="line">bsObj = BeautifulSoup(html)</div><div class="line"></div><div class="line"><span class="keyword">for</span> sibling <span class="keyword">in</span> bsObj.find(<span class="string">"table"</span>,&#123;<span class="string">"id"</span>:<span class="string">"giftList"</span>&#125;).tr.next_siblings:</div><div class="line">    print(sibling)</div></pre></td></tr></table></figure></p>
+<p><strong>注意:</strong> 这里获取的兄弟标签不包含 giftList 本身理由如下：</p>
+<ul>
+<li>对象不能把自己作为兄弟标签。任何时候你获取一个标签的兄 弟标签，都不会包含这个标签本身。</li>
+<li>这个函数只调用后面的兄弟标签。</li>
+</ul>
+<p>为了让爬虫代码的鲁棒性更强，一般不会直接调用bsObj的属性而是用 find 来获取所要的内容，如下所示：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">bsObj.find(<span class="string">"table"</span>,&#123;<span class="string">"id"</span>:<span class="string">"giftList"</span>&#125;).tr</div></pre></td></tr></table></figure></p>
+<p>值得一提的是，还有 previous_siblings 的用法。</p>
+<h3 id="父标签处理"><a href="#父标签处理" class="headerlink" title="父标签处理"></a>父标签处理</h3><p>偶尔也会需要用到自下层寻找下层的函数，此时需要调用 parent 或者 parents，比如下面所示：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</div><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</div><div class="line"></div><div class="line">html = urlopen(<span class="string">"http://www.pythonscraping.com/pages/page3.html"</span>)</div><div class="line">bsObj = BeautifulSoup(html)</div><div class="line">print(bsObj.find(<span class="string">"img"</span>,&#123;<span class="string">"src"</span>:<span class="string">"../img/gifts/img1.jpg"</span> &#125;).parent.previous_sibling.get_text())</div></pre></td></tr></table></figure></p>
+<p>这段代码可以打印出第一个图片商品对应的价格，查看网页的内容可以知道 img 标签的父亲的上一个兄弟标签就是价格表单项。</p>
+<h2 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a>正则表达式</h2><p>和编译原理中的正则表达式很类似，给定正则表达式，可以识别正则字符串 (regular string)；也就是说，如果给定的字符串符合规则，那么久返回它，反之，就忽略它。比如：</p>
+<ul>
+<li>字母“a”至少出现一次；</li>
+<li>后面跟着字母“b”重复 5 次；</li>
+<li>后面再跟字母“c”重复任意偶数次；</li>
+<li>最后一位是字母“d”，也可以没有。</li>
+</ul>
+<p>那么可以用正则表达式表示为:</p>
+<p>aa*bbbbb(cc)*(d | )</p>
+<p>可以发现和编译原理中所学的是几乎一样了。我们可以写好之后到 RegexPal （ <a href="http://regexpal.com/" target="_blank" rel="external">http://regexpal.com/</a> ）这样的网站中去检测我们写的正则表达式是否符合要求。</p>
+<p>很容易想到的一个应用是识别邮箱的地址，虽然不同服务器具体规则不尽数相同，但是还是可以写出下面这样的通用规则：</p>
+<p>[A-Za-z0-9\._+]+@[A-Za-z]+\.(com|org|edu|net)</p>
+<p>部分需要解释的点如下：</p>
+<ul>
+<li><p>[A-Za-z0-9._+]+：括号内的A-Z表示的是从A到Z的任意大写字母，把所有可能出现的序列和符号都放在中括号（不是小括号）里面，表示括号中的任何一个符号。要注意<strong>后面</strong>的加号，它表示示“这些符号都可以出现多次，且至少出现 1 次”。</p>
+</li>
+<li><p>\.：在域名前必须有一个点号（.）,这里用反斜杠来表示转义。</p>
+</li>
+</ul>
+<p>下面给出正则表达式中常用的符号：</p>
+<p><img src="https://ws1.sinaimg.cn/large/618874b0gy1fmtdqvndixj20fa0e8myl.jpg" alt="符号表"></p>
+<h2 id="正则表达式和BeautifulSoup"><a href="#正则表达式和BeautifulSoup" class="headerlink" title="正则表达式和BeautifulSoup"></a>正则表达式和BeautifulSoup</h2><p>为了提高代码的鲁棒性，以及预防捕捉到用于其他用途的贴图，一般不会采用利用位置定位抓取图片的方法而是选择使用正则表达式，比如下面的代码范例：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</div><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</div><div class="line"><span class="keyword">import</span> re</div><div class="line"></div><div class="line">html = urlopen(<span class="string">"http://www.pythonscraping.com/pages/page3.html"</span>)</div><div class="line">bsObj = BeautifulSoup(html) images = bsObj.findAll(<span class="string">"img"</span>,&#123;<span class="string">"src"</span>:re.compile(<span class="string">"\.\.\/img\/gifts/img.*\.jpg"</span>)&#125;)</div><div class="line"><span class="keyword">for</span> image <span class="keyword">in</span> images:     </div><div class="line">  print(image[<span class="string">"src"</span>])</div></pre></td></tr></table></figure>
+<h2 id="获取属性"><a href="#获取属性" class="headerlink" title="获取属性"></a>获取属性</h2><p>对于一个标签对象，可以用下面的代码来获取它的全部属性：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">myTag.attrs</div></pre></td></tr></table></figure></p>
+<p>其返回一个Python字典对象，可以获取和操作这些属性。比如要获取图片资源位置 src，可以用下面这行代码：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">myImgTag.attrs[<span class="string">"src"</span>]</div></pre></td></tr></table></figure></p>
+<h2 id="Lambda表达式"><a href="#Lambda表达式" class="headerlink" title="Lambda表达式"></a>Lambda表达式</h2><p>Lambda 表达式本质上就是一个函数，可以作为其他函数的变量使用；也就是说，一个函 数不是定义成 f(x, y)，而是定义成 f(g(x), y)，或 f(g(x), h(x)) 的形式。</p>
+<p>BeautifulSoup 允许我们把特定函数类型当作 findAll 函数的参数。唯一的限制条件是这些 函数必须把一个标签作为参数且返回结果是布尔类型。BeautifulSoup 用这个函数来评估它 遇到的每个标签对象，最后把评估结果为“真”的标签保留，把其他标签剔除。</p>
+<p>例如，下面的代码就是获取有两个属性的标签：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">soup.findAll(<span class="keyword">lambda</span> tag: len(tag.attrs) == <span class="number">2</span>)</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;BeautifulSoup的find-和findAll&quot;&gt;&lt;a href=&quot;#BeautifulSoup的find-和findAll&quot; class=&quot;headerlink&quot; title=&quot;BeautifulSoup的find()和findAll()&quot;&gt;&lt;/a&gt;Be
+    
+    </summary>
+    
+      <category term="数据采集" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86/"/>
+    
+    
+      <category term="正则表达式" scheme="http://yoursite.com/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>BeautifulSoup学习笔记（一）常见异常</title>
+    <link href="http://yoursite.com/2017/12/25/crawler1/"/>
+    <id>http://yoursite.com/2017/12/25/crawler1/</id>
+    <published>2017-12-25T15:46:45.000Z</published>
+    <updated>2017-12-25T15:51:28.490Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Python爬虫常见异常"><a href="#Python爬虫常见异常" class="headerlink" title="Python爬虫常见异常"></a>Python爬虫常见异常</h2><h3 id="网络页面不存在"><a href="#网络页面不存在" class="headerlink" title="网络页面不存在"></a>网络页面不存在</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span>:     </div><div class="line">  html = urlopen(<span class="string">"http://www.pythonscraping.com/pages/page1.html"</span>)</div><div class="line"><span class="keyword">except</span> HTTPError <span class="keyword">as</span> e:     </div><div class="line">  print(e)    </div><div class="line">  <span class="comment"># 返回空值，中断程序，或者执行另一个方案 else:    </span></div><div class="line">  <span class="comment"># 程序继续。注意：如果你已经在上面异常捕捉那一段代码里返回或中断（break），</span></div><div class="line">  <span class="comment"># 那么就不需要使用else语句了，这段代码也不会执行</span></div></pre></td></tr></table></figure>
+<p>这发生在获取网页的时候。如果程序返回 HTTP 错误代码，程序就会显示错误内容，不再执行 else 语句后面的代码。</p>
+<h3 id="服务器不存在"><a href="#服务器不存在" class="headerlink" title="服务器不存在"></a>服务器不存在</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> html <span class="keyword">is</span> <span class="keyword">None</span>:     </div><div class="line">  print(<span class="string">"URL is not found"</span>)</div><div class="line"><span class="keyword">else</span>:     </div><div class="line">  <span class="comment"># 程序继续</span></div></pre></td></tr></table></figure>
+<p>如果服务器不存在（就是说链接 <a href="http://www.pythonscraping.com/" target="_blank" rel="external">http://www.pythonscraping.com/</a> 打不开，或者是 URL 链接 写错了），urlopen 会返回一个 None 对象。</p>
+<h3 id="标签不存在异常"><a href="#标签不存在异常" class="headerlink" title="标签不存在异常"></a>标签不存在异常</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> urllib.request <span class="keyword">import</span> urlopen</div><div class="line"><span class="keyword">from</span> urllib.error <span class="keyword">import</span> HTTPError</div><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup     </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getTitle</span><span class="params">(url)</span>:</span>         </div><div class="line">    <span class="keyword">try</span>:             </div><div class="line">      html = urlopen(url)         </div><div class="line">    <span class="keyword">except</span> HTTPError <span class="keyword">as</span> e:             </div><div class="line">      <span class="keyword">return</span> <span class="keyword">None</span>         </div><div class="line">    <span class="keyword">try</span>:             </div><div class="line">      bsObj = BeautifulSoup(html.read())             </div><div class="line">      title = bsObj.body.h1         </div><div class="line">    <span class="keyword">except</span> AttributeError <span class="keyword">as</span> e:             </div><div class="line">      <span class="keyword">return</span> <span class="keyword">None</span>         </div><div class="line">    <span class="keyword">return</span> title</div><div class="line">title = getTitle(<span class="string">"http://www.pythonscraping.com/pages/page1.html"</span>)</div><div class="line"><span class="keyword">if</span> title == <span class="keyword">None</span>:     </div><div class="line">    print(<span class="string">"Title could not be found"</span>)</div><div class="line"><span class="keyword">else</span>:     </div><div class="line">    print(title)</div></pre></td></tr></table></figure>
+<p>调用的标签不存在的时候会返回 None 对象，这个时候是没有问题的，但是如果继续调用这个 None 对象的下一级标签就会出现问题了，返回 AttributeError 错误，这里把获取Title中可能碰到的所有情况封装成了一个函数集中处理异常的发生，包括：网页不存在异常、标签两种异常，是最规范的写法。其中网页是 None 以及标签是 None 都会导致 AttributeError 。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Python爬虫常见异常&quot;&gt;&lt;a href=&quot;#Python爬虫常见异常&quot; class=&quot;headerlink&quot; title=&quot;Python爬虫常见异常&quot;&gt;&lt;/a&gt;Python爬虫常见异常&lt;/h2&gt;&lt;h3 id=&quot;网络页面不存在&quot;&gt;&lt;a href=&quot;#网络页面不存
+    
+    </summary>
+    
+      <category term="数据采集" scheme="http://yoursite.com/categories/%E6%95%B0%E6%8D%AE%E9%87%87%E9%9B%86/"/>
+    
+    
+      <category term="BeautifulSoup" scheme="http://yoursite.com/tags/BeautifulSoup/"/>
+    
+  </entry>
   
   <entry>
     <title>利用 3D-GAN 和 RCN 进行三维图形补全</title>
@@ -981,60 +1099,6 @@ J(\theta_1,\theta_2)=\frac{1}{2m}\sum_{i=1}^{m}(\widehat{y_i}-y_i)^2 = \frac{1}{
     
     
       <category term="AD HOC" scheme="http://yoursite.com/tags/AD-HOC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>省赛之后的训练计划</title>
-    <link href="http://yoursite.com/2017/05/25/plan525/"/>
-    <id>http://yoursite.com/2017/05/25/plan525/</id>
-    <published>2017-05-25T06:43:54.000Z</published>
-    <updated>2017-05-25T06:54:49.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>鉴于之前所学的算法知识比较零碎，省赛后要做的就是把所学的算法再次巩固一遍，更加深入地去理解每一个算法不要依赖板子，USACO显然是一个个比较好的选择，之后会针对USACO的课程来进行科学的刷题，并且继续提高自己的手速，将会涵盖的算法内容如下：</p>
-<p>Dynamic Programming<br>Greedy<br>Complete Search<br>Flood Fill<br>Shortest Path<br>Recursive Search Techniques<br>Minimum Spanning Tree<br>Knapsack<br>Computational Geometry<br>Network Flow<br>Eulerian Path<br>Two-Dimensional Convex Hull<br>BigNums<br>Heuristic Search<br>Approximate Search<br>Ad Hoc Problems</p>
-<p>将会采用USACO+白书+SPOJ的训练模式，为之后刷紫书做铺垫。<br>此外以后的每一场CodeForces仍然会坚持打，坚持补题。<br>新旅途开始，加油！</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;鉴于之前所学的算法知识比较零碎，省赛后要做的就是把所学的算法再次巩固一遍，更加深入地去理解每一个算法不要依赖板子，USACO显然是一个个比较好的选择，之后会针对USACO的课程来进行科学的刷题，并且继续提高自己的手速，将会涵盖的算法内容如下：&lt;/p&gt;
-&lt;p&gt;Dynamic 
-    
-    </summary>
-    
-      <category term="随笔" scheme="http://yoursite.com/categories/%E9%9A%8F%E7%AC%94/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>POJ2409 Power Strings - KMP裸题</title>
-    <link href="http://yoursite.com/2017/05/18/POJ2409/"/>
-    <id>http://yoursite.com/2017/05/18/POJ2409/</id>
-    <published>2017-05-18T02:27:30.000Z</published>
-    <updated>2017-05-18T02:56:35.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="题目连接"><a href="#题目连接" class="headerlink" title="题目连接"></a>题目连接</h2><p><a href="http://poj.org/problem?id=2406" target="_blank" rel="external">http://poj.org/problem?id=2406</a></p>
-<h2 id="Description"><a href="#Description" class="headerlink" title="Description"></a>Description</h2><p>Given two strings a and b we define a<em>b to be their concatenation. For example, if a = “abc” and b = “def” then a</em>b = “abcdef”. If we think of concatenation as multiplication, exponentiation by a non-negative integer is defined in the normal way: a^0 = “” (the empty string) and a^(n+1) = a*(a^n).</p>
-<h2 id="Input"><a href="#Input" class="headerlink" title="Input"></a>Input</h2><p>Each test case is a line of input representing s, a string of printable characters. The length of s will be at least 1 and will not exceed 1 million characters. A line containing a period follows the last test case.</p>
-<h2 id="Output"><a href="#Output" class="headerlink" title="Output"></a>Output</h2><p>For each s you should print the largest n such that s = a^n for some string a.</p>
-<h2 id="Sample-Input"><a href="#Sample-Input" class="headerlink" title="Sample Input"></a>Sample Input</h2><p>abcd<br>aaaa<br>ababab<br>.</p>
-<h2 id="Sample-Output"><a href="#Sample-Output" class="headerlink" title="Sample Output"></a>Sample Output</h2><p>1<br>4<br>3</p>
-<h2 id="Hint"><a href="#Hint" class="headerlink" title="Hint"></a>Hint</h2><p>This problem has huge input, use scanf instead of cin to avoid time limit exceed.</p>
-<h2 id="题意"><a href="#题意" class="headerlink" title="题意"></a>题意</h2><p>寻找最小循环节，并求循环次数。</p>
-<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><p>其实寒假做过这种求最小循环节的题，但是太久没有摸过KMP忘记了Next数组怎么操作，特地复习了一遍。简单的说，Next数组可以在模式串和原串失配的时候返回一个前缀和后缀相等的最大位置，而且这个过程是可以递归的。在串中某个循环节不断重复的过程中其实next数组已经记录了最大的滑动位置，所以最后要得到的结果为s[next[len]]s[next[len]+1]……s[len-1]。如果其长度能够被串本身长度整除，说明它存在不是它本身的子串，否则自己就是长度最大子串，返回1。</p>
-<p>Tips:字符串ababab的Next数组值为-1,0,0,1,2,3,4。<br>字符串abaabcac的Next数组值为-1,0,0,1,1,2,0,1。</p>
-<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> <span class="keyword">int</span> maxn=<span class="number">1e6</span>+<span class="number">10</span>;</div><div class="line"><span class="keyword">char</span> s[maxn];</div><div class="line"><span class="keyword">int</span> Next[maxn];</div><div class="line"><span class="keyword">int</span> len;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">get_next</span><span class="params">(<span class="keyword">char</span> *s)</span></span>&#123;</div><div class="line">    <span class="keyword">int</span> i=<span class="number">0</span>,j=<span class="number">-1</span>;</div><div class="line">    Next[<span class="number">0</span>]=<span class="number">-1</span>;</div><div class="line">    <span class="keyword">while</span>(i&lt;=len)&#123;</div><div class="line">        <span class="keyword">if</span>(j==<span class="number">-1</span> || (i&lt;len &amp;&amp; s[i]==s[j]))&#123;</div><div class="line">            Next[++i]=++j;</div><div class="line">        &#125;<span class="keyword">else</span>&#123;</div><div class="line">            j=Next[j];</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</div><div class="line">    freopen(<span class="string">"in.txt"</span>,<span class="string">"r"</span>,<span class="built_in">stdin</span>);</div><div class="line">    <span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%s"</span>,s) &amp;&amp; <span class="built_in">strcmp</span>(s,<span class="string">"."</span>)!=<span class="number">0</span>)&#123;</div><div class="line">        len=<span class="built_in">strlen</span>(s);</div><div class="line">        get_next(s);</div><div class="line">        <span class="keyword">if</span>(len%(len-Next[len])==<span class="number">0</span>)</div><div class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>,len/(len-Next[len]));</div><div class="line">        <span class="keyword">else</span>&#123;</div><div class="line">            <span class="built_in">puts</span>(<span class="string">"1"</span>);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="number">0</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;题目连接&quot;&gt;&lt;a href=&quot;#题目连接&quot; class=&quot;headerlink&quot; title=&quot;题目连接&quot;&gt;&lt;/a&gt;题目连接&lt;/h2&gt;&lt;p&gt;&lt;a href=&quot;http://poj.org/problem?id=2406&quot; target=&quot;_blank&quot; rel=&quot;
-    
-    </summary>
-    
-    
-      <category term="KMP" scheme="http://yoursite.com/tags/KMP/"/>
     
   </entry>
   
